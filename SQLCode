@@ -57,21 +57,20 @@
 
 
            UPDATE MyTabla SET col1 = col2
-           WHERE................
+           WHERE................  (EL WHERE CREO QUE NO VA,PERO ASI ESTA EL EJ EN LA PÀG DND LO VI)
 
                    Se pone en col1 el valor que tenga col2
 
 
---BORRAR UNA COLUMNA (EN DB_BROWSER SQLITE NO FUNCIONA) --"SQLite admite un subconjunto limitado de ALTER TABLE. El comando ALTER TABLE en SQLite permite al usuario cambiar el nombre de una tabla o agregar una nueva columna a una tabla existente. No es posible cambiar el nombre de una columna, eliminar una columna o agregar o eliminar restricciones de una tabla.--"
-
---- tampoco agregar info a una sola columna a la vez --
+--BORRAR UNA COLUMNA (EN DB_BROWSER SQLITE NO FUNCIONA) --"SQLite admite un subconjunto limitado de ALTER TABLE. 
+El comando ALTER TABLE en SQLite permite al usuario cambiar el nombre de una tabla o agregar una nueva columna a una tabla existente. 
+No es posible cambiar el nombre de una columna, eliminar una columna o agregar o eliminar restricciones de una tabla.--"
+tampoco agregar info a una sola columna a la vez.
 
 pero....; FUNCIONÒ.
 
 		ALTER TABLE perros 
 		DROP COLUMN RAZA
-
-
 
 
 --- BORRAR UNA TABLA 
@@ -150,3 +149,37 @@ pero....; FUNCIONÒ.
 
 		GROUP BY P.NOMBRE
 		ORDER BY  CANTIDAD
+
+--- INSERTAR VARIABLES EN CODIGO SQL:--------------------------------------
+
+ String Data2 =  JText_Busqueda.getText(); 
+  
+      String Data1 = JCombo_Filtro.getSelectedItem().toString();
+     
+     switch (Data1){
+     
+         case "Todos":
+
+             
+           Datos = "SELECT * FROM Entidades_BD  WHERE Entidad LIKE "+"'" + "%"+ Data2 + "%" + "'" 
+                                                                             + "OR Decreto LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Localidad LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Categoria_L15192 LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Ultima_Actualizacion LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR InscripcionDGPJ2 LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Telefono LIKE "+"'" + "%"+ Data2 + "%" + "'";
+                    
+            mostrarDatos(Datos);
+                 
+                  break;
+         default:
+            
+            Datos = "SELECT * FROM Entidades_BD  WHERE " + Data1 + " Like " + "'"+"%"+ Data2 +"%" +"'";
+                             
+            mostrarDatos(Datos);
+                 
+                  break;
+
+      
+    }                              
+		
