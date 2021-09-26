@@ -1,0 +1,42 @@
+1- git init
+2- git status -s
+3- git add .
+4- git commit -m"name"
+
+* --> git commit -am "x" : agrega y sube
+*
+*git log --oneline   : ver copias ne repositorio remoto
+*
+
+5- git remote add origin -url- .git
+
+----Si ya hay una RAMA en el repositorio;
+
+
+*  git push origin master (empuja a rama maestra*) 
+*-->already exist?: then. 
+6- git push origin master 
+
+*  git push -u origin main (sincronizacion de local con remoto)
+*  git push origin (-por defecto empuja la rama actual a una rama coincidente del mismo nombre, pero este            comportamiento se puede anular a través de git config) 
+
+*
+* git pull ( trae cambios relizados en el archivo en github a local. )
+*
+-----------------------------------------------------------
+
+---- Clonacion: 
+
+-A Copiar Clone With HTTP (por caso) 
+-B Carpeta nueva. : git clone -url- 
+- Actualizar. 
+- Probar git commit -m "version desde nuevo equipo"
+     
+-----------------------------------------------------------
+
+7- git tag DD/MM/AAAA -m"name"
+8- git push --tags
+*
+9- git branch -name-
+10- git branch
+11- git checkout -which?
