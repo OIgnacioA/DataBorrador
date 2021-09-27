@@ -34,7 +34,7 @@
 --- INSERTAR COLUMNA 
 
 
-	  ALTER TABLE PERROS ADD RAZA VARCHAR (80)
+	  ALTER TABLE PERROS ADD 'RAZA' VARCHAR (80)
 
 
 
@@ -56,7 +56,7 @@
 --- COPIAR CONTENIDO DE UNA COLUMNA EN OTRA  (OPCION ALTERNATIVA A RENOMBRAR UNA COLUMNA : CREAR UNA NUEVA Y VOLCAR) 
 
 
-           UPDATE MyTabla SET col1 = col2
+           UPDATE MyTabla SET 'col1' = col2
            WHERE................  (EL WHERE CREO QUE NO VA,PERO ASI ESTA EL EJ EN LA PÀG DND LO VI)
 
                    Se pone en col1 el valor que tenga col2
@@ -70,7 +70,7 @@ tampoco agregar info a una sola columna a la vez.
 pero....; FUNCIONÒ.
 
 		ALTER TABLE perros 
-		DROP COLUMN RAZA
+		DROP COLUMN 'RAZA'
 
 
 --- BORRAR UNA TABLA 
