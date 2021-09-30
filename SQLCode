@@ -56,8 +56,9 @@
 --- COPIAR CONTENIDO DE UNA COLUMNA EN OTRA  (OPCION ALTERNATIVA A RENOMBRAR UNA COLUMNA : CREAR UNA NUEVA Y VOLCAR) 
 
 
-           UPDATE MyTabla SET 'col1' = col2
-           WHERE................  (EL WHERE CREO QUE NO VA,PERO ASI ESTA EL EJ EN LA PÀG DND LO VI)
+           UPDATE MyTabla SET 'col1' = "col2"    
+           WHERE................  (EL WHERE CREO QUE NO VA,PERO ASI ESTA EL EJ EN LA PÀG DND LO VI, 
+	                              otra: a veces hay que cambiar las comillas...a dobles a simples...probar)
 
                    Se pone en col1 el valor que tenga col2
 
