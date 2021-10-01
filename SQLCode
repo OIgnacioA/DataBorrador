@@ -77,12 +77,28 @@ pero....; FUNCIONÒ.
 --- BORRAR UNA TABLA 
 
 		DROP TABLE perros
+		
+		
+--- BORRAR UNA FILA  
+
+
+DELETE FROM  TABLA  where COLUMNA  = X
+
+
 
 --- SUMAR DOS CAMPOS (SUM)   contarlos count ---sacar promedio avg. 
 
 		select sum(DIRECCION)  
 		from ´personas´ 
 		WHERE NOMBRE like 'p%'
+		
+		
+		
+--- SELECCIONAR EL NUMERO MAS GRANDE DE UNA COLUMNA: 
+
+
+           SELECT MAX(columna) FROM tabla;
+
 
 
 --- SELECCION DE CAMPOS POR MAYOR Y MENOR QUE 
