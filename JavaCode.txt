@@ -1,0 +1,9 @@
+ 
+--- centrar en pantalla : 
+
+	setLocationRelativeTo(null);
+
+--- no poder modificar tamaño de frame.
+
+	setResizable(false);
+    
