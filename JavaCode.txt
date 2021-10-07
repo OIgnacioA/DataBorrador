@@ -3,7 +3,18 @@
 
 	setLocationRelativeTo(null);
 
---- no poder modificar tamaño de frame.
+--- no poder modificar tamaÃ±o de frame.
 
 	setResizable(false);
-    
+	
+	
+--- no se puedeeditar JTextField : 
+
+       jt.setEditable(false);
+	
+	
+--- convertir  string a integeuer : 
+	
+	
+	int DataSQL = Integer.parseInt(txt_Nombre.getText()); 
+	
