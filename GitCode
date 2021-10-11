@@ -21,8 +21,10 @@
 *  git push origin (-por defecto empuja la rama actual a una rama coincidente del mismo nombre, pero este            comportamiento se puede anular a través de git config) 
 
 *
-* git pull ( trae cambios relizados en el archivo en github a local. )
+* git pull origin master ( trae cambios relizados en el archivo en github a local. )git pull + apodo de repositorio + nombre de rama
 *
+
+
 -----------------------------------------------------------
 
 ---- Clonacion: 
