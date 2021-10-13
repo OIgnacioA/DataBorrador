@@ -13,8 +13,15 @@
        jt.setEditable(false);
 	
 	
---- convertir  string a integeuer : 
+--- convertir  string a integer : 
 	
 	
 	int DataSQL = Integer.parseInt(txt_Nombre.getText()); 
+	
+	
+--- integer to string :
+
+
+ 	txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
+	
 	
