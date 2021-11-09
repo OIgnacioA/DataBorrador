@@ -18,7 +18,9 @@
 	
 	int DataSQL = Integer.parseInt(txt_Nombre.getText()); 
 	
-	
+	 int = Integer.parseInt(texto);
+	 
+	 
 --- integer to string :
 
 
