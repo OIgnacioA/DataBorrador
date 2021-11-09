@@ -13,17 +13,17 @@
        jt.setEditable(false);
 	
 	
+	
+	
+	
 --- convertir  string a integer : 
 	
+	   int = Integer.parseInt(--- valor String ---);
 	
-	int DataSQL = Integer.parseInt(txt_Nombre.getText()); 
-	
-	 int = Integer.parseInt(texto);
-	 
-	 
 --- integer to string :
 
+          Integer.toString(-- valor integer--));
 
- 	txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
+ 	   txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
 	
 	
