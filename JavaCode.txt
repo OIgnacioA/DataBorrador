@@ -25,5 +25,22 @@
           Integer.toString(-- valor integer--));
 
  	   txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
+	   
+	   
+--- saber direccion d ela maquina en la que estas y abrir una ventana de busqueda con eso: 
+
+
+Dir = javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory().toString();
+       
+ 
+        File archivoSeleccionado;
+        
+        JFileChooser seleccionarArchivo = new JFileChooser();
+        seleccionarArchivo.setCurrentDirectory(new File(Dir + "\\"));
+        seleccionarArchivo.showOpenDialog(null);
+        archivoSeleccionado = seleccionarArchivo.getSelectedFile();
+        Path = archivoSeleccionado.getAbsoluteFile().toString();
+
+
 	
 	
