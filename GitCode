@@ -48,6 +48,7 @@ $ git checkout (tambien sirve para esto ultimo)
 
   ------ BRANCH: 
   
-9- git branch Nombre
-10- git branch
-11- git checkout -which?
+9-  git branch Nombre (crear) 
+10- git branch     (mostrar) 
+11 - git branch -m "ejemplorenombrado" (renombrar)
+12- git checkout -which?
