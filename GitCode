@@ -43,6 +43,11 @@ $ git checkout (tambien sirve para esto ultimo)
 7- git tag DD/MM/AAAA -m"name"
 8- git push --tags
 *
+
+----------------------------------------------------------
+
+  ------ BRANCH: 
+  
 9- git branch -name-
 10- git branch
 11- git checkout -which?
