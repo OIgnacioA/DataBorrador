@@ -29,10 +29,9 @@
 
 ---- Clonacion: 
 
--A Copiar Clone With HTTP (por caso) 
--B Carpeta nueva. : git clone -url- 
+
+- Bash en Carpeta nueva. : git clone -url- 
 - Actualizar. 
-- Probar git commit -m "version desde nuevo equipo"
 - $ git branch -a  (ver los branchs remotos- y a partir de ahi, elegir uno con checkout
           , para verlos en la clonacion por ejemplo, porque al clonar al principio no aparecen)
 $ git checkout (tambien sirve para esto ultimo) 
