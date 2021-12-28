@@ -48,6 +48,6 @@ $ git checkout (tambien sirve para esto ultimo)
 
   ------ BRANCH: 
   
-9- git branch -name-
+9- git branch Nombre
 10- git branch
 11- git checkout -which?
