@@ -35,6 +35,13 @@
 - $ git branch -a  (ver los branchs remotos- y a partir de ahi, elegir uno con checkout
           , para verlos en la clonacion por ejemplo, porque al clonar al principio no aparecen)
 $ git checkout (tambien sirve para esto ultimo) 
+
+
+      ----a un commit particular: 
+      
+      git clone https://github.com/usuario/my-repo-name.git my_repo
+      cd my_repo
+      git reset --hard [Hash del commit que quieres]
      
 -----------------------------------------------------------
 
