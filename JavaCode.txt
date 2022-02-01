@@ -19,12 +19,14 @@
 --- convertir  string a integer : 
 	
 	   int = Integer.parseInt(--- valor String ---);
+	   
+	   int dia =  Integer.valueOf(fechaCadena.substring(0,2));
 	
 --- integer to string :
 
           Integer.toString(-- valor integer--));
 
- 	   txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
+ 	  txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
 	   
 	   
 --- saber direccion d ela maquina en la que estas y abrir una ventana de busqueda con eso: 
