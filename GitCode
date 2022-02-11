@@ -37,7 +37,7 @@
 $ git checkout (tambien sirve para esto ultimo) 
 
 
-      ----a un commit particular: 
+      ----a un commit particu
       
       git clone https://github.com/usuario/my-repo-name.git my_repo
       cd my_repo
