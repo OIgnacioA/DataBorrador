@@ -37,7 +37,7 @@
 $ git checkout (tambien sirve para esto ultimo) 
 
 
-      ----a un commit particu
+      ----a un commit particular: 
       
       git clone https://github.com/usuario/my-repo-name.git my_repo
       cd my_repo
@@ -67,3 +67,8 @@ $ git checkout (tambien sirve para esto ultimo)
 10- git branch     (mostrar) 
 11 - git branch -m "ejemplorenombrado" (renombrar)
 12- git checkout -which?
+
+----------
+ ------borrar branch 
+       git Brang -d {nombre del branch} local
+       git branch -D {nombre del branch} local y remoto
