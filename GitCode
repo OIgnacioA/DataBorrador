@@ -48,7 +48,7 @@ $ git checkout (tambien sirve para esto ultimo)
 
           git log
           
-      -------Si quieres ver los ultimos n commits (donde "n" es la cantidad de commits que quieres ver), suponiendo que quiero ver los ultimos 5:
+      ejemplo Si queres ver los ultimos n commits (donde "n" es la cantidad de commits que quieres ver), suponiendo que quiero ver los ultimos 5:
 
           git log -5
      
