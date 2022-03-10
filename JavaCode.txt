@@ -1,4 +1,5 @@
- 
+
+
 --- centrar en pantalla : 
 
 	setLocationRelativeTo(null);
@@ -13,9 +14,26 @@
        jt.setEditable(false);
 	
 	
+---- alinear texto de un JtextField	
+
+
+Para poder alinear un TextField o un JTextField en java basto con invocar al método "setHorizontalAlignment()", lo que enterminos práctico quedaría:
+
+JTextField t = new JTextField();
+t.setHorizontalAlignment(JTextField.RIGHT);
+
+las opciones de alineación son tres
+JTextField.LEFT Alineación a la izquierda
+JTextField.CENTER Alineación al centro
+JTextField.RIGHT Alineación a la derecha
 	
-	
-	
+
+--- ingresar Teto en un JtextField 
+
+
+	   JT_Tantos.setText("0");
+
+
 --- convertir  string a integer : 
 	
 	   int = Integer.parseInt(--- valor String ---);
@@ -29,7 +47,7 @@
  	  txt_RegistroMunicipal.setText(String.valueOf(Formulario.getRegistro_Municipal()));
 	   
 	   
---- saber direccion d ela maquina en la que estas y abrir una ventana de busqueda con eso: 
+--- saber direccion de la maquina en la que estas y abrir una ventana de busqueda con eso: 
 
 
 Dir = javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory().toString();
@@ -42,6 +60,18 @@ Dir = javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirector
         seleccionarArchivo.showOpenDialog(null);
         archivoSeleccionado = seleccionarArchivo.getSelectedFile();
         Path = archivoSeleccionado.getAbsoluteFile().toString();
+
+
+--- saber peso de un archivo y convertirlo de Log a int
+
+   File myFile = new File(txtOrigen); 
+
+           
+             size1 = myFile.length();
+             valInt =  Long.valueOf(size1).intValue();
+
+
+
 
 
 	
