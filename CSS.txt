@@ -1,0 +1,544 @@
+---Lugares Dnd se puede colocar el CSS: 
+
+1) en la etiqueta de html:
+
+<body style = "color : tomato">
+
+</body>
+
+2)  En el html con su propia etiqueta: 
+
+<style>
+body {
+
+color: tomato;
+
+}
+</style>
+
+3) Importando un archivo, en el mismo proyecto, respetamdo nombre. 
+
+<head>
+
+  <title>Document</title>
+  <link rel="stylesheet" href="CualquierNombre.css">
+
+</head>
+
+
+--------------------------------id - class: 
+
+
+<body>
+
+<h1 id="titulo">Texto texto</h1>
+
+<p class="texto">Texto texto</p>
+<p class="texto">Texto texto</p>
+
+</body>
+           -----
+#titulo {     -id -
+
+color: tomato;
+
+}
+
+.texto {     - clase - 
+
+color :slateblue;
+
+}
+
+------------------------------- aplicado a clases especificas : Orden
+
+
+>>>>>>>> Al contener la palabra "texto" , si solo se especifica esta, va atomar a todas las clases que la contengan
+en este ejmplo,  "Texto A" y "Texto b" van a verse afectados por 'p.texto {}'. en class="texto especial" se sobreentiende que hay dos clases funcionando, texto y especial. Si se las define por separado harán efecto acorde a la ubicacion que tengan. - por regla general va a quedar el último efecto que se aplique -  Es decir: 2 y 3 van a tener el mismo color, porque "especial" va a cambiar 2. Primero aplicaria p.texto, pero despues aplica especial. - por lo que el orden es importante -
+
+<body>
+
+<h1 id="titulo">Texto texto</h1>
+
+1<p class="texto">Texto A</p>
+2<p class="texto especial">Texto b</p>
+3<p class="especial">Texto texto</p>
+
+</body>
+ 
+         ----
+
+#titulo {     -id -
+
+color: tomato;
+
+}
+
+p.texto {     - etiqueta p que contenga una clase de texto -
+
+color :slateblue;
+
+}
+
+p.especial {     - clase - 
+
+color :mediumseagreen;
+
+}
+
+--------------------------------trabajando con Div
+
+<div>
+
+	<p> Hola </p>
+        <h2>Soy subtitulo/h2>
+	<h3>Soy sub-subtitulo</h3>
+</div>
+
+		---
+
+div p{               -estilo a las 'p' dentro de todo 'div' Pero solo las etiquetas de p dentro de un div!-
+
+color :aquamarine;
+
+}
+
+div h2, div h3{    - h2 y h3 que esten dentro de un div. - 
+
+color :brown;
+
+}
+
+---------------------------------------etiqueta * (Selector Universar)
+
+
+* {   --- todo en la maqueta será afectado, siempre que no tenga ya definidas las propiedades que se quieran definir aqui. 
+
+font-size: 24px; 
+
+}
+
+------------------------------------Trabajo color 
+
+
+>>>>> este sistema es exagecimal , el cero es la ausencia total, y la f la totalidad. todas las ausencias es negro, y todos en f es blanco. 
+
+
+Ejemplo :  <h1 class="color" >Soy subtitulo/h1>
+
+  .color {
+
+    color: #RRGGBB;	
+
+}
+
+<<<El segundo valor en cada caso es como decimales. 
+
+>>>>> un segundo sistema 
+
+  .color {
+
+    color: rgb(0,0,0);	
+
+}
+
+
+
+---------------------------------Border:
+
+
+.color {     -varios ejemplos: el 5px es el grosor. 
+
+border: 5px black dashed:   (indentado)
+border: 5px black solid:    (linea)
+border: 5px black dotted:   (puntos) 
+
+}
+<<<< otros ejemplos de border : double, groove, ridge, inset, none, hidden
+
+<<<<<<en border-style, se asignan las propiedades de una sinasignar ancho o color (pero tambien se puede): 
+
+.color {    
+
+border-style: solid;
+border-color: azul;
+border-radius: 5px;   -redondeado;
+
+medidas absolutas (en teoría no cambian)
+border-width: 5px;    -ancho; <<< tambien usable: 5cm - 5 mm - 5 in - 5pt (puntos) - 
+
+Medidas relativas (se ajustarían)
+border-width: 2em; (dos veces el tamaño de la fente q se está usando actualmente) esto se puede ajustar en el apartado Styles del navegador chrome
+
+border-width: 2rem;  (relativa al tamaño de raiz, en la etiqueta html, que por defeto la mayoria de los navegadores maneja 16px. asi que un Rem en este caso sería 16px, 2 rem 32px y así. )
+
+}
+
+
+--------------------- background: elementos del fondo; 
+
+<article id="fondo">
+
+ ejemplo de background
+
+</article>
+
+        ----
+
+#fondo{
+
+background-color: red; 
+background-color: rgb(0,0,0,x.x); La x marca la opacidad. 
+opacity: 0.3; transperencia al elemnto completo. 
+
+
+}
+ <<<<<<<< se puede trabajar asi una imagen. 
+
+
+#fondo {
+
+background-image:  url('nombre del archivo.png');
+<<<<lo ideal es ajustar el tamaño, con, x ejem:
+
+
+height : 400px; 
+
+<<<<<<< lo ideal es utilizar:
+
+background-size: auto; (puede recibir distintos valores : cover , contein)
+
+background-size: contain; 
+
+Contain:  cubre el total del tamaño del elemento independientemente de que se altere el tamaño del navegador. esto sólo ocurre con esta opcion. 
+
+background-size: auto; (cubre el espacio dado, posiblemente genere efecto mozaico) 
+
+<<<<<<< se puede usar dimensiones claras: 
+
+background-size: 400px -ancho- 400px - alto -; 
+
+background-repeat: no-repeat; - no repite imagenes.
+
+<<< se puede utilizar...: 
+background-repeat:repeat-x; repite hacia un lado
+background-repeat:repeat-y; repite hacia abajo
+
+<<<<...convinado con lo siguiente: 
+
+background-position: right - left - center top: (son formas de mover la imagen repetida a diferentes lugares de la pantalla.)
+}
+
+<<<<< otra posibilidad de escribir el codigo es todo junto (pero no debe faltar ninguna de las siguientes partes: foto, repeat, lugar de repeticion.estas ultimas pueden estar una en sola de ellas, pero si faltan ambas crashea) :
+
+background:  url('angelina.jpg') repeat-y center top;
+
+al poner todas las operaciones juntas es importante recordar que el background-size va a tener efecto si se coloca luego, y no antes de esta sentencia. 
+
+<<<< se puede agregar luego, tambien, y hacerlo parte: 
+
+background:  url('angelina.jpg') repeat-y center top / 200px 400px;
+
+como dato: si se pide que sea "centrar" unicamente, por caso, va a adaptar la imagen, ESTIRANDOLA de ser necesario.  cuando de no poner este centrado, adaptaria la imagen, obn mostrando solo un pedazo, o bn repitiendola. 
+
+
+
+-------------------------------- Box model: margin, border, padding, overflow.
+
+Margin: 
+<<< sobre una clase aplicamos margin, dnd cada valor es una distancia por fuera, la ultima hacia fuera, en cada direccion, del elemento. 
+
+.margin{
+
+background-color: tomato;
+
+margin: 25px 25px 40px 30px ; arriba, derecha, abajo, izquierda.
+
+}
+<<< si solo se utiliza un valor, este se va a volcar sobre los cuatro lados. otras posibilidades: 
+
+margin: 25px 30px ; vertcal horizontal
+
+margin: 25px 30px 12px  ; vertcal horizontal abajo;
+
+<<<<<< estos mismos sistemas de numeracion cuentan para le padding. 
+
+El padding genera un distancia dentro del mismo elemento: 
+
+.margin{
+
+padding: 30px 25px 25px 40px ; con el mismo orden de margin. 
+}
+
+el border : 
+
+border:  solid 1px black; 
+
+-- El overflow marca la disposición de un texto en un espacio; si el espacio se achica el texto puede que se exceda de los límites. overflow viene con preseteo en visible, pero si se pone hidden, recortará el texto.
+
+overflow: hidden; 
+
+para poder deslizarnos dentro del elemento cuando lo que esté escrito dentor se vea auqnue este Hidden, se puede agregar: 
+
+overflow: scroll; 
+
+<<< todo esto e svisible en la pestaña de Computed , en el f12- herramientas de desarrollador-  de chrome. 
+
+ tanto el height como el width actuan sobre el contenido de la etiqueta, del elemento, no sobre los demas elementos como padding, border, margin. 
+  
+
+----------------------------------------- outline, text-align, text-decoration, text-shadow
+
+el outline se maneja entre el borde y el margin. 
+
+en la propiedad text-align, el valor por defecto es left. y tiene la propiedad decoration, como para justificar, subrayar, tachar etc 
+
+text-decoration: overline; - por caso. (linea arriba)
+text-shadow: 3px 5px 5px blue ; cuanto se mueve a la derecha, cuanto queremos mover la sombra abajo,cantidad de blur,  color de sombra. 
+
+<<< la fuente se pued etrabajar desde un 
+font-falimy: Verdana, Geneva, Tahoma,etc:  Esto quiere decir que si no puede cargar una, sigue con la que esta despues de la coma, y asi. 
+
+
+-------------------------------------------  Links y sus estados:
+
+4: no visitado, visitado, al pasar el mouse, y activo. se le debe poder asignar un estilo a cada uno. 
+
+se debe deseleccionar el color en un selecctor universal, en caso de estar. 
+Es iportante que se respete este orden incluso cuando no se encuentren todos los elementos. 
+
+
+a:link{
+
+    color: rgb(21, 255, 0); 
+}
+
+a:visited{
+
+    color: rgb(21, 255, 0); 
+    
+}
+
+a:hover{
+
+    color: rgb(255, 0, 0); 
+    
+}
+
+a:active{
+
+    color: rgb(0, 255, 221); 
+    
+}
+
+----------------------------------------------tablas
+
+html: 
+<table>
+
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+        </tr>
+
+        <tr>
+            <td>Antonella</td>
+            <td>Cerdoza</td>
+        </tr>
+
+        <tr>
+            <td>Eugenia</td>
+            <td>Pochoclo</td>
+        </tr>
+
+    </table>
+
+----
+
+
+table{
+
+width: 100%;     (ocupa todala pantalla)
+border-collapse: collapse;  (elimina la distancia entre lineas)
+}
+
+th, td {
+
+border: solid 1px #eee;   
+padding: 5px; 
+
+}
+
+th {
+
+background-color: tomato;
+color: white;
+}
+
+tr:nth-child(odd){ /*even puede ser la otra opcion. diferencia un alinea de otra.*/
+
+    background-color: rgb(209, 141, 141);
+    
+}
+
+tr:hover{     (este elmento funciona marcando dnd pasa el mouse, )
+
+background-color: gray;
+
+}
+
+
+<<<<<< El orden de los dos ultimos elementos afecta directamente la manera en que se comportan. si el tr: hover estuviera antes, el nth-child afectaria solo a los impares. 
+
+-----------------------Display, max-width y position
+
+dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
+
+ 
+En el concepto de display es importante entender que , por ejemplo, una etiqueta <div>  usa todo el espacio en pantalla, mientras que una de <span> no, y esto es justamente por que tienen una diferencia en el display. 
+El display BLOK es el que viene en lamayoria de los elementos de html. no es asi con , por ejemplo la etiqueta <a></a> 
+
+   <div>lala</div>
+   <div>lele</div>
+
+Estos dos por ejemplo se colocarian uno encima del otro, por tener por defecto display bock. si se les pasa un display: inline;, se colocarian uno a continuacion del otro en pantalla: 
+
+    <div class="display">lala</div>
+    <div class="display">lele</div>
+
+ ---
+
+.display{
+
+display: inline; 
+
+}
+
+estos dos aparecerían uno a continuacion del otro: 
+
+<a href="">hola</a> 
+<a href="">hola</a>
+
+
+
+Block va a forzar que los elementos comiencen en nueva linea, mientras euq elas span, la etiqueta img, y los links. 
+<<<< los span se les puede dar un ancho maximo 
+ajustable a la pantalla con max-witth:300px; ajustable a la pantalla independientemente de como se mueva esta. 
+
+
+
+
+
+	<div class="inline-block">inline block</div>
+	<div class="inline-block">inline block 2</div>
+
+-----
+.inline-block{
+
+display: inline-block;
+}
+
+<<<<< display : inline, a diferencia de display: inline-block, permite asignar alto y ancho. 
+Inline-block como propiedad se utiliza en menus de navegacion que tengan los menus de izquierda a derecha, ya que asi s ele puede asignar un ancho fijo, y hacer que se vean uniformes, en vez de usar solo inline.
+
+
+
+El position : 
+
+
+ <article id=" position">
+
+        soy pro de position
+
+    </article>
+
+---
+
+#position{
+position:relative;
+position: fixed;
+
+
+}
+por defecto la posicion, position, trae el atributo de static en todas las etquetas html: si se la cambia a relative* , relativa a donde debería esta rposicionado el elemento. 
+
+position: fixed; 
+por ejemplo, este atributo deja el elemento hubicado en la pantalla , independientemente de que todo a su alrededor se mueva, por ejemplo, al hacer scroll. cabe decir que empezará por estar en cualquier lado, mas allá de estar o no superpuesta sobre otro elemento.    
+
+position: absolute; 
+se posiciona de forma relativa al elemento padre mas cercano que tenga, que en caso de no haber, va a ser la de <body>
+
+position: sticky; 
+como convinacion entre fixed y relative toma la posicion que el corresponde, pero luego s emueve si se escrolea. 
+
+----------------------------float:
+
+toma el elemento y lo ubica dentro del div en el que se encuentre. 
+
+ <div class="conatiner">
+
+   <div class="left">izquierda </div>
+   <div class="right">derecha </div>
+
+</div>
+
+		---
+
+.left{
+
+float:left;  
+width: 100px;
+
+}
+
+<<<< float va a posicionar los elementos que no esten dentro de si, como otros div, al aldo contrario de donde posiciona aquello sobre lo que actua. resulta bueno para acomodar imagenes con texto relacionado. 
+-- el tamaño del contenedor, sea un div, sea lo que sea, y el tamaño de sus elementos, en relacion, que unos no sean mas grandes que aquel, es fundamental a la hora de dar un orden en el sentido de float. No respetar esto va a generar una imagen confusa. 
+
+display :
+
+<<<< centrar un elemento consaría de:
+
+.center{
+text-align: center;
+width: 200px;
+
+margin: 0 auto;   <<<<< esta sentencia suele alinear los elementos contenidos
+
+background-color: aqua;
+
+} 
+
+<<<"auto" es reemplazado por algún valor apropiado. Por ejemplo, puede usarse para centrar horizontalmente un elemento bloque.
+div { width:50%;  margin:0 auto; } centrará el div horizontalmente.
+
+
+----------------------------------------flex-box: 
+
+
+como solucion a la hora de acomodar varios elementos en pantalla, se propone colocarlos dentro de un mismo elemento, un <div> por ejm. En la clase de este elemento contenedor, se agrega, primero un 
+
+Display:flex; 
+
+esto alinea los elementos, convirtiendolos en parte de un mismo grupo. Ahi se puede poner 
+
+Justify-content: center;  
+
+por caso "center", y ubicarlso a todos en el centro de la pantalla - independientemente de que la pantalla del navegador cambie de tamaño- . 
+
+Justify-content: space-around; 
+espeacio entre lso elementos a ambos lados de cada uno
+
+Justify-content:space-between;
+espacio entre los elementos pero ocupando desde cero y hasta el maximo la imagen. 
+
+Justify-content:flex-start:
+elementos alineados desde el principio izquierdo de la pantalla.
+
+align-items: center; 
+elementos alineados verticalmente; 
+
+flax-wrap:wrap; 
+flex detecta que los elementos no caben dentro de la pantalla, por lo que enviará abajo a los elementos que no entren a menos que la pantalla crezca: esto es bueno si se pienza en responsive. esto al contrario de la propiedad: 
+
+flax-wrap:no-wrap; 
+esta viene por defecto, los elementos sobrantes se ocultaran a la vista. 
