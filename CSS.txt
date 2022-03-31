@@ -287,7 +287,9 @@ overflow: scroll;
  tanto el height como el width actuan sobre el contenido de la etiqueta, del elemento, no sobre los demas elementos como padding, border, margin. 
   
 
+
 ----------------------------------------- outline, text-align, text-decoration, text-shadow
+
 
 el outline se maneja entre el borde y el margin. 
 
@@ -300,7 +302,9 @@ text-shadow: 3px 5px 5px blue ; cuanto se mueve a la derecha, cuanto queremos mo
 font-falimy: Verdana, Geneva, Tahoma,etc:  Esto quiere decir que si no puede cargar una, sigue con la que esta despues de la coma, y asi. 
 
 
+
 -------------------------------------------  Links y sus estados:
+
 
 4: no visitado, visitado, al pasar el mouse, y activo. se le debe poder asignar un estilo a cada uno. 
 
@@ -390,9 +394,11 @@ background-color: gray;
 
 <<<<<< El orden de los dos ultimos elementos afecta directamente la manera en que se comportan. si el tr: hover estuviera antes, el nth-child afectaria solo a los impares. 
 
+
 -----------------------Display, max-width y position
 
-dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
+
+Dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
 
  
 En el concepto de display es importante entender que , por ejemplo, una etiqueta <div>  usa todo el espacio en pantalla, mientras que una de <span> no, y esto es justamente por que tienen una diferencia en el display. 
@@ -471,7 +477,9 @@ se posiciona de forma relativa al elemento padre mas cercano que tenga, que en c
 position: sticky; 
 como convinacion entre fixed y relative toma la posicion que el corresponde, pero luego s emueve si se escrolea. 
 
-----------------------------float:
+
+---------------------------------------------float:
+
 
 toma el elemento y lo ubica dentro del div en el que se encuentre. 
 
@@ -496,9 +504,10 @@ width: 100px;
 
 display :
 
-<<<< centrar un elemento consaría de:
+<<<< centrar un elemento constaría de:
 
 .center{
+
 text-align: center;
 width: 200px;
 
@@ -542,3 +551,25 @@ flex detecta que los elementos no caben dentro de la pantalla, por lo que enviar
 
 flax-wrap:no-wrap; 
 esta viene por defecto, los elementos sobrantes se ocultaran a la vista. 
+
+--------------------------------------inline- Block - Inline-Block.
+
+La forma de pistiion display:block: es la que viene por defecto en los compnentes div, que hace que pcupen toda la pantalla. al colocar display: inline;  los elementos comparten espacio a la derecha conforme su tamaño. Sin embargo esto reduce las dimenciones del viv a solo su contenido: lo ideal es inline-block, que aocmoda a la derecha, y mantiene el tamaño del vid. 
+
+ <div  class="impuesto">    
+
+                <select name="Impuesto">
+
+                     <option value="value1">Impuesto Automotor</option>
+                     <option value="value2" selected>Impuesto a las Embarcaciones</option>
+                     <option value="value3">Impuesto Urbano Edificado</option>
+
+               </select> 
+---
+
+
+.impuesto{
+
+display: inline-block;
+
+}

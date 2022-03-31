@@ -1,0 +1,21 @@
+Glosario: 
+* : comentar linea. 
+
+RESET : reestablece valores a cero. 
+ESCAPE :  acaso un Break?
+
+CALLNAT : es un llamado al subprograma.
+PERFORM : llamado a una subrutina.
+FIND : accede a registros: utiliza parametros:  tipo variable WHIT condicion.
+
+INPUT : ingreso de data por pantalla. 
+WRITE :  egreso de info por pantalla; 
+MOVE x' TO x' : asignacion de valor. 
+NE : Distinto de:  != 
+
+A08/1:1000  sería: string, de 8 caracteres, y que tiene hasta 1000 posiciones de vector
+
+MOVE asignacion de valor a una variable. 
+REDEFINE: puede redefinirse el tipo y contenido de una variable: 
+Filler:----(patricia?)
+*NUMBER : contador (length...ponele)

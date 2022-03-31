@@ -72,3 +72,20 @@ $ git checkout (tambien sirve para esto ultimo)
  ------borrar branch 
        git Brang -d {nombre del branch} local
        git branch -D {nombre del branch} local y remoto
+
+---------------------------------------------------------- cerrar un proceso.
+
+----"Another git process seems to be running and thus cant commit"
+
+
+
+
+I met this problem recently too.
+
+          rm -f ./.git/index.lock
+
+
+try this commend in your git bash, then you can solve your problem.
+
+
+------------------------------------------------------------
