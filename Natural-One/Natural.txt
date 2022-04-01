@@ -16,6 +16,31 @@ NE : Distinto de:  !=
 A08/1:1000  sería: string, de 8 caracteres, y que tiene hasta 1000 posiciones de vector
 
 MOVE asignacion de valor a una variable. 
+
 REDEFINE: puede redefinirse el tipo y contenido de una variable: 
+
+los campos elementales se pueden redefinir, la declaración debe tener el mismo nivel que el campo base. Se redefine la misma posición de memoria y puede haber varias redefiniciones para una misma variable.
+		ejemplo:	 2 cliente-id (N8)
+				 2 redefine cliente-id
+					 3 cliente-id-valor-fijo (A4)
+
 Filler:----(patricia?)
 *NUMBER : contador (length...ponele)
+
+
+INIT: de forma predeterminada, los campos comienzan con un valor nulo. Para alfanuméricos (A) los campos se inician un espacio. Para numérico (N, P, B o I) es cero. Para fecha y hora (D y T) se trata de una fecha nula. Para los campos de lógica (L) este es un valor de FALSE. INIT permite iniciar un campo con valor especifico que puede cambiar en la ejecución de programa
+		ejemplo: 	 2 cliente-id (N8) init <12345678>
+				 2 cliente-activo (L) init <true>
+
+MASK: la edición de máscaras se utilizan para validar y dar formato a los datos
+
+U/L U: Mayúsculas, L: minisculas  ej : #NAME=MASK(LLLLLLL)   #NAME= MASK(UUUUUUU)
+
+Vectores: son múltiples ocurrencias de un campo o grupo de campos en una dimensión. Se definen con un nivel, nombre, tipo de dato y cantidad de ocurrencias.
+		ejemplos:
+	1 Mes (A3 / 1:12) CONST<‘ENE’,’FEB’,’MAR’,’ABR’,’MAY’,‘JUN’,’JUL’,’AGO’,’SEP’,
+	’OCT’,’NOV’,’DIC’)
+
+
+
+
