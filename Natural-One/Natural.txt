@@ -1,6 +1,10 @@
 Glosario: 
 * : comentar linea. 
 
+MOVE: - asignacion de valor a una variable.
+ASSIGN :- similar al MOVE.
+
+LOCAL USING: llamado a subrutina
 RESET : reestablece valores a cero. 
 ESCAPE :  acaso un Break?
 
@@ -15,7 +19,7 @@ NE : Distinto de:  !=
 
 A08/1:1000  sería: string, de 8 caracteres, y que tiene hasta 1000 posiciones de vector
 
-MOVE asignacion de valor a una variable. 
+ 
 
 REDEFINE: puede redefinirse el tipo y contenido de una variable: 
 
@@ -42,5 +46,5 @@ Vectores: son múltiples ocurrencias de un campo o grupo de campos en una dimens
 	’OCT’,’NOV’,’DIC’)
 
 
-
+NE   :  != ; 
 
