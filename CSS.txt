@@ -395,58 +395,11 @@ background-color: gray;
 <<<<<< El orden de los dos ultimos elementos afecta directamente la manera en que se comportan. si el tr: hover estuviera antes, el nth-child afectaria solo a los impares. 
 
 
------------------------Display, max-width y position
+----------------------- max-width y position
 
-
-Dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
-
- 
-En el concepto de display es importante entender que , por ejemplo, una etiqueta <div>  usa todo el espacio en pantalla, mientras que una de <span> no, y esto es justamente por que tienen una diferencia en el display. 
-El display BLOK es el que viene en lamayoria de los elementos de html. no es asi con , por ejemplo la etiqueta <a></a> 
-
-   <div>lala</div>
-   <div>lele</div>
-
-Estos dos por ejemplo se colocarian uno encima del otro, por tener por defecto display bock. si se les pasa un display: inline;, se colocarian uno a continuacion del otro en pantalla: 
-
-    <div class="display">lala</div>
-    <div class="display">lele</div>
-
- ---
-
-.display{
-
-display: inline; 
-
-}
-
-estos dos aparecerían uno a continuacion del otro: 
-
-<a href="">hola</a> 
-<a href="">hola</a>
-
-
-
-Block va a forzar que los elementos comiencen en nueva linea, mientras euq elas span, la etiqueta img, y los links. 
 <<<< los span se les puede dar un ancho maximo 
+
 ajustable a la pantalla con max-witth:300px; ajustable a la pantalla independientemente de como se mueva esta. 
-
-
-
-
-
-	<div class="inline-block">inline block</div>
-	<div class="inline-block">inline block 2</div>
-
------
-.inline-block{
-
-display: inline-block;
-}
-
-<<<<< display : inline, a diferencia de display: inline-block, permite asignar alto y ancho. 
-Inline-block como propiedad se utiliza en menus de navegacion que tengan los menus de izquierda a derecha, ya que asi s ele puede asignar un ancho fijo, y hacer que se vean uniformes, en vez de usar solo inline.
-
 
 
 El position : 
@@ -521,55 +474,119 @@ background-color: aqua;
 div { width:50%;  margin:0 auto; } centrará el div horizontalmente.
 
 
-----------------------------------------flex-box: 
+----------------------------------------Display  ---->  Flex-Box: 
 
 
-como solucion a la hora de acomodar varios elementos en pantalla, se propone colocarlos dentro de un mismo elemento, un <div> por ejm. En la clase de este elemento contenedor, se agrega, primero un 
+----------------DISPLAY;
+
+Dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
+
+En el concepto de display es importante entender que , por ejemplo, una etiqueta <div>  usa todo el espacio en pantalla, mientras que una de <span> no, y esto es justamente por que tienen una diferencia en el display. 
+El display BLOK es el que viene en lamayoria de los elementos de html. no es asi con , por ejemplo la etiqueta <a></a> 
+
+   <div>lala</div>
+   <div>lele</div>
+
+Estos dos por ejemplo se colocarian uno encima del otro, por tener por defecto display bock. si se les pasa un display: inline;, se colocarian uno a continuacion del otro en pantalla: 
+
+    <div class="display">lala</div>
+    <div class="display">lele</div>
+
+ ---
+
+.display{
+
+display:block:
+}
+
+La forma de postiion display:block: que es la que viene POR DEFECTO, POR EJEMPLO,  en los componentes DIV, esto hace que ocupen toda la pantalla; Si son elementos "en bloque".  Por ejemplo los elementos <a> tienen display: inline;
+
+Block va a forzar que los elementos comiencen en nueva linea, mientras que las span, la etiqueta img, y los links no lo harán. 
+
+
+	<div class="inline-block">inline block</div>
+	<div class="inline-block">inline block 2</div>
+
+-----
+.inline-block{
+
+display: inline-block;
+}
+
+display: inline;
+
+}
+
+estos dos aparecerían uno a continuacion del otro: 
+
+<a href="">hola</a> 
+<a href="">hola</a>
+
+
+
+Por ejemplo los elementos <a> la tienen por ejemplo.Elementos de linea (contrario al de bloque) 
+
+
+inline-block:
+
+Al colocar display: inline;  los elementos comparten espacio a la derecha conforme su tamaño. Sin embargo esto reduce las dimenciones del Div a solo su contenido: lo ideal es display: inline-block, que aocmoda a la derecha, y mantiene el tamaño del vid. 
+
+inline-block, permite asignar alto y ancho. Como propiedad se utiliza en menus de navegacion que tengan los menus de izquierda a derecha, ya que asi se le puede asignar un ancho fijo, y hacer que se vean uniformes, en vez de usar solo inline.
+ 
+
+ESTE SSITEMA DE DISPLAY SE UTILIZABA EN UN PRINCIPIO, PERO PARA ACOMODAR CADA PARTE SE HACIA MAS COMPLEJO UTILIZANDO MARGIN ETC. PARA SIMPLIFICARLO SE UTILIZA la forma de maquetación mas actual:  
+
+
+--------------FLEX-BOX:
+
+
+Tambien se propone colocarlos DENTRO DE UN MISMO ELEMENTO, un <div> por ejm. En la clase de este elemento contenedor. En la clase de este elemento contenedor, se agrega, primero un: 
 
 Display:flex; 
 
-esto alinea los elementos, convirtiendolos en parte de un mismo grupo. Ahi se puede poner 
+esto alinea los elementos, convirtiendolos en parte de un mismo grupo. Ahi se puede poner luego,  por ejemplo:
 
 Justify-content: center;  
 
-por caso "center", y ubicarlso a todos en el centro de la pantalla - independientemente de que la pantalla del navegador cambie de tamaño- . 
+... y ubicarlos a todos en el centro de la pantalla - independientemente de que la pantalla del navegador cambie de tamaño- . 
 
 Justify-content: space-around; 
-espeacio entre lso elementos a ambos lados de cada uno
+espeacio entre los elementos a ambos lados de cada uno
 
 Justify-content:space-between;
 espacio entre los elementos pero ocupando desde cero y hasta el maximo la imagen. 
 
+Justify-content:flex-end;
+los elmentos se colocan al finl de unlado solo.
+
 Justify-content:flex-start:
-elementos alineados desde el principio izquierdo de la pantalla.
+elementos alineados desde el principio izquierdo de la pantalla.(posicion por defecto. )
 
-align-items: center; 
-elementos alineados verticalmente; 
+Con flex-box se puede alinear verticalemnte: 
 
-flax-wrap:wrap; 
-flex detecta que los elementos no caben dentro de la pantalla, por lo que enviará abajo a los elementos que no entren a menos que la pantalla crezca: esto es bueno si se pienza en responsive. esto al contrario de la propiedad: 
-
-flax-wrap:no-wrap; 
-esta viene por defecto, los elementos sobrantes se ocultaran a la vista. 
-
---------------------------------------inline- Block - Inline-Block.
-
-La forma de pistiion display:block: es la que viene por defecto en los compnentes div, que hace que pcupen toda la pantalla. al colocar display: inline;  los elementos comparten espacio a la derecha conforme su tamaño. Sin embargo esto reduce las dimenciones del viv a solo su contenido: lo ideal es inline-block, que aocmoda a la derecha, y mantiene el tamaño del vid. 
-
- <div  class="impuesto">    
-
-                <select name="Impuesto">
-
-                     <option value="value1">Impuesto Automotor</option>
-                     <option value="value2" selected>Impuesto a las Embarcaciones</option>
-                     <option value="value3">Impuesto Urbano Edificado</option>
-
-               </select> 
----
+aling-items: center; y con esta propiedad se centran vertcalmente sin estar calculando alturas. 
 
 
-.impuesto{
+Si los elementos no caben en pantalla flexbox detecta y coloca una barra abajo mientras reacommoda los elelemntos enviandolos abajo: 
+flex-wrap:wrap; 
 
-display: inline-block;
+Que para que es esto no ocurra se puede utilizar: 
 
-}
+flex-wrap:no-wrap; esta viene por defecto, los elementos sobrantes se ocultaran a la vista. 
+
+
+
+
+
+
+
+-------------------------------------------box-sizing: border-box; ----------
+
+
+Los elementos dentro de un Div toman el valor de ancho y largo (width,height) que se le indique.por defecto el Box-sizing tiene por defecto "contente-box", que no toma en cuenta el padding,margin y el border,asi que de agregar esto se sumaria al width y height. Si se coloca border-box la medida final no se altera. Por eso colocarlo en el Body, asegura que todo el sistema de cajas se maneje de forma prolija. 
+
+
+
+
+
+
