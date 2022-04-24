@@ -482,7 +482,7 @@ div { width:50%;  margin:0 auto; } centrará el div horizontalmente.
 Dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
 
 En el concepto de display es importante entender que , por ejemplo, una etiqueta <div>  usa todo el espacio en pantalla, mientras que una de <span> no, y esto es justamente por que tienen una diferencia en el display. 
-El display BLOK es el que viene en lamayoria de los elementos de html. no es asi con , por ejemplo la etiqueta <a></a> 
+El display BLOK es el que viene en la mayoria de los elementos de html. no es asi con , por ejemplo la etiqueta <a></a> 
 
    <div>lala</div>
    <div>lele</div>
@@ -540,7 +540,7 @@ ESTE SSITEMA DE DISPLAY SE UTILIZABA EN UN PRINCIPIO, PERO PARA ACOMODAR CADA PA
 --------------FLEX-BOX:
 
 
-Tambien se propone colocarlos DENTRO DE UN MISMO ELEMENTO, un <div> por ejm. En la clase de este elemento contenedor. En la clase de este elemento contenedor, se agrega, primero un: 
+Tambien se propone colocarlos DENTRO DE UN MISMO ELEMENTO, un <div> por ejm. En la clase de este elemento contenedor, se agrega primero un: 
 
 Display:flex; 
 
@@ -549,6 +549,10 @@ esto alinea los elementos, convirtiendolos en parte de un mismo grupo. Ahi se pu
 Justify-content: center;  
 
 ... y ubicarlos a todos en el centro de la pantalla - independientemente de que la pantalla del navegador cambie de tamaño- . 
+
+flex-direction:;
+
+esta propiedad cuenta con dos elmentos principales: column, y row. Esto posiciona de este modo a los elementos dentro en linea o en forma de columna. Util si se uire @media con cambio acorde al posible cambio de pantalla.
 
 Justify-content: space-around; 
 espeacio entre los elementos a ambos lados de cada uno
@@ -560,11 +564,10 @@ Justify-content:flex-end;
 los elmentos se colocan al finl de unlado solo.
 
 Justify-content:flex-start:
-elementos alineados desde el principio izquierdo de la pantalla.(posicion por defecto. )
+elementos alineados desde el principio izquierdo de la pantalla.(posicion por defecto.)
 
-Con flex-box se puede alinear verticalemnte: 
-
-aling-items: center; y con esta propiedad se centran vertcalmente sin estar calculando alturas. 
+Con flex-box se puede alinear verticalmente: 
+aling-items: center; y con esta propiedad se centran verticalmente sin estar calculando alturas. 
 
 
 Si los elementos no caben en pantalla flexbox detecta y coloca una barra abajo mientras reacommoda los elelemntos enviandolos abajo: 
@@ -583,10 +586,38 @@ flex-wrap:no-wrap; esta viene por defecto, los elementos sobrantes se ocultaran 
 -------------------------------------------box-sizing: border-box; ----------
 
 
-Los elementos dentro de un Div toman el valor de ancho y largo (width,height) que se le indique.por defecto el Box-sizing tiene por defecto "contente-box", que no toma en cuenta el padding,margin y el border,asi que de agregar esto se sumaria al width y height. Si se coloca border-box la medida final no se altera. Por eso colocarlo en el Body, asegura que todo el sistema de cajas se maneje de forma prolija. 
+Los elementos dentro de un Div toman el valor de ancho y largo (width,height) que se le indique.El Box-sizing tiene por defecto "content-box", que no toma en cuenta el padding,margin y el border,asi que de agregar esto se sumaria al width y height. Si se coloca border-box la medida final no se altera. Por eso colocarlo en el Body, asegura que todo el sistema de cajas se maneje de forma prolija. 
+
+
+
+-------------------------------------------REM-EM; ----------
+
+Si el tamaño de font-size se usa con un porcentaje: (font-size: 70%) esto usara el porcentaje del valor de tamaño (del root) que tenga por defecto el navegador: que suele ser de 16px. 
+
+
+Rem: toma el valor de Root y lo multiplica. (5Rem = 5 * valor de font-size;)
+em:  toma de base relacion con el tamaño del elemento contenedor. (5em = 5 * valor de contenedor directo;)
+
+si la unidad fuente d eun elemento esta definida, con REM, los demas elementospyeden definirse como em, asi tomas esta unidad REM como esa d ela cual salir, mientras que el REM estaria tomando la unidad maxima, root, como referencia.  
+
+Untruco en este sentido es que , ya teiendo cada elemento con una fuente propia en REM, , y sus elementos internos en em, lo que se ajusta s el tamaño del root de forma que quede relativa al tipo de pantalla, y si todo se ajusta a la vez. La forma de ajustar de forma relativa el root es: 
+
+@media (min-width:600px){
+
+html{
+font-size: 100%;
+}
+
+}
+
+-------
 
 
 
 
 
+
+
+
+--------------------------
 
