@@ -1,0 +1,100 @@
+// See https://aka.ms/new-console-template for more information
+
+TrabajoAEcxel pro = new TrabajoAEcxel(); 
+
+pro.LeerBase(); 
+
+public class TrabajoAEcxel  {
+
+    public string  PathOrigen = "C:\\Users\\sehent\\Desktop\\CONSALDO.TXT";
+    public string  PathDestino = "C:\\Users\\sehent\\Desktop\\resultado.txt"; 
+
+
+   public void LeerBase()
+    {
+
+        String line;
+
+        
+        string LineaNueva = ""; 
+
+        using (StreamReader sr = new StreamReader(PathOrigen))
+        { 
+
+            try{
+            
+                
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line != "")
+                    {
+                        
+
+                        string Objeto = line.Substring(0, 9);
+                        string pObligacion = line.Substring(10, 7);
+                        string Cuota = line.Substring(18, 3);
+                        string saldo = line.Substring(21, 9);
+                        string saldoDecimal = line.Substring(30, 2);
+                        
+                    
+
+
+
+                        LineaNueva = (Objeto +" "+pObligacion+" "+Cuota+" "+saldo+","+saldoDecimal);  
+
+                    }
+
+                    EscribirBase(LineaNueva);
+                    
+                }
+                sr.Close();
+                //Console.ReadLine();
+            }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+        finally
+        {
+            Console.WriteLine("Executing finally block.");
+        }
+        
+        }
+
+    }
+
+
+
+
+        public void EscribirBase(string Linea)
+    {
+
+        string final = ""; 
+
+        final = Linea;
+
+        //Console.WriteLine(final);
+
+    
+
+        using (StreamWriter sw = new StreamWriter(PathDestino, true)) {
+
+            try
+            {
+                sw.WriteLine(final);
+                //sw.WriteLine();
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+           
+
+            }
+
+
+    }
+
+}
