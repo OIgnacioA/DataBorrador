@@ -1,0 +1,6 @@
+    function funcionConRetraso() {
+        
+       alert("has pasado 3 segundos")
+  
+    }
+    setInterval('funcionConRetraso()',3000);
