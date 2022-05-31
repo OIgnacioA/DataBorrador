@@ -1,0 +1,13 @@
+Algunas ideas: 
+
+- Para poder trabajar normalmente , con posibilidad de crear publicaciones por ejemplo, se tiene que abrir el proyecto, y NO la carpeta desde el entorno de VS. 
+
+- Hay dos tipos d eproyecto que s epueden iniciar con estilo "App de escritorio" son: 
+
+	-Aplicaicon de windows Forms
+		Planilla de proyecto para crear una aplicacion de windows Forms(winforms) de .NET.
+
+
+	- Aplicaicon de Windows Forms (.NET framework) // ESTE ES EL QUE SE USÓ EN LA CAMPAÑA DE ARBA.
+		Proyectopara crear una aplicacion con una interfaz de usuario de windows Forms(Winforms)
+              

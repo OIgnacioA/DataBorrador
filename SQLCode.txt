@@ -1,0 +1,202 @@
+
+*****************SqL****************************************************
+
+--- CREAR TABLA 
+
+
+        CREATE TABLE `CATEGORIAS` (  
+	 	`ID` INT (15) AUTO_INCREMENT  NOT NULL, 
+	 	`CATEGORIA` VARCHAR(15) NOT NULL, 
+	 	PRIMARY KEY (`ID`)
+	 	);
+
+
+
+--- INSERTAR INFO
+
+
+        INSERT INTO  CATEGORIAS (Id, CATEGORIA) VALUES
+		(1,`Clásicas`),
+		( 2, `cine Moderno`),
+		( 3, `Ciencia ficcion`),
+		( 4, `Dráma`),
+		( 5, `Triller/Accion`)
+
+
+
+---- BORRAR INFO 
+
+
+           DELETE FROM tabla_x WHERE (ejemplo) ID <= 5
+
+
+	   
+--- INSERTAR COLUMNA 
+
+
+	  ALTER TABLE PERROS ADD 'RAZA' VARCHAR (80)
+
+
+
+--- CAMBIAR VALOR DE TODA UNA COLUMNA
+
+
+        UPDATE Entidades_BD
+		set Decreto = "NO"
+		WHERE Decreto is NULL
+
+
+--- CAMBIAR VALOR DE UNA FILA EN ESPECIFICO
+
+        UPDATE Entidades_BD
+		set Categoria_L15192 = "club Barrial"
+		WHERE Entidad = "Magios_4"
+
+
+--- COPIAR CONTENIDO DE UNA COLUMNA EN OTRA  (OPCION ALTERNATIVA A RENOMBRAR UNA COLUMNA : CREAR UNA NUEVA Y VOLCAR) 
+
+
+           UPDATE MyTabla SET 'col1' = "col2"    
+           WHERE................  (EL WHERE CREO QUE NO VA,PERO ASI ESTA EL EJ EN LA PÀG DND LO VI, 
+	                              otra: a veces hay que cambiar las comillas...a dobles a simples...probar)
+
+                   Se pone en col1 el valor que tenga col2
+
+
+--BORRAR UNA COLUMNA (EN DB_BROWSER SQLITE NO FUNCIONA) --"SQLite admite un subconjunto limitado de ALTER TABLE. 
+El comando ALTER TABLE en SQLite permite al usuario cambiar el nombre de una tabla o agregar una nueva columna a una tabla existente. 
+No es posible cambiar el nombre de una columna, eliminar una columna o agregar o eliminar restricciones de una tabla.--"
+tampoco agregar info a una sola columna a la vez.
+
+pero....; FUNCIONÒ.
+
+		ALTER TABLE perros 
+		DROP COLUMN 'RAZA'
+
+
+--- BORRAR UNA TABLA 
+
+		DROP TABLE perros
+		
+		
+--- BORRAR UNA FILA  
+
+
+DELETE FROM  TABLA  where COLUMNA  = X
+
+
+
+--- SUMAR DOS CAMPOS (SUM)   contarlos count ---sacar promedio avg. 
+
+		select sum(DIRECCION)  
+		from ´personas´ 
+		WHERE NOMBRE like 'p%'
+		
+		
+		
+--- SELECCIONAR EL NUMERO MAS GRANDE DE UNA COLUMNA: 
+
+
+           SELECT MAX(columna) FROM tabla;
+
+
+
+--- SELECCION DE CAMPOS POR MAYOR Y MENOR QUE 
+
+
+		select NOMBRE, DIRECCION
+		from ´personas´
+		WHERE ´personas´.ID > 5 
+
+
+---- BUSQUEDA DE UN CAMPO 
+
+
+
+
+                SELECT * 
+		FROM `personaje` 
+                where Nombre LIKE "Antonella"
+
+
+
+
+
+-- JOINS. -GROUP BY. - COUNT. UNIR, DARLES NOMBRE, IR AGREGANDO, SUMAR REPETICIONES, AGRUPAR POR, DARLE NUEVO NOMBRE  A     ESA COLUMNA para el query. 
+
+
+		SELECT P.ID_PERSONAS, P.NOMBRE, PE.ID_PERROS, PE.NOMBRE, COUNT(P.ID_PERSONAS) AS TOTALES 			                 personas p
+
+		 join DUEÑOS_PERROS DP on (p.ID_PERSONAS = DP.ID_PERSONAS)
+		 join perros pE on ( pE.ID_PERROS = DP.ID_PERROS)
+ 
+ 
+ 			GROUP BY P.ID_PERSONAS 
+
+----having (para el count) 
+
+
+        select p.apellido, count (m.id_docente) as cantidad_de_materiias_dictadas from materias m
+        join profesores p on (p.legajo = m.id_docente)
+
+        GROUP by p.legajo
+
+        HAVING count(m.id_docente) > 1
+
+
+
+
+--- CAMBIAR UN REGISTRO EN UNA TABLA (UPDATE)
+
+
+ 		UPDATE PERSONAS
+		set NOMBRE = 'OSCAR.I'
+		WHERE ID_PERSONAS = 8
+
+
+---- JOINS, COUNT, ORDER BY, GROUP BY   (EL ORDER BY SACADO DE UN ""AS"")
+
+
+
+		SELECT P.ID_PERSONAS, P.NOMBRE, DP.ID_PERROS, PE.NOMBRE, COUNT (P.ID_PERSONAS) AS CANTIDAD FROM DUEÑOS_PERROS DP
+
+		JOIN PERSONAS P ON (P.ID_PERSONAS = DP.ID_PERSONAS)
+		JOIN perros PE ON  (DP.ID_PERROS = PE.ID_PERROS)
+
+
+		GROUP BY P.NOMBRE
+		ORDER BY  CANTIDAD
+
+--- INSERTAR VARIABLES EN CODIGO SQL:--------------------------------------
+
+ String Data2 =  JText_Busqueda.getText(); 
+  
+      String Data1 = JCombo_Filtro.getSelectedItem().toString();
+     
+     switch (Data1){
+     
+         case "Todos":
+
+             
+           Datos = "SELECT * FROM Entidades_BD  WHERE Entidad LIKE "+"'" + "%"+ Data2 + "%" + "'" 
+                                                                             + "OR Decreto LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Localidad LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Categoria_L15192 LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Ultima_Actualizacion LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR InscripcionDGPJ2 LIKE "+"'" + "%"+ Data2 + "%" + "'"
+                                                                             + "OR Telefono LIKE "+"'" + "%"+ Data2 + "%" + "'";
+                    
+            mostrarDatos(Datos);
+                 
+                  break;
+         default:
+            
+            Datos = "SELECT * FROM Entidades_BD  WHERE " + Data1 + " Like " + "'"+"%"+ Data2 +"%" +"'";
+                             
+            mostrarDatos(Datos);
+                 
+                  break;
+
+      
+    }                              
+		
