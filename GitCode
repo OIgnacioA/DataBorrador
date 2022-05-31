@@ -39,9 +39,9 @@ $ git checkout (tambien sirve para esto ultimo)
 
       ----a un commit particular: 
       
-      git clone https://github.com/usuario/my-repo-name.git my_repo
-      cd my_repo
-      git reset --hard [Hash del commit que quieres]
+      git clone https://github.com/usuario/my-repo-name.git 
+   
+      git reset --hard [Hash del commit que quieres](el numero largo del commit)
       
       
       ------Para ver todos los commits en tu maquina puedes usar git log:
