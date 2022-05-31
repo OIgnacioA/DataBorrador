@@ -1,0 +1,37 @@
+
+A tener en cuenta: 
+
+
+
+
+
+°- El [[CSS]], en la url, no lleva "/". en e caso de un Css en el entorno de JSP 
+
+body {
+
+  background-image: url("fondo.jpg");
+
+
+}
+
+
+
+°no se debe ejecutar con el shift+6, NetBean solo quiere ejecutarse con el play arriba, pobre... ¬¬
+
+°aparentemente no funciona ningun otro que no sea el tomcat 8 - andá a saber por qué el 10 genera problemas
+
+°se pierde la carpeta WEB-INF. por qué? no hay porqué..., es asi, esa carpeta desaparece...fin, estar atento...
+
+°se ejecuta el chrome de la segunda opcion de browsers en la lista en netbeans. Porque el primero, "crhome with neatbeans connector" no quiere saber nada.
+
+°La carpeta de tomcat tiene que estar compartida para escritura, que Ws deje que la abras sin drama y compartas...o imposible
+
+°cambiar el IDE a uno mas actual, despues de haber desinstalado el anterior unas 3 veces...(ahora NETbeans 13), porque no aparecia paret del menu cuando traia un proyecto comenzado...
+
+°el JDK quizá sea muy actual...¡?, cambiar el JDK a uno mas viejo (como el de los videos...) y deja de aparecer error "The server encountered an unexpected condition that prevented it from fulfilling the request" 
+
+°Se debe tener el java actualizado... cosa que contradice el ultimo anterior...
+
+° si surje el problema de : deployed - cerrar el tomcat (stop)
+
+° si surje el problema de desaparicion del catalina.bat : cerrar el antivirus. 
