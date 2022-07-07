@@ -1,3 +1,44 @@
+
+-------------Temáticas recurrentes: 
+
+
+------------------------------------*CENTRADO:  
+
+En el caso de centrado de una imagen, dependiendo de donde esté ubicada, ejemplo: 
+
+
+    <div class="slider">
+        <ul class="items">
+            <li><img id="imag" src="images/1.png" /></li>
+        </ul>
+   </div>
+
+acá está dentro de la etiqueta <li>: por tanto: 
+       
+li{
+
+text-align:center;
+
+}
+
+
+--------------------------------*TAMAÑO DE IMAGENES:
+
+
+Para poder darle a las imagenes el tamaño especifico se puede usar : 
+
+#imag{
+   
+    max-width: 400px;
+    max-height: 400px;
+    
+}
+
+
+
+
+*************************************************************************
+*************************************************************************
 ---Lugares Dnd se puede colocar el CSS: 
 
 1) en la etiqueta de html:
