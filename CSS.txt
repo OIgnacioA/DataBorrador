@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 -------------Temáticas recurrentes: 
 
@@ -35,10 +36,25 @@ Para poder darle a las imagenes el tamaño especifico se puede usar :
 }
 
 
+********************************************Lo Indispensable**************************************
+
+*Medida por defecto del navegador (el html):  16px.
+
+* para que los elementos del box se sumen entre si: box-sizing: border-box;
 
 
-*************************************************************************
-*************************************************************************
+**Los elementos dentro de un Div toman el valor de ancho y largo (width,height) que se le indique.El **Box-sizing tiene por defecto "content-box", que no toma en cuenta el padding,margin y el border,asi **que de agregar esto se sumaria al width y height. Si se coloca border-box la medida final no se **altera. Por eso colocarlo en el Body, asegura que todo el sistema de cajas se maneje de forma prolija. 
+
+*FLOAT: ( su uso mas comun es el manejo de imagenes, para colocarlas a un lado u otro de texto. )
+
+
+***************************************************************************************************
+
+
+
+
+
+
 ---Lugares Dnd se puede colocar el CSS: 
 
 1) en la etiqueta de html:
@@ -94,7 +110,7 @@ color :slateblue;
 ------------------------------- aplicado a clases especificas : Orden
 
 
->>>>>>>> Al contener la palabra "texto" , si solo se especifica esta, va atomar a todas las clases que la contengan
+>>>>>>>> Al contener la palabra "texto" , si solo se especifica esta, va a tomar a todas las clases que la contengan
 en este ejmplo,  "Texto A" y "Texto b" van a verse afectados por 'p.texto {}'. en class="texto especial" se sobreentiende que hay dos clases funcionando, texto y especial. Si se las define por separado harán efecto acorde a la ubicacion que tengan. - por regla general va a quedar el último efecto que se aplique -  Es decir: 2 y 3 van a tener el mismo color, porque "especial" va a cambiar 2. Primero aplicaria p.texto, pero despues aplica especial. - por lo que el orden es importante -
 
 <body>
@@ -197,7 +213,7 @@ border: 5px black dotted:   (puntos)
 }
 <<<< otros ejemplos de border : double, groove, ridge, inset, none, hidden
 
-<<<<<<en border-style, se asignan las propiedades de una sinasignar ancho o color (pero tambien se puede): 
+<<<<<<en border-style, se asignan las propiedades de una sin asignar ancho o color (pero tambien se puede): 
 
 .color {    
 
@@ -209,7 +225,7 @@ medidas absolutas (en teoría no cambian)
 border-width: 5px;    -ancho; <<< tambien usable: 5cm - 5 mm - 5 in - 5pt (puntos) - 
 
 Medidas relativas (se ajustarían)
-border-width: 2em; (dos veces el tamaño de la fente q se está usando actualmente) esto se puede ajustar en el apartado Styles del navegador chrome
+border-width: 2em; (dos veces el tamaño de la fuente q se está usando actualmente) esto se puede ajustar en el apartado Styles del navegador chrome
 
 border-width: 2rem;  (relativa al tamaño de raiz, en la etiqueta html, que por defeto la mayoria de los navegadores maneja 16px. asi que un Rem en este caso sería 16px, 2 rem 32px y así. )
 
@@ -280,7 +296,7 @@ al poner todas las operaciones juntas es importante recordar que el background-s
 
 background:  url('angelina.jpg') repeat-y center top / 200px 400px;
 
-como dato: si se pide que sea "centrar" unicamente, por caso, va a adaptar la imagen, ESTIRANDOLA de ser necesario.  cuando de no poner este centrado, adaptaria la imagen, obn mostrando solo un pedazo, o bn repitiendola. 
+como dato: si se pide que sea "centrar" unicamente, por caso, va a adaptar la imagen, ESTIRANDOLA de ser necesario.  cuando, de no poner este centrado, adaptaria la imagen, o bn mostrando solo un pedazo, o bn repitiendola. 
 
 
 
@@ -302,7 +318,7 @@ margin: 25px 30px ; vertcal horizontal
 
 margin: 25px 30px 12px  ; vertcal horizontal abajo;
 
-<<<<<< estos mismos sistemas de numeracion cuentan para le padding. 
+<<<<<< estos mismos sistemas de numeracion cuentan para el padding. 
 
 El padding genera un distancia dentro del mismo elemento: 
 
@@ -319,11 +335,11 @@ border:  solid 1px black;
 
 overflow: hidden; 
 
-para poder deslizarnos dentro del elemento cuando lo que esté escrito dentor se vea auqnue este Hidden, se puede agregar: 
+para poder deslizarnos dentro del elemento cuando lo que esté escrito dentor se vea aunque este Hidden, se puede agregar: 
 
 overflow: scroll; 
 
-<<< todo esto e svisible en la pestaña de Computed , en el f12- herramientas de desarrollador-  de chrome. 
+<<< todo esto es visible en la pestaña de Computed, en el f12- herramientas de desarrollador-  de chrome. 
 
  tanto el height como el width actuan sobre el contenido de la etiqueta, del elemento, no sobre los demas elementos como padding, border, margin. 
   
@@ -332,14 +348,14 @@ overflow: scroll;
 ----------------------------------------- outline, text-align, text-decoration, text-shadow
 
 
-el outline se maneja entre el borde y el margin. 
+el outline se maneja entre el border y el margin. 
 
 en la propiedad text-align, el valor por defecto es left. y tiene la propiedad decoration, como para justificar, subrayar, tachar etc 
 
 text-decoration: overline; - por caso. (linea arriba)
 text-shadow: 3px 5px 5px blue ; cuanto se mueve a la derecha, cuanto queremos mover la sombra abajo,cantidad de blur,  color de sombra. 
 
-<<< la fuente se pued etrabajar desde un 
+<<< la fuente se puede trabajar desde un 
 font-falimy: Verdana, Geneva, Tahoma,etc:  Esto quiere decir que si no puede cargar una, sigue con la que esta despues de la coma, y asi. 
 
 
@@ -460,19 +476,23 @@ position: fixed;
 
 
 }
-por defecto la posicion, position, trae el atributo de static en todas las etquetas html: si se la cambia a relative* , relativa a donde debería esta rposicionado el elemento. 
+por defecto la posicion, position, trae el atributo de static en todas las etquetas html: si se la cambia a relative* , relativa a donde debería estar posicionado el elemento. 
 
 position: fixed; 
-por ejemplo, este atributo deja el elemento hubicado en la pantalla , independientemente de que todo a su alrededor se mueva, por ejemplo, al hacer scroll. cabe decir que empezará por estar en cualquier lado, mas allá de estar o no superpuesta sobre otro elemento.    
+por ejemplo, este atributo deja el elemento hubicado en la pantalla, independientemente de que todo a su alrededor se mueva, por ejemplo, al hacer scroll. Cabe decir que empezará por estar en cualquier lado, mas allá de estar o no superpuesta sobre otro elemento.    
 
 position: absolute; 
 se posiciona de forma relativa al elemento padre mas cercano que tenga, que en caso de no haber, va a ser la de <body>
 
 position: sticky; 
-como convinacion entre fixed y relative toma la posicion que el corresponde, pero luego s emueve si se escrolea. 
+como convinacion entre fixed y relative toma la posicion que le corresponde, pero luego se mueve si se escrolea. 
 
 
----------------------------------------------float:
+
+
+
+
+---------------------------------------------FLOAT: ( su uso mas comun es el manejo de imagenes, para colocarlas a un lado u otro de texto. )
 
 
 toma el elemento y lo ubica dentro del div en el que se encuentre. 
@@ -496,7 +516,6 @@ width: 100px;
 <<<< float va a posicionar los elementos que no esten dentro de si, como otros div, al aldo contrario de donde posiciona aquello sobre lo que actua. resulta bueno para acomodar imagenes con texto relacionado. 
 -- el tamaño del contenedor, sea un div, sea lo que sea, y el tamaño de sus elementos, en relacion, que unos no sean mas grandes que aquel, es fundamental a la hora de dar un orden en el sentido de float. No respetar esto va a generar una imagen confusa. 
 
-display :
 
 <<<< centrar un elemento constaría de:
 
@@ -515,12 +534,15 @@ background-color: aqua;
 div { width:50%;  margin:0 auto; } centrará el div horizontalmente.
 
 
-----------------------------------------Display  ---->  Flex-Box: 
 
 
-----------------DISPLAY;
+
+***********************************************DISPLAY;
+
+
 
 Dysplay es la posicion de un elemento en pantalla: que tienen por defecto la propiedad Display-block, ocupando el 100% del ancho. 
+
 
 En el concepto de display es importante entender que , por ejemplo, una etiqueta <div>  usa todo el espacio en pantalla, mientras que una de <span> no, y esto es justamente por que tienen una diferencia en el display. 
 El display BLOK es el que viene en la mayoria de los elementos de html. no es asi con , por ejemplo la etiqueta <a></a> 
@@ -626,6 +648,110 @@ flex-wrap:no-wrap; esta viene por defecto, los elementos sobrantes se ocultaran 
 
 
 
+
+
+
+-------------------------------------------- GRID: (uso actual para columnado) es un marco que maneja elementos en dos dimensiones. No necesariamente contradictoria con Flexbox. De hecho se pueden complementar. Dentro de una fila de grid se puede usar flexbox. 
+
+
+.Container{
+   
+  display:grid;
+  grid-template-columns: 33% 33% 33% ;
+
+}
+
+En este caso se agregaron 3 columnas, de 33% del espacio de la pantalla para cada una. 
+
+Las filas se pueden modificar en su altura: 
+
+.Container{
+   
+  display:grid;
+  grid-template-rows: 50px 100px ;
+
+}
+
+ En este caso la primera linea tendría 50px, y la segunda 100px. 
+
+si s eutiliza el seteo 'auto': este ajusta la celda al tamaño del elemento que contiene: 
+
+.Container{
+   
+  display:grid;
+  grid-template-rows: auto 100px ;
+
+}
+otros elementos: 
+
+gap:1em;   espaciado entre celdas
+
+
+column-gap/row-gap: 1px;   solo espaciad entrecolumnas o entre filas. 
+
+El tipo de medida fr (fraction) divide la pantalla por si, sin necesidad de calcular px o porcentajes. 
+
+.Container{
+   
+  display:grid;
+  grid-template-columns: 1fr 1fr  1fr ;
+
+}
+esto dividiría la pantalla (completa) en 3. 
+
+
+como posibilidad para no escribir muchas veces 1fr en la smedidas del "grid-template-columns ", por caso, se puede usar la funcion repeat() que toma dos argumentos, cantidad de repeticiones y medida: 
+
+.Container{
+   
+   display:grid;
+   grid-template-columns: repeat(3, 1fr)  ;
+  
+}
+
+tambien esta la funcion minmax(), que puede dar el minimo y maximo de tamaño de las celdas mas allá del contenido que tengan. 
+tiene tambien dos argumentos, el tamaño minimo y el maximo. en la primera fila:
+
+grid-template-rows: minmax(100px, auto);
+
+En las primeras dos: (se repite)
+
+grid-template-rows: minmax(100px, auto) minmax(100px, auto);
+
+en este caso el maximo va a ser automatico. 
+
+Se puede colocar varios divs, dentro de uno de los divs anteriores, y conseguir celdas dentro de celdas. "anidadas"
+
+se puede usar:
+
+ justify-items :start, end/strech/center;
+
+con esto se mueven los elementos en diferentes partes de su espacio. 
+
+las celdas vienen por defecto con :
+
+align-items: strech; 
+
+
+para hubicarlas en diferentes lados, existen: 
+
+center,start,  end,strech. 
+
+esto es para trabajar sobre filas o columnas. en el caso de queres trabajar sobre una sola celda en especifico se usa: 
+
+justify-self: 
+
+
+Se puede ademas darle una medida a la celda, dicientole hasta que columna puede ocupar: 
+
+
+grid-column: 1/4;   
+
+con esta forma la celda ( cuya class sería suya y de nadie mas) abarcaria las 4 columnas que se hayan organizado desde el principio. ( se ve como una gran fila.) pero puede decirsele que ocupe menos, 2 o 3 ccolumnas. es importante saber que se le está diciendo desde que "linea" a que "linea" va, ((la slineas netre columnas, contando la cero y la ultimisima, como 1-4 ( en este ejemplo de tres columnas) sisis de 3. 
+
+
+
+
 -------------------------------------------box-sizing: border-box; ----------
 
 
@@ -668,6 +794,5 @@ porque si se llama al width en un elemento, y se le da de medida un rem, este to
 
 coloco   flex-wrap: wrap; en el elemento *, asi no se va de margen lo que esté dentro al achicar. 
 Uso class= en el section para declararlo Disply-flex, como el contenedor que es. 
-
 
 

@@ -35,3 +35,17 @@ body {
 ° si surje el problema de : deployed - cerrar el tomcat (stop)
 
 ° si surje el problema de desaparicion del catalina.bat : cerrar el antivirus. 
+
+
+°realice el siguiente cambio:https://stackoverflow.com/questions/56272364/error-option-xbootclasspath-p-not-allowed-with-target-12-netbeans-11-0 :
+
+"
+I changed the
+
+-Xbootclasspath/p   
+to
+
+-J-Xbootclasspath/a
+It's working for me.
+
+"
