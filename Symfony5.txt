@@ -1,0 +1,67 @@
+
+
+Cómo resolver la excepción de Symfony 6: The metadata storage is not up to date, please run the sync-metadata-storage command to fix this issue
+
+
+https://ourcodeworld.co/articulos/leer/1645/como-resolver-la-excepcion-de-symfony-6-the-metadata-storage-is-not-up-to-date-please-run-the-sync-metadata-storage-command-to-fix-this-issue
+
+
+------------------------------
+Modificar bases de datos desde el symfony:
+
+https://www.youtube.com/watch?v=Fw6ftTglL2A&ab_channel=MundoITI 
+
+
+--------------------------------
+
+Con estas modificaciones realizadas volvamos a generar nuestras tablas, pero como ya hemos creado ambas tablas, ejecutemos primeramente para borrarlas el siguiente comando:
+
+C:\wamp\www\Symfony>php app\console doctrine:schema:drop --force
+Para luego volver a crearlas usando el comando ya conocido:
+
+C:\wamp\www\Symfony>php app\console doctrine:schema:create
+
+
+--------------------------
+
+ /**
+     * @ORM\OneToMany(targetEntity=Profesion::class, mappedBy="usuario")
+     */
+    private $profesion;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profesion")
+     */
+    private $usuario;
+
+---------------------------
+agregar propiedades a una entidad: 
+
+
+PS C:\xampp\htdocs\symfony prueba> php bin/console make:entity   
+
+ Class name of the entity to create or update (e.g. AgreeableChef):
+ > Profesion
+
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ >
+
+------------------BORRAR ENTIDAD:
+
+al crearla se crean estos archivos :
+
+ created: src/Entity/Profesion.php
+ created: src/Repository/ProfesionRepository.php
+
+asi q se deben borrar ambos. 
+
+
+-------------------------------------------abrir los controladores y otras paginas desde el xampp:
+
+
+bueno: IMPORTENTE:  si estas en windows, como yo, la direccion que pones a modo de url, para ver el resultado del controller es: http://localhost/(elnombreDeTuProyect)/public/(elnombredelcontrolador)
+
