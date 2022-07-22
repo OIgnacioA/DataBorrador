@@ -22,19 +22,61 @@ Para luego volver a crearlas usando el comando ya conocido:
 C:\wamp\www\Symfony>php app\console doctrine:schema:create
 
 
---------------------------
+--------------------------CARDINALIDAD EN LA BASE DE DATOS: 
 
+uno a muchos
  /**
      * @ORM\OneToMany(targetEntity=Profesion::class, mappedBy="usuario")
      */
     private $profesion;
 
 
+muchos a uno
+
+   /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TipoProducto", inversedBy="producto")
+     */
+    private $tipoproduc;
+
+muchos a muchos
+
+ /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Compras", inversedBy="producto")
+     */
+    private $compra;
+
+
+   ---> Para este hay que agregar ademas el setter y el getter: 
+
+
+   /**
+     * Get the value of compra
+     */ 
+    public function getCompra()
+    {
+        return $this->compra;
+    }
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="profesion")
-     */
-    private $usuario;
+     * Set the value of compra
+     *
+     * @return  self
+     */ 
+    public function setCompra($compra)
+    {
+        $this->compra = $compra;
+
+        return $this;
+    }
+
+para subir los cambios: 
+
+php bin/console doctrine:schema:update --force    
+
+
+
+recordar refrescar la pagina en el phpmyadmin!!!
+
 
 ---------------------------
 agregar propiedades a una entidad: 

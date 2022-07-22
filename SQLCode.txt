@@ -167,7 +167,7 @@ DELETE FROM  TABLA  where COLUMNA  = X
 		GROUP BY P.NOMBRE
 		ORDER BY  CANTIDAD
 
---- INSERTAR VARIABLES EN CODIGO SQL:--------------------------------------
+--- INSERTAR VARIABLES EN CODIGO SQL:(Java) --------------------------------------
 
  String Data2 =  JText_Busqueda.getText(); 
   
