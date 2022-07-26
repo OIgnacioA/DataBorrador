@@ -107,3 +107,8 @@ asi q se deben borrar ambos.
 
 bueno: IMPORTENTE:  si estas en windows, como yo, la direccion que pones a modo de url, para ver el resultado del controller es: http://localhost/(elnombreDeTuProyect)/public/(elnombredelcontrolador)
 
+o   
+
+
+http://localhost/(elnombreDeTuProyect)/public/index.php/(elnombredelcontrolador)
+
