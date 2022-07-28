@@ -1,0 +1,94 @@
+
+------------------------PHP:
+
+- concatenacion con ' . ' : "esto es un ejemplo" . $variable; 
+
+-para imrimir por pantalla se usa "echo" o "print": echo "esto e sun ejemplo" . $variable; 
+echo permite separar variables por comas. 
+
+-include  (nombreDEfuncion.php); incluye una funcion dentro del código que esté en otra parte. 
+
+-require funciona igual, solo q interrumpe el flujo de ejecucion si har error.
+
+-el ambito local de las variables se comportadiferente a otros lenguajes por causa de la existencia de estos dos llamados. ejemplo : 
+
+<?php 
+$nombre="Juan";
+
+funcion dameNombre() {
+
+$nombre= "María";
+
+}
+
+dameNombre();
+
+echo $nombre; 
+
+?>
+
+>>>> Juan. 
+
+
+sisis, daría juan, aunque en otro lenguaje debería dar MAria. PHP se asegura si que variables externas que sobreescriban no lo hagan con variables locales en llamados de este tipo (require-include) Incluso no se puede acceder desde dentro de una funcion a lo que hay fuera, de locales a lo que hay fuera. se debe convertir la varible interna en global : 
+
+funcion dameNombre() {
+
+global $nombre(); 
+
+}
+
+ahora sabe que tiene que ir a una variable global que fue declaradafuera de la funcion. 
+
+Las variables estáticas: se agrega static delante de la variable, para que, por ejemplo, al llamar a una funcion una variable que tuviera un contador, esta incremente en cada caso que se la llame. 
+
+----------------------------
+
+comprobar ue se ha pulsado un boton : isset($_POST["enviado"]) 
+
+$usuario=$POST["nombre_usuario"]   (esto corresponde al envio en metodo post de un formulario dnd el cuadro de ingreso de texto ((<input type="text" ))tiene un name="nombre_usario". 
+
+-----------------------------
+
+las CONSTANTES van con $ con mayusculas, es de ambito global, con valores escalares, (divisibles) y se definene en la funcion define() si o si. 
+
+defin("AUTOR", "Juan") el primer argumento es el nombre, el segundo el valor, y puede hber un tercero que es un bool, que es para saber sie s o no sensible a las mayusculas. (por si no usaron mayuscolas en el valor d ela constante tal como es el convenio hacerlo)
+
+Un ejemplo de una constante predefinida que s epuede encontrar en la pagina: https://www.php.net/manual/es/language.constants.predefined.php sería : 
+
+echo "la linea de esta intruccion es : " . _LINE_; 
+
+al venir con el lenguaje de forma predefinida nonecesitamos usa el define (). 
+
+------------------------------ action =  
+
+<form name = "form1"  method="post" action="calculadora.php">  action marca a que archvo php esta direccionado el form. 
+
+
+--------------------------------
+
+
+en el envio de parametros por valor o referencia en php sucede que , por ejemplo: 
+
+
+function incrementa(&$valor1) {
+
+$valor1++;
+return $valor1;
+
+}
+
+
+$numero=5;
+
+echo incrementa ($numero) . "<br>"
+
+echo &numero; 
+
+antes de agregar el &, el resultado hubiera sido un 5 en la primer linea, y un 6 en la segunda, pero ahora  el argumento de la funcion lo recivia por referencia, y no por valor como antes, donde el numero quedaba encapsulado dentro d ela funcion, si conocer ningun valor fuera. El & genera un vinculo, una referencia, con lo que hay fuera de la funcion. , asi que ahora al incrementar dentro d ela funcion, tambien se incrementa numero, esta vez se imprimirá dos veces un 6, el primero se refiere a la funcion, y el segundo a lo que se ha incrementado dentro de la funcion. REFERENCIA es un VINCULO, que afecta a esa variable en todas sus apariciones.
+
+
+
+
+
+
