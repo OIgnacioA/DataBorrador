@@ -89,6 +89,319 @@ antes de agregar el &, el resultado hubiera sido un 5 en la primer linea, y un 6
 
 
 
+----------------------------------Calsses : (var , $this, ->, function() como metodo, contrusctor y herencia. 
+
+declaracion: 
+
+
+************
+
+class Coche {
+
+var $rueda;
+var $motor; 
+
+    function Coche() {
+
+	ESTE ES EL METODO CONSTRUCTOR DE LA CLASE. 
+	(SE LLAMA IGUAL A LA CLASE)     
+
+
+        $this-> rueda = 4; 
+    }
+
+
+    function girar () {
+      echo "estoy girando";
+   }
+
+}
+
+$renault = new Coche(); 
+
+
+************* Var
+
+
+se usa Var para las propiedades. es el equivalente a Public, y puede pornerse como no. 
+
+
+************* $this->
+
+Los metodos y las funciones son sinonimos siempre que la funcion este dentro de la clase. al objeto que se este creando en cad amomento, por ejemplo no s elo usa en el caso de uq esea una variable d etipo static, ya que esas siempre pertenecen a la clase padre. 
+
+--- $this-> rueda = 4;  [se usa el '->' para referenciar a la variable de clase, y el '$this' para referenciar a la clase dnd se está trabajando.  ]
+
+Si se busca hacer una llamada a un método en una de las instancias de la case :
+
+
+$renault->girar();  para un método
+echo $renault->rueda; para un atributo. 
+
+
+************** function
+
+
+se puede cambiar el valor de una variable  con una funcion, por ejemplo : 
+
+
+function cambia_color ($color_nuevo) {
+
+$this->color=$color_coche;
+
+echo "el color de este coche es:" . $this->color; 
+		
+}
+
+
+$renault->cambia_color("rojo"); 
+
+
+*************** Herencia: 
+
+
+sintaxis : 
+
+class Camion *extends* Coche {
+
+}
+
+
+*************** Parent : 
 
 
 
+la isntruccion Parent hace un llamado a una funcion de la clase padre, d ela cual hereda la clase actual, y la ejecuta, para luego ejecutar el resto de comandos que se hallen dentro de la funcion donde fue llamada en la clase hijo. 
+
+function arranca () {
+
+   parent::arrancar()
+
+     //otras intrucciones//
+
+}
+
+en este caso primero llamo a la funcion arrancar() que está en la clase super, padre, y luego dio lugar a otras intrucciones dentro de la funcion arranca(). 
+
+
+*************** private:
+ 
+
+se puede agregar private a var $ruedas = 4;
+
+y con eso se encapsula. 
+
+para acceder se usan metodos Getter y setter. en este caso se llamaría al objeto que posee la porpiedad, y a su metodo geter:
+
+	 echo " el auto 1 tiene " .$auto1 ->get_ruedas() . "ruedas <br>";
+
+
+*************** protected:
+ 
+
+los metodos getter y setter acceden a la variables d ela clase donde se hayan, por caso de sucederse uan herencia de esta clase, el objeto que herede los metodos no podrá acceder a sus propias variables utilizando lso getter y setter heredados. El modificador ***protected*** permite que las variables que se heredan puedan ser accedidas tambien desde otras clases herederas con métodos settet y getter heredados de igual modo. 
+
+
+**************** static. -- self::
+
+en el caso de PHP se usa el operado self para hacer referencia a una variable de tipo estatica, a diferencia de $this-> que solo hace referencia a aun campo de clase  de la clase donde se encuentra. el operador Self:: hace *referencia* a un campo estatico. dnd la -> se reempleza por el ::
+
+
+si se desea restar diferentes variables de clase , o sumar, o lo que sea, se debe recordar si llevan &this, o self:: conforme si son de la propia clase o de la clase d ela que se está heredando y que alli sea static. :
+
+ function precio_final () {
+
+   $valor_final= $this->precio_base - self::$ayuda;
+
+   return $valor final;
+
+
+   }
+
+En este ejemplo 1) '$valor final' esta declarado dentro del propio método, por eso no lleva '$this->',2)precio base si lleva '$this->' porque pertenece a la clase donde se está trabajando, y 3) $ayuda es una variable de clase heredada de tipo static, por lo que en vez de '$this->' lleva 'self::'.
+
+Para llamar a un campo Static se debe usar la clase como en todo lenguaje. solo que en vez de un punto, se usan  los dos dos puntos ::   
+
+compra_veiculo::$ayuda=1000 
+
+en otros lenguajes se veria asi : 
+
+compra_veiculo.ayuda; 
+
+(importante:'$ayuda' no estaría en private en este caso, por eso no se esta usando un setter. )
+una vez declaradas como private se debe acceder a ellas con un metodo, igualmente statatico. 
+
+las variables estaticas se pueden trabajar desde funciones estaticas que puedan llamarse.  jemplo: 
+
+static function descuento_gobierno(){
+
+self:$ayuda = 4500;
+}
+
+y s elo llama desd ela clase d eigual modo: 
+
+Compra_veiculo::descuento_gobierno ();
+
+
+ 
+**************** arrays: ' => ', foreach, for,  count(), sort(), var_dump().
+
+
+en ela rray asociativo ( el nommal e sigual a todos los ya vistos) tiene el uso de este signo '=>' que no e sel mismo operador flecha que ya se usó '->' que es para hacer referencia a metodos y propiedades de un objeto. Esta flacha nueva '=>' se usa para asociar un dato a un nombre dentro de un array. 
+
+$datos=array("Nombre"=>"Juan", "Apellido => "Goméz", Edad"=> 21)
+
+para imprimir, hacer referencia a alguna de estas posiciones, se pordría escribir 
+
+echo $datos["Apellido"]; 
+
+>>>> Goméz
+
+
+para agregar un dato a un array asociativo : 
+
+$datos["pais"]= España";
+
+
+
+existe la funcion is_array($datos) que puede ponerse en un if() para poder comprobar si se trata d eun array o no. 
+
+para recorrer un array con un foreach se hace : 
+
+foreach( "nombre del array", as, "nombre de de la clave", =>, "nombre del valor" ) 
+Ej: 
+
+      foreach($datos as $clave=> $valor) {
+
+		echo "A $clave le corresponde $$valor"
+
+        }
+
+
+
+$semana[] = "Lunes";
+$semana[] = "Martes";
+$semana[] = "Miercoles";
+
+tambien s epuede : 
+
+$semana = array("Lunes","Martes","Miercoles");
+
+
+
+un for clasico se veria igual, solo que hay que recordar el uno del $ 
+
+
+for ($i=0;$i<4;$i++){
+
+	echo $semana[$i]. <br>;
+}
+
+tambien en vez de 4, podria usarse count($semana)
+
+la funcion sort() ordena alfabeticamente 
+
+   sort($semana); 
+
+
+array asociativo de dos dimenciones: 
+
+
+$alimentos =array("fruta"=>array ("tropical" = "kiwi",
+				   "citrico"=>"mandarina",
+				   "otros" =>"manzana"),
+		   "Leche"=> array ("animal=>"vaca",
+				    "vegetal=>"coco"),
+                    "carne"=>array ("vacuno=>""lomo",
+				    "porcino"=>"pata"));	
+
+
+
+foreache ($alimentos as $clave_alim=>$alim){
+
+
+   echo $clave_alim:<br>;
+  
+    
+   while (list ($clave,$valor)=each($alim)) {
+
+              echo "$clave=$valor<br>"
+
+          }
+
+            echo "<br>"; 
+}
+
+				
+basicamente un while dentro del for que va recorriendo cada array dentro del array. Esto se podría hacer con un var_dump($alimentos) y listo, sin todo el codigo anterior.  
+
+
+
+******************************** coneccion a BBDD
+
+se requieren 4 datos: 
+
+Direccion de la BBDD.  (localhost) si es un server local, o el que nos de el proveedor de servicios web. 
+Nombre de la BBDD       a legir. 
+Usuario de la BBDD      a legir, que por defecto en local es ROOT
+Contraseña de la BBDD   a elegir: que generalmente en local es ninguna. 
+
+
+<?php 
+
+	$db_host="localhost";
+	$db_nombre="pruebas";
+	$db_usuario="root";
+	$db_contra="";
+
+   /ahora van las variables en el connect en este orden: /
+
+       $conexion=mysqli_connect($db_host,$db_usuario,$db_contra,$db_nombre);
+
+   / se crea una consulta de prueba/
+
+     $consulta="SELECT * FROM nombredelatabla";
+
+     $resultados=mysqli_query($conexion, $consulta);
+
+    $fila=mysqli_fetch_row($resultados);      / esta funcion ve fila por fila lo que ha en un array, en este caso en $resultado. 
+
+
+     echo $fila[0]    //veamos que hay en la posicion cero de ese array
+	
+?>
+
+
+se puede agregar una funcion que sedispare en caso de que haya habiado un herror de coneccion con la BBDD:  
+
+
+
+	if(mysqli_connect_errno()) {
+
+		echo "Fallo al conectar";
+                exit();
+
+	}
+
+
+se puede agregar una linea que corrija caracteres comoa centos y demas. 
+
+       mysqli_set_charset($conexion, "utf8"); 
+
+//// un segundo modo de ver una mala coneccion con la base de datos consta de quitar el nombre de la base de datos de entre los argumentos deñ mysqli_connect, dejando solo los primeros tres. Y agregando un pedido de reconocimiento de esta luego de este modo: 
+
+
+mysqli_select_db($conexion, $dbnombre) or die ("no se encuentra la base de datos")   
+
+//agregando el 'or die', que va a dar un mensaje mas descrptivo. 
+
+
+
+--- Se debe colocar la funcion 'mysqli_fetch_row' en un bucloe, ya que llama a solo una linea por vez. Lo ideal es un
+
+
+		 While((fila=mysqli_fetch_row($resultados))==true){}
+
+
+
+ mientras la variable que tiene el 'mysqli_fetch_row' tenga informacion, sea verdadera, se mantendrá en el while. 
