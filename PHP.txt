@@ -405,3 +405,128 @@ mysqli_select_db($conexion, $dbnombre) or die ("no se encuentra la base de datos
 
 
  mientras la variable que tiene el 'mysqli_fetch_row' tenga informacion, sea verdadera, se mantendrá en el while. 
+
+puede utilizarse un array asociativo en la busqueda cambiando row por array, y agregando un segundo argumento: 
+
+
+		 While((fila=mysqli_fetch_ARRAY($resultados, MYSQL_ASSOC))){   //EL TRUE SE ÚEDE DESCARTAR PORQUE YA ESTARÍA IMPLICITO
+
+					echo $fila ['nombredeldatoAbuscar']
+
+			}
+el tipo d ebusqueda en este caso de como el de un array asociativo. Dentro del bucle. 
+
+
+
+*********************************************************video 41! (ejercicio de consulta simple. 
+
+
+https://www.youtube.com/watch?v=kb9aIrCiyE4&ab_channel=pildorasinformaticas
+
+
+*************************************** paso de datos entre páginas. 
+
+en la comunicacion entre dos o ma spáginas, los datos se pasan entre ellas teniendo en cuenta varios datos
+
+- el action del <form> indica a que pagina irán dirigidos los datos del submit (boton) donde tambien debe aclararse el method: get/post. 
+
+La instruccion '_GET["variable"]' toma el valor que s ehaya introducido en determinado cuadro de texto: 
+
+   <input type="text" name= "buscar" value="botonito">  
+
+   $variable = $_GET["buscar"];
+
+Esto es valido mientras el method sea GET. 
+
+
+****************************************** programacion con POO*************
+
+
+
+hasta ahora esta es la forma procedimental. La programacion con POO es otra: 
+
+
+
+a partir de video 51 del tutorial php. Lasintaxis de coneccion es la siguiente: 
+
+
+     $conexion = new mysqli("localHost", "root", "","pruebas");    //declaracion de objeto. 
+
+
+	if($conexion->connect_errno){
+
+		echo "falló la conexión" . $conexion->connect_errno; 
+
+        }
+
+originalmente escribiriamos en la forma procedimental la coneccion: 
+
+        mysqli_set_charset($conexion, "utf8");  esta funcion que pedia estos dos argumentos. 
+
+en este casi s eusa el objeto coneccion con sus sporpiedadrs y métodos. Solo pedirá al objeto $conexion la funcion set_charset
+
+
+		$conexion->set_charset("utf8");     //con el -> llamando a una funcion. El  argumento de codificacion continua ahi. 
+
+se crea una variable donde alamcenar la instruccion sql . 
+
+
+ 		$sql = "SELECT * FROM PRODUCTOS"
+
+PROCEDIMENTAMENTE AQUI SE CREABA UNA VARIABLE QUE EJECUTA LA CONSULTA USANDO DS ARGUENTOS: coneccion e intrucccion  // 
+
+		//$resultados=mysqli_query($conexion, $srq);
+
+La forma POO de esto mismo sería : 
+
+		 $resultados=$conexion->query($sql);
+
+se puede agregar de manera opcionl una forma que mate un posible error: (esto es forma POO)
+
+		if($conexion->errno){
+
+			die($conexion->error);
+
+		}
+
+luego ya si entrariamos a la forma del while que creaba una variable, en este caso $fila, y la igualaba a mysqli_fetch_array, agregando dos argumentos, la variable donde esta la consulta, en este caso $resultados, y la forma en que se quiere manejar el array, asociativo o de indice, con una funcion tipo "MYSQL_ASSOC".quedando: 
+
+			//while ($fila=mysqli_fetch_array($resultados,MYSQL_ASSOC)    
+
+
+  la funcion dentro de POO: sería en cambio: 
+
+
+			while ($fila=$resultados->fetch_assoc()){  //podría ser fetch_array, pero en ls indices envez d ir un nombre iría un n°: "$fila[0]"
+
+
+
+   		 /*campos de consulta: ej
+
+
+			echo "<table><tr><td>";
+             		echo $fila['CODIGOARTICULO'] . "</td><td> ";
+			echo $fila['SECCION'] . "</td><td><tr></table>";
+			echo "<br>";
+
+
+   		*/
+
+}
+
+
+finalmente se cerraría la coneccion :
+
+		originalmente se pedia en mysqli_close($conexion)
+
+En POO es : 
+
+		$conexion->close();    //desde luego aqui no se usa unargumento, ya que es funcion del propio objeto coneccion. 
+
+
+**************************************PDO [PHP DATA OBJET] 
+
+
+
+
+			
