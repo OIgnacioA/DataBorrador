@@ -424,7 +424,16 @@ el tipo d ebusqueda en este caso de como el de un array asociativo. Dentro del b
 https://www.youtube.com/watch?v=kb9aIrCiyE4&ab_channel=pildorasinformaticas
 
 
-*************************************** paso de datos entre páginas. 
+*************************************** paso de datos entre páginas. GET-POST
+
+GET  : Envia los parametros de una página a otra a travez de la URL. Esta info queda en al caché de la maquina, por l que no e smuy recomendables. Por lo que lps navegadores las penalizan, ademas genera una url muy larga a veces. 
+
+POST  : Al usar este se debe modificar lapagina que recibe  de $_GET[] a $POST[]. se queire con post que se tenga mas cuidado al enviar informacion y que no se vea. Al enviar mucha cantidad de texto resulta lo más cómodo. 
+
+
+
+
+
 
 en la comunicacion entre dos o ma spáginas, los datos se pasan entre ellas teniendo en cuenta varios datos
 
@@ -527,6 +536,134 @@ En POO es :
 **************************************PDO [PHP DATA OBJET] 
 
 
+es una capa de abtraccion entre el codigo PHP y la sbases de datos, siendo un lenguaje de programacion orientado a objetos.  Permite conexiones a varios tipos de bases de datos. Esuna librería con decena de metodos que pueden verse en php.net. 
+
+para realizar una conexion se haria una variable , como hasta ahora, instanciando un objeto de pdo. con sus tres argumentos: el host con el que se quiere conectar y el nombre de la base de datos( en el caso es Localhost) seguido de  el nombre dela base de datos en concreto, y el nombre del usuario, aqui es root,y tercero y ulrimo la contrasea, que aqui es nula. 
+--al tratars e d eun lenguaje orientado a objetos, todos e sun objeto, los errores tambien, y por esto tienen sus spropios metodos y propiedades. Estos errores que s epudiern producir se controlan en un blocke try-catch. 
+
+<?php
+
+
+	try {
+
+		$base= new PDO( 'mysql:host=localhost; dbname=pruebas', 'root', ''); 
+
+		}catch (Exeption $e)
+	
+			die('Error: ' . $e->GetMEssage();)  - aqui se obtiene el menaje 					del error. 
+
+	     }
+
+
+?>
+
+para consultas preparadas ( esta sque no permiten inyecciones9 hay varios metodos en en PDO. : 
+
+se genera un objeto: (como en el ejemplo de arriba):
+
+$base= new PDO( 'mysql:host=localhost; dbname=pruebas', 'root', '');
+
+de este objeto s epuede desprender llamados a funciones como  "prepre"
+
+   $base->prepare($sql)   // donde esta variable SQL es una sentencia tipo SELECT, por caso. 
+
+
+esto nos devuelve el objeto 'PDOStatement'. Que al ejecutarlo y asociarlo a un array ( en dos metodos diferentes, se ve el resultado. 
+
+
+
+<?php
+
+    $busqueda= $_GET["buscar"];
+
+	try {
+
+		$base= new PDO( 'mysql:host=localhost; dbname=pruebas', 'root', ''); 
+		
+		$base->setAtribute(PDO::ATTR_ERRMODE, PDP::ERRMODE_EXCEPTION); // cuando se crea el objeto exeption, si hay un error, se llama a propiedades y métodos de este.
+		
+		$base->exec("SET CHARACTER SET utf8");   ( para aceptar tipos de caracteres cona cento. 
+		$sql= "SELECT NOMBREARTICULO FROM PRODUCTOS WHERE NOMBRE= ?"; //importante el '?'( esto forma parte de la centencia preparada)
+
+		$resultado=$base->prepre ($sql);   //asi $resultado será un objeto de tipo 'PDOStatement'AHORA EJECURARLO Y RECORRER RESULTADOS: 
+
+		$resultado->execute (array($busqueda));  //el argumento dentro delarray es lo que se va a tomar donde se encuentra el signo de pregunta. en este caso es un $_GET que esta tomando un dato obtenido desde otro formulario. 
+
+		while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)){  //$registro es uan variable instanciada qui mismo. 
+
+
+                   echo "Nombre Articulo" .  $registro['NOMBREARTICULO']. "<br>"; 
+
+
+		}
+
+
+		$resultado->closeCursor();  //cerrar base de datos!!!
+
+
+		}catch (Exeption $e)
+	
+			die('Error: ' . $e->GetMEssage();)  - aqui se obtiene el menaje del error. 
+
+	     }
+
+
+?>
+
+
+
+El "?" al final de a consulta SQL puede ser sustituido por un marcador si lo que se desea es hacer una busqueda con un array de tipo asociativo. Donde buscas mas cosas a la vez. A continuaicon el ejemplo anterior, con marcadores, pero si las alcaraciones: 
+
+
+
+<?php
+
+    $busqueda= $_GET["buscar"];
+
+	try {
+
+		$base= new PDO( 'mysql:host=localhost; dbname=pruebas', 'root', ''); 
+		
+		$base->setAtribute(PDO::ATTR_ERRMODE, PDP::ERRMODE_EXCEPTION);  
+		
+		$base->exec("SET CHARACTER SET utf8");   
+		$sql= "SELECT NOMBREARTICULO FROM PRODUCTOS WHERE NOMBRE= :n_art"; (AQUI SE PONE UN MARCADOR COMO ESTE)
+
+		$resultado=$base->prepre ($sql);   /
+
+		$resultado->execute (array(":n_art"=>$busqueda));  y aqui s ecoloca el marcador con el simbolo "=>" apuntando a la variable que viene desde el formulario...y fin. 
+
+		while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)){  
+
+
+                   echo "Nombre Articulo" .  $registro['NOMBREARTICULO']. "<br>"; 
+
+
+		}
+
+
+		$resultado->closeCursor();  
+
+
+		}catch (Exeption $e)
+	
+			die('Error: ' . $e->GetMEssage();) 
+
+	     }
+
+
+?>
+
+--En caso de querer dar mas de un dato para la busqueda en este ultimo formato de busqueda: deberiamos hacer un formulario que pase dos datos al $_GET de la página php. se tomarian esos dos valores en dos variables. Y en la consulta SQL : -(el resto es igual a lo anterior)-
+
+$busqueda_val1=$_GET["name del type=text"];
+$busqueda_val2=$_GET["name del type=text"];
+
+$sql= "SELECT NOMBREARTICULO FROM PRODUCTOS WHERE ValordealgunaColumna1 = :val1 AND ValordeLaSegundacolumna =: Val2";
+
+//////////Luego se agregan estos en el execute: 
+
+         $resultado->execute (array(":val1"=>$busqueda_val1, ":Val2"=>$busqueda_val2 ));
 
 
 			
