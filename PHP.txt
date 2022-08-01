@@ -52,7 +52,7 @@ $usuario=$POST["nombre_usuario"]   (esto corresponde al envio en metodo post de 
 
 las CONSTANTES van con $ con mayusculas, es de ambito global, con valores escalares, (divisibles) y se definene en la funcion define() si o si. 
 
-defin("AUTOR", "Juan") el primer argumento es el nombre, el segundo el valor, y puede hber un tercero que es un bool, que es para saber sie s o no sensible a las mayusculas. (por si no usaron mayuscolas en el valor d ela constante tal como es el convenio hacerlo)
+defin("AUTOR", "Juan") el primer argumento es el nombre, el segundo el valor, y puede haber un tercero que es un bool, que es para saber si es o no sensible a las mayusculas. (por si no usaron mayuscolas en el valor de la constante tal como es el convenio hacerlo)
 
 Un ejemplo de una constante predefinida que s epuede encontrar en la pagina: https://www.php.net/manual/es/language.constants.predefined.php sería : 
 
@@ -536,9 +536,9 @@ En POO es :
 **************************************PDO [PHP DATA OBJET] 
 
 
-es una capa de abtraccion entre el codigo PHP y la sbases de datos, siendo un lenguaje de programacion orientado a objetos.  Permite conexiones a varios tipos de bases de datos. Esuna librería con decena de metodos que pueden verse en php.net. 
+es una capa de abstraccion entre el codigo PHP y las bases de datos, siendo un lenguaje de programacion orientado a objetos.  Permite conexiones a varios tipos de bases de datos. Es una librería con decena de metodos que pueden verse en php.net. 
 
-para realizar una conexion se haria una variable , como hasta ahora, instanciando un objeto de pdo. con sus tres argumentos: el host con el que se quiere conectar y el nombre de la base de datos( en el caso es Localhost) seguido de  el nombre dela base de datos en concreto, y el nombre del usuario, aqui es root,y tercero y ulrimo la contrasea, que aqui es nula. 
+para realizar una conexion se haria una variable, como hasta ahora, instanciando un objeto de PDO. con sus tres argumentos: el host con el que se quiere conectar y el nombre de la base de datos( en el caso es Localhost) seguido de  el nombre dela base de datos en concreto, y el nombre del usuario, aqui es root,y tercero y ulrimo la contrasea, que aqui es nula. 
 --al tratars e d eun lenguaje orientado a objetos, todos e sun objeto, los errores tambien, y por esto tienen sus spropios metodos y propiedades. Estos errores que s epudiern producir se controlan en un blocke try-catch. 
 
 <?php
@@ -550,14 +550,14 @@ para realizar una conexion se haria una variable , como hasta ahora, instanciand
 
 		}catch (Exeption $e)
 	
-			die('Error: ' . $e->GetMEssage();)  - aqui se obtiene el menaje 					del error. 
+			die('Error: ' . $e->GetMEssage();)  - aqui se obtiene el menaje del error. 
 
 	     }
 
 
 ?>
 
-para consultas preparadas ( esta sque no permiten inyecciones9 hay varios metodos en en PDO. : 
+para consultas preparadas ( esta sque no permiten inyecciones) hay varios metodos en en PDO. : 
 
 se genera un objeto: (como en el ejemplo de arriba):
 
@@ -666,4 +666,120 @@ $sql= "SELECT NOMBREARTICULO FROM PRODUCTOS WHERE ValordealgunaColumna1 = :val1 
          $resultado->execute (array(":val1"=>$busqueda_val1, ":Val2"=>$busqueda_val2 ));
 
 
+******************************  una coneccion con tipo modulado en estilo POO: *******************************************
+
+//notese que: declara la variable como protected arriba, y recien abajo la usa para instanciar un tipo deo bjeto "mysqli". El "require esta llamando a una funcion diferente que tiene todos los datos de coneccion que lleva 5 constantes, asi que s eusa la fincion define() con susu dos argumentos básicos, y sin usar el '$' : "
+ -Archivo "config.pHp":
+
+<?php
+   
+
+  	define ('DB_HOST, 'localhost');
+ 	define ('DB_USUARIO, 'root');
+	define ('DB_CONTRA, '');
+	define ('DB_NOMBRE, 'pruebas');
+	define ('DB_CHARSET, 'utf8');
+
+?>
+
+
+<?php 
+
+		 require ("config.php");
+
+		class Conexion {
+
+			protected $conexion_db;
+			   
+				public function Conexion (){
+
+				$this->conexion_db=new mysqli(DB_HOST, DB_USUARIO, DB_CONTRA,DB_NOMBRE );
+
+				if($this->conexion_db->connect_errno){
+
+					echo "falló al conectar MYSql" . $this->conexion_db->connect_errno; (esto no da el tipo de error)
+
+					return; 
+
+                               }
+
+				$this->conexionconexion_db->set_charset(BD_CHARSET);  //para soportar acentos y eso
+
+			}
+
+		}
+
+
+?>
+
+
+se puede hacer uego uan clase que pida los productos, haciendo que esta herede de la clase Conexion.php: 
+// notese que lo llama con el require, y luego lo hace parte d ela clase con un extends. 
+
+
+<?php 
+
+       require "Conexion.php"
+
+   			 class DevuelveProductos Extends Conexion {
+
+             public function DevuelveProductos() {
+
+			parent::_contruct();  //con esta line ejecuta el contructor de la clase de la que se está heredando. 
+
+
+
+            }
+
+			public function get_productos(){ //entre los parentesis podría ir una variable que pudiera ser parte de la busqueda sql. 
+
+				$resultado=$this->conexion_db->query('SELECT * FROM PRODUCTOS'); /la variable conexion_db se puede usar acá gracias a la herencia. 
+
+en caso de pasarle una variable  por argumentos a esta funcion, la busqueda debería ser: xej: 'SELECT * FROM PRODUCTOS WHERE PAISDEORIGEN= "' .$parametro .' " ');
+
+			       $productos=$resultado->fetch_all(MYSQLI_ASSOC);
+
+				return $productos; //devulve lo que haya amacenado en productos
+
+		}
 			
+}
+
+
+
+( en esta última funcion entonces: conectamos con la basede datos (en la linea PARENT::), y una consulta sql (en $resultado)yque almacenamos en un array asociativo ($productos), y por último que nos lo devuelva. Faltaria el html que nos muestra ese resultado. )
+
+para lo cual, y por modulacion, se agrega una nueva página de php: (que tambien tendrá el html)
+
+<?php
+
+		require "DevuelveProductos.php"
+
+		$productos=new DevuelveProductos();   //con esto se llama al constructor de devuelve productos con la instanciacion. 
+
+		$array_productos=$productos->get_productos();  //este metodo tenia una intruccion return que devuelve una rray que se almacene en esta avriable. 
+
+
+
+?>
+///en el mismo arhivo de este ultimo se trabajaria el html en conjunto: 
+
+html5
+        <body>
+
+<?php 
+		foreach ($array_productos as $elemento){
+			echo "<table><tr><td>";
+	             	echo $fila['CODIGOARTICULO'] . "</td><td> ";
+			echo $fila['SECCION'] . "</td><td><tr></table>";
+			echo "<br>";
+
+		}
+?php>
+       </body>
+
+		
+	al tener el proyecto en varios archivos , se vuelve mas comodo reusar. ejemplo es que si modificas el archivo config ya se podría conectar con otra base de datos. O consultar otra tabla se trabaja con DevuelveProductos.php y semodifica la busqueda SQL. 
+
+
+
