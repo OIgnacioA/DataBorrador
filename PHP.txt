@@ -1,6 +1,22 @@
 
 ------------------------PHP:
 
+
+
+-------------------------var_dump 
+
+
+proporciona información sobre el tamaño y tipo de datos de la variable y, en el caso de arrays y objetos, de los elementos que la componen. 
+
+
+--------------------------print_r 
+
+
+no da información sobre el tamaño de la variable ni sobre el tipo de datos.
+
+
+---------------------------------------------
+
 - concatenacion con ' . ' : "esto es un ejemplo" . $variable; 
 
 -para imrimir por pantalla se usa "echo" o "print": echo "esto e sun ejemplo" . $variable; 
@@ -631,7 +647,7 @@ El "?" al final de a consulta SQL puede ser sustituido por un marcador si lo que
 
 		$resultado=$base->prepre ($sql);   /
 
-		$resultado->execute (array(":n_art"=>$busqueda));  y aqui s ecoloca el marcador con el simbolo "=>" apuntando a la variable que viene desde el formulario...y fin. 
+		$resultado->execute (array(":n_art"=>$busqueda));  y aqui se coloca el marcador con el simbolo "=>" apuntando a la variable que viene desde el formulario...y fin. 
 
 		while ($registro = $resultado->fetch(PDO::FETCH_ASSOC)){  
 
@@ -782,4 +798,65 @@ html5
 	al tener el proyecto en varios archivos , se vuelve mas comodo reusar. ejemplo es que si modificas el archivo config ya se podría conectar con otra base de datos. O consultar otra tabla se trabaja con DevuelveProductos.php y semodifica la busqueda SQL. 
 
 
+
+------------------------------------- funciones anonimas. 
+
+
+se llamana  a travez de una variable, ya que no tienen nombre: 
+
+--se dan en una variable, a  al auw se le agrega el (),y la variable llamada debe terminar en ";"
+
+$suma = function($a,$b){
+
+    return $a + $b;
+};
+
+eho $suma(a:10, b:40);  //elagregado de un "a:" o "b:" no son necesarios,son agregados por el IDE 
+
+
+>>>>50. 
+
+--->se utilizan paragenerar filtros de busqueda en funciones como array_filter. 
+
+$numeros= [1,2,0,3,4,5,6,7,8,9];
+
+$mult_cinco = array_filter($numeros, function($n){
+return $n % 5 == 0; 
+});
+
+print_r($mult_cinco);
+
+----o en un array_map: 
+
+
+$my_array= [1,2,0, null,3,'',4,[], 5,6,7,8,9];
+$filtered = array_filter($my_array);
+
+$result = array_map (function($value){
+
+print_r($value);
+
+}, $filtered);  
+
+
+------------
+
+
+las variables globales,(acá por ejemplo $nombre), que se quieran usar dentro de una funcion anónima deben tener la palabra reservada use*, o la funcion anonima no podría usarla. 
+
+
+$nombre = "Mundo";
+
+$saludo = function() use ($nombre)
+{
+
+echo "Hola $nombre";
+
+};
+
+$saludo();
+
+>>> "Hola Mundo". 
+
+...ademas se puedens eguir pasando parametros en function(aqui). 
 

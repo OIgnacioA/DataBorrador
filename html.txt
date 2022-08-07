@@ -1,0 +1,140 @@
+
+    <form>
+        <fieldset>
+            <legend>Votá por tu enano favorita</legend>
+
+            <label>Nombre</label>
+            <input type="text" placeholder= "ej pepito">
+            <br> <br>
+
+            <label>MAil</label>
+            <input type="email" placeholder= "ejemplo@hotmail.com">
+            <br> <br>
+                  
+            <label>contraseña</label>
+            <input type="password">
+
+            <label>series </label>
+                <select>
+                    <option>blanca nieves </option>
+                    <option>Game of thrones </option>
+                    <option>los enanos contratacan </option>
+                    <option>elena no! </option>
+ 
+                </select>
+
+            <br> <br> 
+           <label>serias capaz de besar un enano?</label> <br>
+            <input type="radio" name="vos">No <br>
+            <input type="radio" name="vos">si, deus.
+            <br> <br> 
+            <label>elije opciones cabeza de termo!</label> <br>
+             <input type="checkbox" >soy enano<br>
+             <input type="checkbox" >obvio que soy enao, mirme.<br>
+             <input type="checkbox"> mi viejo es tan enano como yo.<br>
+             <input type="checkbox" >nadie es mas enano que yo.<br>
+             <input type="checkbox" >obvio que si soy enano y gay.<br>
+             <br> <br> 
+             <label>Explicanos el porqué eras asi de enano</label> <br>
+
+             <textarea rows="5" cols="70"></textarea> <br><br>
+
+             <input type="submit" value="enano puto!">
+             <input type="reset" value="borramelá">
+ 
+
+
+
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <h1>Esta es una pagina de prueba</h1>
+    <div class="">
+         <h2>Lista no ordenada</h2>
+            <ul>
+                <li>pegar frula</li>
+                <li>pegar frula de nuevo</li>
+                <li>llamar a un medico</li>
+           </ul>
+    </div>
+          <h2>Lista  ordenada</h2>
+    <div class="">
+            <ol>
+                <li>ir al super</li>
+                <li>volver del super</li>
+                <li>volver a ir</li>
+            </ol>
+    </div>
+
+    
+
+
+   
+
+    <div class="">
+    <h3>texto con formato e Hipervinculos</h3>
+    <p><b>Lorem ipsum dolor</b>, como en <a href="https://www.youtube.com/" target="_blank">youtube</a>  sit amet consectetur adipisicing elit. Beatae atque est earum assumenda, <i>facilis sapiente repellat</i> ea repellendus aut velit recusandae dignissimos, <br> <a href="segunda_Pagina.html"  target="_blank">mi otra pagina</a> que es bastante igual a esta, eveniet iste magni commodi, labore ullam veniam culpa?</p>
+
+
+    <img src="https://a-static.besthdwallpaper.com/piccolo-fusionado-con-kami-de-dragon-ball-z-dragon-ball-legends-arts-para-escritorio-papel-pintado-3554x1999-56138_53.jpg"   alt="" width="400" />
+
+    <p>Enviar correo a <a  href="mailto:sehent@hotmail.com">Sehent@hotmail.com</a></p>
+
+    </div>
+
+----------------------------------------------------
+
+
+
+
+
+        <h1>Pagina que no se que onda</h1>
+
+        <div>
+            <h2>lista ordenada</h2>
+            <ol>
+               <li><a href="https://www.youtube.com/">YouTube</a></li>
+               <li><a href="https://www.facebook.com/"></a>facebook</li>
+               
+
+            </ol>
+        </div>
+
+    <h2>Pagina que no se que onda</h2>
+
+        <div>
+            <h3>lista ordenada</h3>
+            <ul>
+               <li><a href="https://www.youtube.com/">YouTube</a></li>
+               <li><a href="https://www.facebook.com/"></a>facebook</li>
+            
+            </ul>
+        </div>
+
+        <img src="https://i0.wp.com/erizos.mx/wp-content/uploads/2018/01/Piccoro-Dragon-Ball.jpg?fit=1200%2C625&ssl=1" width="200">
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <hr> <hr> illo numquam autem veritatis cupiditate? Atque quas reprehenderit officiis vitae. Temporibus fugit, autem <a href="https://static.wikia.nocookie.net/doblaje/images/c/c7/Piccolo_render_con_capa.png/revision/latest?cb=20160913021700&path-prefix=es">iste commodi</a> rem illo <b> quis numquam</b>  
+            provident</p>
+
+      <form>
+
+        <fieldset>
+            <legen>hi my name its legend</legen>
+
+                <label>Text</label>
+                <input type=""
+                
+
+ 
+
+
+        </fieldset>
+
+
+      </form>
+
+
+
+

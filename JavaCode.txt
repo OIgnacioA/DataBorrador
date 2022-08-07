@@ -72,7 +72,25 @@ Dir = javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirector
 
 
 
+----------------------------------------------------------------- ? true :false; 
 
 
+Los operadores de signo de interrogación y dos puntos se denominan colectivamente operadores ternarios en Java porque funcionan en tres operandos.
+
+Es la solución abreviada del enunciado if ... else en Java y se puede utilizar como un enunciado de una sola línea para la toma de decisiones.
+
+condition ? value1 : value2;
+
+
+public class SimpleTesting{
+    public static void main(String[] args) { 
+        int a = 10;
+        int b = 20;
+        boolean result = a>b ? true : false;
+        System.out.println(result);
+    }
+}
+
+>>>false. 
 	
 	
