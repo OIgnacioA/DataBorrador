@@ -1,10 +1,44 @@
 
 ------------------------PHP:
 
+--------------------------Variables: 
 
 
--------------------------var_dump 
+De forma predeterminada, las variables siempre se asignan por valor. Esto significa que cuando se asigna una expresión a una variable, el valor completo de la expresión original se copia en la variable de destino.
+Para asignar por referencia, simplemente se antepone un signo ampersand (&) al comienzo de la variable cuyo valor se está asignando (la variable fuente). Por ejemplo, el siguiente segmento de código produce la salida 'Mi nombre es Bob' dos veces:
 
+<?php
+  $foo = 'Bob';                // Asigna el valor 'Bob' a $foo
+  $bar = &$foo;                // Referenciar $foo vía $bar.
+  $bar = "Mi nombre es $bar";  // Modifica $bar...
+  echo $bar;
+  echo $foo;                   // $foo también se modifica.
+?>
+
+
+En PHP, las variables globales deben ser declaradas globales dentro de la función si van a ser utilizadas dentro de dicha función.
+
+
+<?php
+	$a = 1;
+	$b = 2;
+
+	function Suma()
+	{
+ 	   global $a, $b;
+
+  	  $b = $a + $b;
+	}
+
+	Suma();
+	echo $b;
+?>
+
+
+>>>>3.
+
+
+--------------var_dump(); 
 
 proporciona información sobre el tamaño y tipo de datos de la variable y, en el caso de arrays y objetos, de los elementos que la componen. 
 
@@ -263,7 +297,7 @@ Compra_veiculo::descuento_gobierno ();
 **************** arrays: ' => ', foreach, for,  count(), sort(), var_dump().
 
 
-en ela rray asociativo ( el nommal e sigual a todos los ya vistos) tiene el uso de este signo '=>' que no e sel mismo operador flecha que ya se usó '->' que es para hacer referencia a metodos y propiedades de un objeto. Esta flacha nueva '=>' se usa para asociar un dato a un nombre dentro de un array. 
+en el array asociativo ( el nommal e sigual a todos los ya vistos) tiene el uso de este signo '=>' que no e sel mismo operador flecha que ya se usó '->' que es para hacer referencia a metodos y propiedades de un objeto. Esta flacha nueva '=>' se usa para asociar un dato a un nombre dentro de un array. 
 
 $datos=array("Nombre"=>"Juan", "Apellido => "Goméz", Edad"=> 21)
 
@@ -799,7 +833,7 @@ html5
 
 
 
-------------------------------------- funciones anonimas. 
+------------------------------------- funciones anonimas. (o expresiones lambda)
 
 
 se llamana  a travez de una variable, ya que no tienen nombre: 
@@ -838,8 +872,16 @@ print_r($value);
 
 }, $filtered);  
 
+en ste ejemplo por caso si preguntasemmos a php si 'suma ', e suna funcion, a partirdel llamado var_dump(is_callable('suma')); //Devolvería false pq no existe la función suma sino la variable $suma que es una función anónima.
 
-------------
+
+$suma = function ($a,$b){
+return $a + $b;
+};
+
+
+
+------------**
 
 
 las variables globales,(acá por ejemplo $nombre), que se quieran usar dentro de una funcion anónima deben tener la palabra reservada use*, o la funcion anonima no podría usarla. 
@@ -859,4 +901,46 @@ $saludo();
 >>> "Hola Mundo". 
 
 ...ademas se puedens eguir pasando parametros en function(aqui). 
+
+***Entre los ejemplos de funciones anonimas : esta el comportamiento y llamado entre ellas: 
+
+<?php
+
+ function multiplicacion($a,$b){
+    return $a * $b;
+ }
+    
+ function operacion($function,$a,$b){
+    echo $function($a,$b);
+ }
+    
+  operacion('multiplicacion',5,3);
+
+?> 
+
+>>15. 
+
+function operacion está enviando una funcion por argumento, está imprimiendo esa misma funcion que envía. funciona el return de la funcion que llama en "opercion". 
+
+
+
+
+
+
+---------------------***unbuffered_query()
+
+
+mysql_unbuffered_query() envía la consulta SQL query a MySQL, sin recuperar ni almacenar automáticamente en búfer las filas de resultados, como mysql_query() lo hace. Esto ahorra una considerable cantidad de memoria con las consultas SQL que producen conjuntos de resultados grandes, y se puede empezar a trabajar con el conjunto de resultados inmediatamente después de que la primera fila haya sido recuperada, ya que no es necesario esperar hasta que la consulta SQL completa haya sido ejecutada. Para usar mysql_unbuffered_query() mientras están abiertas múltiples conexiones a la base de datos, se debe especificar el parámetro opcional link_identifier para identificar qué conexión se desea utilizar.
+Esto ahorra algo de memoria con consultas SQL grandes y puede comenzar a trabajar en el conjunto de resultados inmediatamente después de que se haya recuperado la primera fila.
+
+---------------------*** call_user_func
+
+call_user_func — Llamar a una llamada de retorno dada por el primer parámetro
+
+
+---------------------***
+
+
+
+
 
