@@ -37,6 +37,80 @@ En PHP, las variables globales deben ser declaradas globales dentro de la funci�
 
 >>>>3.
 
+_____**** Funciones: 
+
+
+ Las funciones variables son las primeras en generar un dolor de cabeza en php: un ejemplo : tenemos una funcion: 
+
+<?php
+
+function buenasTardes() {
+
+ retur "Hey!! buenos dias!!!";
+
+}
+
+
+$horario = "bunasTardes";
+
+echo $horario(); 
+
+?>
+
+la variable $horario recibe el valor de la funcion "buenasTardes", ( se estaría convirtiendo en un funcion) ya que al hacer echo el valor que devuelve es e return de la funcion que el fue asignada. "Hey!! buenos dias!!!", y no "buenasTardes" como se podría esperar. 
+
+y se pone peor: 
+
+
+si formamos el nombre d ela funcion concatenando llamariamos a su return...: 
+
+
+<?php
+
+function buenasTardes() {
+
+ retur "Hey!! buenos dias!!!";
+
+}
+
+
+$horario = "Tardes";
+
+$unaFuncion= "buenas".$horario; 
+
+echo $unaFuncion(); 
+
+
+?>
+
+>>>"Hey!! buenos dias!!!"
+
+
+---> dentro de una variable se uede concatenar una variable ($horario) mas un valor local ("buenas") esto le daría a la funcion "$unaFuncion" el valor "buenasTardes", lo que sería como un llamado al echo de esa funcion. ....lpm...
+
+
+
+ 
+
+-----**constantes: 
+
+datos que no podrán ser modificdos. Se llaman sin el $
+
+declaracion : define ('nombre', 'victor Robles'):
+
+echo nombre
+
+
+>>>vistor roble
+
+----------------------*** variables superglobales: 
+
+variables de servidor: 
+
+echo $_SERVER ['SERVER_ADDR'];    //_ server es una array btw, y addr es para sacar la direcion ip del servidor. 
+
+
+
 
 --------------var_dump(); 
 
@@ -900,7 +974,7 @@ $saludo();
 
 >>> "Hola Mundo". 
 
-...ademas se puedens eguir pasando parametros en function(aqui). 
+...ademas se pueden seguir pasando parametros en function(aqui). 
 
 ***Entre los ejemplos de funciones anonimas : esta el comportamiento y llamado entre ellas: 
 
@@ -923,10 +997,26 @@ $saludo();
 function operacion está enviando una funcion por argumento, está imprimiendo esa misma funcion que envía. funciona el return de la funcion que llama en "opercion". 
 
 
+para usar las variables dentro d euna funcion debe lamarsela agregando Global a la misma, o no será tomada: 
 
 
+<?php 
 
+$frase = "frase del día":
 
+echo $frase      
+
+function decirLaFrase(){
+
+  //      global $frase;     ( sin esta linea de codigo  el echo de la funcion no imprime.)
+
+echo "<h1>$frase</h1>"; 
+
+}
+
+>> solo va a imprimir el primer echo. el de dentro d ela funcion no conoce la variable. a menos que adeante se le agregue global
+
+lo mismo si se instanciara una variable dentro de la funcion. tendria que traerse el valor de esa variable dentro d ela funcion con un return. 
 ---------------------***unbuffered_query()
 
 
