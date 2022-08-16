@@ -123,8 +123,88 @@ proporciona información sobre el tamaño y tipo de datos de la variable y, en e
 no da información sobre el tamaño de la variable ni sobre el tipo de datos.
 
 
----------------------------------------------
+---------------------------------------------***  Instance of 
 
+
+instanceof se utiliza para determinar si una variable de PHP es un objeto instanciado de una cierta clase:
+
+
+<?php
+class MyClass
+{
+}
+
+class NotMyClass
+{
+}
+$a = new MyClass;
+
+var_dump($a instanceof MyClass);
+var_dump($a instanceof NotMyClass);
+?>
+
+
+>>>>bool(true)
+>>>>bool(false)
+
+
+-----------------------------------------------***callable
+
+
+la callable keyword clave se usa para forzar que un argumento de función sea una referencia a una función.
+
+<?php
+function printFormatted(callable $format, $str) {
+  echo $format($str);
+  echo "<br>";
+}
+
+function exclaim($str) { return $str . "!"; }
+printFormatted("exclaim", "Hello World");
+?>
+
+
+--------------------------------------------------------------------***declare: 
+
+
+When PHP is executing your script, the execution can be seen as a lot of statements being executed. Most statements cause a Tick, though not necessarily all statements do so.
+his block would normally cause 5 ticks, as you are executing 5 statements:
+$a = 1;
+$B = 2;
+$a = 3;
+$B = 4;
+$a = 5;
+
+And this block would normally cause 5 ticks, and one more tick as the end of the while loop also is counted as a statement/tick:
+
+while ($i < 5)
+    $a++;
+
+
+With the help of declare(ticks=N) and register_tick_function(), you can now execute code in between the statements/ticks. The register_tick_function specifies which function should be called when a tick event occurs. And the declare sets how many tick should pass, before a tick event occurs.
+
+With declare(ticks=1) and register_tick_function('someFunction'); you will call someFunction() code in between every statement/tick.
+
+If you use declare(ticks=3), then someFunction() will be executed on every third statement/tick.
+
+Example:
+
+
+function handler(){
+    echo "x";
+}
+register_tick_function("handler");
+$i = 0;
+declare(ticks = 4) {
+    while ($i < 9)
+        echo ++$i;
+}
+
+
+This script will output: 1234x5678x9 It's that simple.
+
+
+-------------------------------------------------------------------------------------
 - concatenacion con ' . ' : "esto es un ejemplo" . $variable; 
 
 -para imrimir por pantalla se usa "echo" o "print": echo "esto e sun ejemplo" . $variable; 
