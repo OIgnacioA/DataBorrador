@@ -1,8 +1,180 @@
 
 ------------------------PHP:
+direcciones: 
 
---------------------------Variables: 
+----------------------------------------***self:static: parent::
 
+https://www.youtube.com/watch?v=L9jLxuLAAIY&ab_channel=DaniKrossing
+https://www.geeksforgeeks.org/new-self-vs-new-static-in-php/
+https://es.acervolima.com/diferencia-entre-self-bar-y-static-bar-en-php/
+
+
+   -.-.-
+ejer4.php
+<?php
+class Person {
+
+  private $name;
+  private $eyeColor;
+  private $age;
+
+  public static $drinkingAge = 21; 
+
+  public static function setDrinkingAge($newDR){
+    self::$drinkingAge = $newDR; 
+  }
+
+}
+
+?>
+   -.-.-
+<?php
+  
+  include 'ejer4.php';
+
+
+ echo Person::$drinkingAge;
+ Person::setDrinkingAge(12);
+ echo Person::$drinkingAge;
+ 
+?>
+
+>>>21 12
+
+
+---------------------------------° "self" 
+
+
+Es la forma en que se refiere a la clase en caso de estar usandose un static, que funciona como en java). es el equivalente    a "this->".  Es una palabra clave de PHP que representa la clase actual y se utiliza para acceder a variables de clase estáticas o variables estáticas porque estos miembros pertenecen a una clase en lugar del objeto de esa clase.
+
+<?php
+
+class demo {
+  
+    public static $bar = 10;
+  
+    public static function func() {
+        echo self::$bar . "\n";
+    }
+}
+
+// Declaring child class
+class Child extends demo {
+    public static $bar = 20;
+  
+}
+  
+// Calling for demo's 
+// version of func()
+demo::func();
+  
+// Calling for child's 
+// version of func()
+Child::func();
+
+
+?> 
+
+>>10
+>>10
+
+
+Self solo se refiere a la versión en tiempo de compilación de $bar o, en términos más simples, se refiere a la versión de la clase en la que reside.
+
+
+-------------------------------------°STATIC: 
+
+la palabra clave 'estática' cubre la limitación contenida por la palabra clave 'self' al hacer cumplir el concepto de enlace estático tardío. En este escenario, static le pide al compilador que imprima la versión de la función para la clase que la solicitó.
+
+
+
+
+<?php
+   
+// Declaring parent class
+class demo {
+   
+    public static $bar = 10;
+   
+    public static function func() {
+                   
+        // Static in place of self
+        echo static::$bar."\n";
+    }
+}
+   
+// Declaring child class
+class Child extends demo {
+    public static $bar = 20;
+}
+   
+// Calling for demo's version of func()
+demo::func();
+   
+// Calling for child's version of func()
+Child::func();
+   
+?> 
+
+>>10
+>>20    :)
+
+--------------------------------------°parent
+
+
+Es posible que se encuentre escribiendo código que hace referencia a variables y funciones de las clases base. Esto es particularmente cierto si su clase derivada es una refinación o especialización del código en su clase base.
+
+En lugar de usar el nombre literal de la clase base en su código, debería usar el nombre especial parent, el cual hace referencia al nombre de su clase base tal y como se entrega en la declaración extends de su clase. Al hacer esto, evita usar el nombre de su clase base en más de un lugar. Llegado el caso de que su árbol de jerarquía cambie durante la implementación, el cambio se puede efectuar con facilidad SIMPLEMENTE MODIFICANDO LA DECLARACION EXTENDS DE SU CLASE.
+
+<?php
+class A {
+    function ejemplo() {
+        echo "Soy A::ejemplo() y ofrezco funcionalidad básica.<br />\n";
+    }
+}
+
+class B extends A {
+    function ejemplo() {
+        echo "Soy B::ejemplo() y ofrezco funcionalidad adicional.<br />\n";
+        parent::ejemplo();
+    }
+}
+
+$b = new B;
+
+// Esto hace la llamada a B::ejemplo(), la cual llama a su vez a A::ejemplo().
+$b->ejemplo();
+?>
+
+
+
+--------------------------Variables: Protected-public-private. 
+
+
+tipos : 
+
+
+°---------public :
+
+hace que la variable/función se pueda acceder desde cualquier lugar, como por ejemplo otras clases y otras instancias de esa misma clase.
+
+
+°----------private: 
+
+hace que la variable/función solamente se pueda utilizar desde la misma clase que las define.
+
+
+°---------protected:
+
+ hace que la variable/función se puede acceder desde la clase que las define y también desde cualquier otra clase que herede de ella.
+En otras palabras: private = solo tú, protected = tú y tus descendientes, public = cualquiera.
+
+
+
+Los métodos PRIVATE o PROTECTED no pueden ser accedidas fuera de la clase. private solo puede ser accedida dentro de la propia clase y protected dentro de la clase y clases heredadas, pero NO POR FUERA DEL CUERPO DE LA CLASE (y en una funcion aparentemente...¬¬).
+
+
+Puedes crear un método público que acceda al método protected, o private, para que retorne (get) o introduzca (set) los valores que necesitas a la clase.
 
 De forma predeterminada, las variables siempre se asignan por valor. Esto significa que cuando se asigna una expresión a una variable, el valor completo de la expresión original se copia en la variable de destino.
 Para asignar por referencia, simplemente se antepone un signo ampersand (&) al comienzo de la variable cuyo valor se está asignando (la variable fuente). Por ejemplo, el siguiente segmento de código produce la salida 'Mi nombre es Bob' dos veces:
@@ -371,11 +543,11 @@ class Camion *extends* Coche {
 }
 
 
-*************** Parent : 
+-----------------------------------------*** Parent : 
 
 
 
-la isntruccion Parent hace un llamado a una funcion de la clase padre, d ela cual hereda la clase actual, y la ejecuta, para luego ejecutar el resto de comandos que se hallen dentro de la funcion donde fue llamada en la clase hijo. 
+la instruccion Parent hace un llamado a una funcion de la clase padre, de la cual hereda la clase actual, y la ejecuta, para luego ejecutar el resto de comandos que se hallen dentro de la funcion donde fue llamada en la clase hijo. 
 
 function arranca () {
 
@@ -388,7 +560,7 @@ function arranca () {
 en este caso primero llamo a la funcion arrancar() que está en la clase super, padre, y luego dio lugar a otras intrucciones dentro de la funcion arranca(). 
 
 
-*************** private:
+-------------------------------------  *** private:
  
 
 se puede agregar private a var $ruedas = 4;
@@ -1108,9 +1280,97 @@ Esto ahorra algo de memoria con consultas SQL grandes y puede comenzar a trabaja
 call_user_func — Llamar a una llamada de retorno dada por el primer parámetro
 
 
----------------------***
+---------------------***namespaces: 
+
+en caso de tenes en dos carpetas dos archivos php que s ellamen iguales, para poder llamarlos sin generan un conflicto (porque el compilador no sabría a cual nos referimos, se le spuede asignar a cada una un namespace: 
+
+<?php
+namespace (nombre d ela carpeta donde estamos trabajando ej"carpeta1"); 
+class MiClase {}
+
+?>
+
+<?php
+namespace (nombre de la carpeta donde estamos trabajando ej"carpeta2"); 
+class MiClase {}
+
+?>
+
+para referirirnos a una clase u otra calse, ya que s ellaman igual, aclaramos en el codigo el namespace del que proviene: 
+
+<?php
+
+use carpeta1\MiClase;
+
+require_once('carpeta1/MiClase');
+require_once('carpeta2/MiClase');
+
+$UnaClase = new MiClase;   //sabe que hacemos referencia a la clase MIClase de  la carpeta 1 gracias a la primera linea de codigo "use..."
+
+?> 
+
+y si llamaramos a las dos clases se agrega "as": 
+
+<?php
+
+use carpeta1\MiClase;
+use carpeta1\MiClase as UnaClase2; // aclarando como se llama la instancia en que va a trabajar. 
+
+require_once('carpeta1/MiClase');
+require_once('carpeta2/MiClase');
+
+$UnaClase = new MiClase;   
+$UnaClase2 = new MiClase;
+?> 
+
+------------------------------*** spl_object_hash
+
+
+This function returns a UNIQUE IDENTIFIER for the object. This id CAN BE USE as a hash key for storing objects, or for identifying an object, as long as the object is not destroyed. Once the object is destroyed, its hash may be reused for other objects.
+
+
+------------------------------*** splFixedArray
+
+
+la clase SplFixedArray proporciona la funcionalidad principal de un ARRAY. La principal diferencia entre SplFixedArray y un array normal de PHP es que la clase SplFixedArray es de longitud fija y sólo permite enteros dentro del rango de índices. La ventaja es que usa menos memoría que un array estándar.
+
+
+-----------------------------*** clase SplObjectStorage
+
+La clase SplObjectStorage proporciona una correspondencia de objetos de datos o, ignorando los datos, un conjunto de objetos. Este doble propósito puede ser útil en muchos casos relacionados con la necesidad de identificar objetos de FORMA UNICA.
+
+se ven tambien sus funciones attach y contains. 
+<?php
 
 
 
+$s = new SplObjectStorage();
+
+$o1 = new StdClass;
+$o2 = new StdClass;
+$o3 = new StdClass;
+
+$s->attach($o1);
+$s->attach($o2);
+
+var_dump($s->contains($o1));
+var_dump($s->contains($o2));
+var_dump($s->contains($o3));
+
+$s->detach($o2);
+
+var_dump($s->contains($o1));
+var_dump($s->contains($o2));
+var_dump($s->contains($o3));
+?>
+El resultado del ejemplo sería:
+
+bool(true)
+bool(true)
+bool(false)
+bool(true)
+bool(false)
+bool(false)
 
 
+------------------------------------------***
