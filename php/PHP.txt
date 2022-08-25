@@ -45,7 +45,7 @@ class Person {
 ---------------------------------° "self" 
 
 
-Es la forma en que se refiere a la clase en caso de estar usandose un static, que funciona como en java). es el equivalente    a "this->".  Es una palabra clave de PHP que representa la clase actual y se utiliza para acceder a variables de clase estáticas o variables estáticas porque estos miembros pertenecen a una clase en lugar del objeto de esa clase.
+Es la forma en que se refiere a la clase en caso de estar usandose un static, (que funciona como en java). es el equivalente    a "this->".  Es una palabra clave de PHP que representa la clase actual y se utiliza para acceder a variables de clase estáticas o variables estáticas porque estos miembros pertenecen a una clase en lugar del objeto de esa clase.
 
 <?php
 
@@ -58,20 +58,15 @@ class demo {
     }
 }
 
-// Declaring child class
+
 class Child extends demo {
     public static $bar = 20;
   
 }
   
-// Calling for demo's 
-// version of func()
-demo::func();
-  
-// Calling for child's 
-// version of func()
-Child::func();
 
+demo::func();
+Child::func();
 
 ?> 
 
@@ -79,7 +74,7 @@ Child::func();
 >>10
 
 
-Self solo se refiere a la versión en tiempo de compilación de $bar o, en términos más simples, se refiere a la versión de la clase en la que reside.
+Self SOLO se refiere a la versión en tiempo de compilación de $bar o, en términos más simples, se refiere a la VERSION DE LA CLASE EN QUE RESIDE.llama a las variables/funciones , de la cclase donde reside. 
 
 
 -------------------------------------°STATIC: 
@@ -119,7 +114,7 @@ Child::func();
 >>10
 >>20    :)
 
---------------------------------------°parent
+--------------------------------------°PARENT
 
 
 Es posible que se encuentre escribiendo código que hace referencia a variables y funciones de las clases base. Esto es particularmente cierto si su clase derivada es una refinación o especialización del código en su clase base.
@@ -136,6 +131,7 @@ class A {
 class B extends A {
     function ejemplo() {
         echo "Soy B::ejemplo() y ofrezco funcionalidad adicional.<br />\n";
+
         parent::ejemplo();
     }
 }
@@ -148,7 +144,7 @@ $b->ejemplo();
 
 
 
---------------------------Variables: Protected-public-private. 
+--------------------------Variables: Protected-public-private. alberto masutti 
 
 
 tipos : 
@@ -1282,10 +1278,13 @@ call_user_func — Llamar a una llamada de retorno dada por el primer parámetro
 
 ---------------------***namespaces: 
 
-en caso de tenes en dos carpetas dos archivos php que s ellamen iguales, para poder llamarlos sin generan un conflicto (porque el compilador no sabría a cual nos referimos, se le spuede asignar a cada una un namespace: 
+tarea: https://www.youtube.com/watch?v=J4iTMzBZIvc&ab_channel=codigofacilito
+
+
+en caso de tener en dos carpetas dos archivos php que se llamen iguales, para poder llamarlos sin generan un conflicto (porque el compilador no sabría a cual nos referimos), se le spuede asignar a cada una un namespace: 
 
 <?php
-namespace (nombre d ela carpeta donde estamos trabajando ej"carpeta1"); 
+namespace (nombre de la carpeta donde estamos trabajando ej"carpeta1"); 
 class MiClase {}
 
 ?>
@@ -1296,7 +1295,7 @@ class MiClase {}
 
 ?>
 
-para referirirnos a una clase u otra calse, ya que s ellaman igual, aclaramos en el codigo el namespace del que proviene: 
+para referirirnos a una clase u otra calse, ya que se llaman igual, aclaramos en el codigo el namespace del que proviene: 
 
 <?php
 
@@ -1305,7 +1304,7 @@ use carpeta1\MiClase;
 require_once('carpeta1/MiClase');
 require_once('carpeta2/MiClase');
 
-$UnaClase = new MiClase;   //sabe que hacemos referencia a la clase MIClase de  la carpeta 1 gracias a la primera linea de codigo "use..."
+$UnaClase = new MiClase;   //sabe que hacemos referencia a la clase MiClase de  la carpeta 1 gracias a la primera linea de codigo "use..."
 
 ?> 
 
@@ -1373,4 +1372,77 @@ bool(false)
 bool(false)
 
 
+------------------------------------------*** saber el tipo de extencion de un archivo : 
+
+
+El programa de abajo muestra si podemos usar la función pathinfo() para obtener la extensión del archivo.
+
+<?php 
+$path = "E:\work\CM\myppt.ppt";
+$extension = pathinfo($path, PATHINFO_EXTENSION);
+echo("The extension is $extension.");  
+?> 
+
+>>>The extension is ppt. 
+
+Hemos pasado el parámetro $option. La función ha devuelto una string que contiene la extensión del archivo.
+
+
+------------------------------------------***Scripts  (parte uno)
+El script es un documento que contiene instrucciones, escritas en códigos de programación. El script es un lenguaje de programación que ejecuta diversas funciones en el interior de un programa de computador.
+
+Los scripts se encargan de cumplir las siguientes funciones:
+
+Combinar componentes.
+Interactuar con el sistema operativo o con el usuario.
+Controlar un determinado programa o aplicación.
+Configurar o instalar sistemas operacionales, especialmente en los juegos, se usa para controlar las acciones de los personajes.
+Algunos lenguajes de programación, usada como script son: ActionScript, JavaScript, Lua, PHP, Python, ShellScript, Ruby, VBScript.
+
+Entre los inconvenientes de las aplicaciones dinámicas que hacen uso extensivo de una base de datos, destaca el incremento del uso de la memoria y CPU del sistema.
+
+Cuando pedimos al servidor web que nos muestre una página estática, una página HTML normal, este nos devuelve su contenido tal cual. En cambio, cuando le pedimos que nos muestre un script de PHP, el servidor llama al motor de PHP el cual se encarga de interpretar el código del script y devolver el resultado de la ejecución de la misma. Obviamente, este segundo proceso de interpretación del código, es mucho más laborioso y por lo tanto consume más recursos del sistema.
+Ante este problema, existen varias soluciones como el PHP Accelerator o el Zend Optimizer, que mediante diferentes métodos son capaces de reducir el tiempo de ejecución de los scripts o de incrementar la capacidad del servidor para mostrar páginas dinámicas. La mayoría de servidores tiene instalado alguna de estas soluciones, pero esto no significa que nosotros no debamos implementar un método alternativo para reducir el tiempo de ejecución de nuestros programas, así como reducir el consumo de recursos del sistema. Y de esto precisamente trata este artículo, te vamos a mostrar una forma sumamente sencilla de cachear tus scripts de PHP.
+
+https://programacion.net/articulo/cacheando_tus_scripts_para_maxima_optimizacion_200
+
+
+
+------------------------------------------***PHP.ini (control de  limite de recursos -scripts-) (parte Dos)
+
+(https://www.cyberciti.biz/faq/php-resources-limits/)
+
+ php.ini — el archivo de configuración principal en PHP.
+
+Cuando se ejecuta PHP, este busca el archivo php.ini en algunas ubicaciones específicas y lo carga. Este archivo te permite ajustar algunas configuraciones importantes que debes tener en cuenta. Muy a menudo necesitarás ajustar las configuraciones en el archivo php.ini. Este proporciona un par de configuraciones importantes.la ubicación varía enormemente según el entorno en el que estés ejecutando PHP.
+
+
+Aquí es donde la función phpinfo() viene al rescate. Esta te dirá en dónde se localiza el archivo php.ini y también mostrará toda la información importante en cuanto a la configuración de PHP
+
+<?php
+phpinfo();
+?>
+
+¿Cómo controlo y pongo LIMITES A LOS SCRIPTS php, como el tiempo máximo de ejecución de cada script y el tamaño del archivo de carga?
+
+PHP admite las siguientes directivas de límites de recursos en el archivo php.ini:
+
+max_execution_time : TIEMPO MAXIMO DE EJECUCION de cada script, en segundos.
+
+max_input_time : CANTIDAD MÁXIMA DE TIEMPO que CADA SECUENCIA de comandos puede dedicar a analizar los datos de la solicitud.
+
+memory_limit:  CANTIDAD MAXIMA DE MEMORIA  que puede consumir un SCRIPT.
+
+
+------------------------------------------*** hasAttribute() 
+
+
+Indica si un atributo llamado name existe como miembro del elemento.
+Devuelve true en caso de éxito o false en caso de error.
+
+tiene una version similarque es hasAttributeNS() pero en este caso debemos indcarle cual es el NaemSpace donde debemos buscar, por lo que es obvio que el primero no depnde de ello para hacer su trabajo. Trabajaria en una: non-spaced attribute.
+
+
 ------------------------------------------***
+ 
+
