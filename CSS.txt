@@ -2,6 +2,52 @@
 
 -------------Temáticas recurrentes: 
 
+                           iMAGEN DE FONDO: 
+
+body{
+    
+    background-image: url("IMAGEN.jpg");
+ 
+    background-repeat: no-repeat;
+   
+    background-size: cover;
+
+    background-position:  center;
+
+    background-attachment: fixed;
+ 
+}
+
+
+
+
+	   *** IMAGEN CUBRE TODA LA PANTALLA: (puede que pierda partes- PERO se ajusta al contenido de la pagina) 
+            >>>Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges
+           - CON SCROLL.
+
+                         background-size: cover;
+
+
+           *** redimencionar la imagen para que se vea completa. (PERO debe haber contenido)
+
+
+                         background-size: contain;
+
+
+           ***imagen SIEMPRE QUIETA EN EL FONDO: ocupando todo el espcio. 
+             >>>A background-image that will not scroll with the page (fixed):
+           - QUITA EL SCROLL
+
+                         background-attachment: fixed;
+
+         
+           ***BUSCAR EL CENTRO DE LA IMAGEN: tiene tambien top y bottom. 
+
+			background-position:  center;
+
+  
+ 
+
 
 ------------------------------------*CENTRADO:  
 
