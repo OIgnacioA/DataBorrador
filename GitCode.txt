@@ -43,10 +43,8 @@ $ git checkout (tambien sirve para esto ultimo)
    
       git checkout [Hash del commit que quieres](el numero largo del commit)
       
-      No olvidar el punto al final. También puedes descartar cambios mediante reset pasándole el numero de commits. Por ejemplo, para descartar los últimos 3 commits:
+      No olvidar el punto al final.(en github)  También puedes descartar cambios mediante reset pasándole el numero de commits. Por ejemplo, para descartar los últimos         3 commits:
 
-      para borrar: 
-      
       git reset --hard HEAD~3
       
       
