@@ -41,7 +41,11 @@ $ git checkout (tambien sirve para esto ultimo)
       
       git clone https://github.com/usuario/my-repo-name.git 
    
-      git reset --hard [Hash del commit que quieres](el numero largo del commit)
+      git checkout [Hash del commit que quieres](el numero largo del commit)
+      
+      No olvidar el punto al final. También puedes descartar cambios mediante reset pasándole el numero de commits. Por ejemplo, para descartar los últimos 3 commits:
+
+       git reset --hard HEAD~3
       
       
       ------Para ver todos los commits en tu maquina puedes usar git log:
