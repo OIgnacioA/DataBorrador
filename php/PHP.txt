@@ -1456,4 +1456,149 @@ http://php.net/manual/en/language.constants.predefined.php
 
 __FUNCTION__ will only return the function name.
  
-------------------------------------------***
+------------------------------------------***  instanceof 
+
+Use esta palabra clave para determinar si un objeto es una instancia de una clase, una subclase de una clase, o implementa una interfaz específica y realiza las operaciones correspondientes.
+
+
+<?php
+interface ExampleInterface
+{
+   public function interfaceMethod();
+ }
+ class ExampleClass implements ExampleInterface
+{
+   public function interfaceMethod()
+   {
+     return 'Hello World!';
+   }
+ }
+$exampleInstance = new ExampleClass();
+ if($exampleInstance instanceof ExampleInterface){
+   echo 'Yes, it is';
+ }else{
+   echo 'No, it is not';
+} 
+?>
+>>>>sí, es
+
+
+--------------------------------------------------***Variables de Session - sección 
+
+https://aprende-web.net/php/php11_2.php
+
+Una SECCION es el recorrido que hace un usuario por un sitio web, desde que entra hasta que sale, es decir todas las páginas que recorre el usuario durante la visita.
+
+Las variables que se definen en una página, por norma general expiran al cerrar esa página, por lo que si queremos pasarlas a otra página debemos pasarlas, según lo visto hasta ahora, por los métodos POST o GET, o también podemos utilizar cookies.
+
+A veces lo que nos interesa es tener algunas variables que se conserven durante toda la sesión, es decir durante todo el recorrido del usuario por nuestra web. Es decir crear variables de sesión. Tal puede ser el caso de webs o partes de la web restringidas a ciertos usuarios, o el típico caso de un carrito de la compra al que se le van añadiendo objetos en las distintas páginas.
+
+
+
+
+--------------------------------------------------***SAFE_MODE
+
+http://www.arumeinformatica.es/blog/directivas-php-safe_mode/#:~:text=Con%20la%20directiva%20safe_mode%20activada,un%20servidor%20compartido%2C%20generalmente%20es
+
+Dice la documentación oficial de PHP que la directiva safe_mode es un intento de resolver un problema de seguridad en servidores compartidos. Y aunque sí mejora la seguridad no resulta una práctica infalible, ya que lleva a muchos proveedores de Internet (ISP) y programadores a pensar que están a salvo de amenazas de seguridad. Esto no debe ser del todo cierto cuando la comunidad PHP la ha declarado obsoleta en la versión 5, y no estará presente en la versión 6.
+
+¿Cómo aumenta safe_mode la seguridad?
+Con la directiva safe_mode activada PHP comprueba que el usuario actual es el propietario (UID) de los ficheros y directorios a los que desea acceder cada script, esto es verdaderamente útil cuando trabajamos con servidores compartidos, puesto que si un script sube un archivo a un servidor compartido, generalmente es guardado con el usuario web por defecto ("apache", "httpd", ...), por lo que sin la comprobación de usuario cualquier aplicación del servidor compartido podría acceder a nuestro fichero.
+
+--------------------------------------------------*** Variables Globales: 
+
+
+Las variables súper globales son variables integradas que siempre están disponibles en todos los ámbitos.
+
+
+---------***SERVER  
+
+$_SERVER es una variable súper global de PHP que contiene información sobre encabezados, rutas y ubicaciones de secuencias de comandos.
+
+<?php
+echo $_SERVER['PHP_SELF'];
+echo "<br>";
+echo $_SERVER['SERVER_NAME'];
+echo "<br>";
+echo $_SERVER['HTTP_HOST'];
+echo "<br>";
+echo $_SERVER['HTTP_REFERER'];
+echo "<br>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br>";
+echo $_SERVER['SCRIPT_NAME'];
+?>
+
+
+-----------**+ $_ENV 
+
+Una variable tipo array asociativo de variables pasadas al script actual a través del método del entorno.
+
+Estas variables son importadas en el espacio de nombres global de PHP desde el entorno bajo el que está siendo ejecutado el intérprete PHP. (¡?)
+
+
+---------***$_FILES
+
+Un array asociativo de elementos subidos al script en curso a través del método POST. 
+
+
+
+$_GET   
+
+
+Existen dos métodos con los que el navegador puede enviar información al servidor:
+
+Método HTTP GET. Información se envía de forma visible
+El método GET envía la información codificada del usuario en el header del HTTP request, directamente en la URL. La página web y la información codificada se separan por un interrogante ?:
+No se pueden enviar datos binarios (archivos, imágenes...).
+En PHP los datos se administran con el array asociativo $_GET.
+
+Método HTTP POST. Información se envía de forma no visible
+
+ y 
+---------***$_POST    
+
+
+Con el método HTTP POST también se codifica la información, pero ésta se envía a través del body del HTTP Request, por lo que no aparece en la URL.
+
+El método POST no tiene límite de cantidad de información a enviar.
+La información proporcionada no es visible, por lo que se puede enviar información sensible.
+Se puede usar para enviar texto normal así como datos binarios (archivos, imágenes...).
+PHP proporciona el array asociativo $_POST para acceder a la información enviada.
+
+
+
+-------------------------------------------------*** como prevenir inyecciones : (basico) 
+
+
+https://stackoverflow.com/questions/8263371/how-can-prepared-statements-protect-from-sql-injection-attacks
+
+mientras que este código
+
+$spoiled_data = "1; DROP TABLE users;"
+$query        = "SELECT * FROM users where id=$spoiled_data";
+producirá una secuencia maliciosa
+
+SELECT * FROM users where id=1; DROP TABLE users;
+Funciona porque estamos agregando los datos directamente al cuerpo del programa y se convierte en parte del programa, por lo que los datos pueden alterar el programa y, según los datos pasados, tendremos una salida regular o una tabla userseliminada.
+
+Mientras que en el caso de sentencias preparadas no alteramos nuestro programa, permanece intacto
+Ese es el punto.
+
+Primero estamos enviando un programa al servidor.
+
+$db->prepare("SELECT * FROM users where id=?");
+donde los datos se sustituyen por alguna variable llamada parámetro o marcador de posición.
+
+
+
+-------------------------------------***.
+
+
+
+
+
+
+
+
+
