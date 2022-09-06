@@ -2,7 +2,9 @@
 ------------------------PHP:
 direcciones: 
 
-----------------------------------------***self:static: parent::
+---------------------------------------------***self:static: parent::
+
+
 
 https://www.youtube.com/watch?v=L9jLxuLAAIY&ab_channel=DaniKrossing
 https://www.geeksforgeeks.org/new-self-vs-new-static-in-php/
@@ -79,7 +81,8 @@ Self SOLO se refiere a la versión en tiempo de compilación de $bar o, en térm
 
 -------------------------------------°STATIC: 
 
-la palabra clave 'estática' cubre la limitación contenida por la palabra clave 'self' al hacer cumplir el concepto de enlace estático tardío. En este escenario, static le pide al compilador que imprima la versión de la función para la clase que la solicitó.
+la palabra clave 'static' cubre la limitación contenida por la palabra clave 'self' al hacer cumplir el concepto de enlace estático tardío. 
+En este escenario, static le pide al compilador que imprima la versión de la función para la clase que la solicitó.
 
 
 
@@ -1443,6 +1446,14 @@ Devuelve true en caso de éxito o false en caso de error.
 tiene una version similarque es hasAttributeNS() pero en este caso debemos indcarle cual es el NaemSpace donde debemos buscar, por lo que es obvio que el primero no depnde de ello para hacer su trabajo. Trabajaria en una: non-spaced attribute.
 
 
-------------------------------------------***
- 
+------------------------------------------*** ___METHOD__ / __FUNCTION__:
 
+
+
+__METHOD__ returns the name of the current class and method you are in when calling that constant.
+
+http://php.net/manual/en/language.constants.predefined.php
+
+__FUNCTION__ will only return the function name.
+ 
+------------------------------------------***
