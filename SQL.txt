@@ -33,8 +33,9 @@
 --- INSERTAR COLUMNA 
 
 
-	  ALTER TABLE PERROS ADD 'RAZA' VARCHAR (80)
-
+	alter table alumno
+        add column pasword varchar (80)
+        default NULL;
 
 
 --- CAMBIAR VALOR DE TODA UNA COLUMNA

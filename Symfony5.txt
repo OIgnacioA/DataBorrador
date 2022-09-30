@@ -1,3 +1,18 @@
+---------------------------***Instalacion
+
+
+composer create-project symfony/website-skeleton curso-symfony5
+
+composer create-project symfony/website-skeleton curso-symfony5 ^5.*
+
+
+-----------------------------------** CREAR BBDD
+
+https://www.youtube.com/watch?v=eGSXo2YOcLs&t=132s&ab_channel=dfbastidas
+
+
+
+
 
 --------------------------------- importar clases : 
 
@@ -36,12 +51,13 @@ https://www.youtube.com/watch?v=Fw6ftTglL2A&ab_channel=MundoITI
 Con estas modificaciones realizadas volvamos a generar nuestras tablas, pero como ya hemos creado ambas tablas, ejecutemos primeramente para borrarlas el siguiente comando:
 
 C:\wamp\www\Symfony>php app\console doctrine:schema:drop --force
+
 Para luego volver a crearlas usando el comando ya conocido:
 
 C:\wamp\www\Symfony>php app\console doctrine:schema:create
 
 
---------------------------CARDINALIDAD EN LA BASE DE DATOS: 
+--------------------------***CARDINALIDAD EN LA BASE DE DATOS: 
 
 uno a muchos
  /**
@@ -97,8 +113,8 @@ php bin/console doctrine:schema:update --force
 recordar refrescar la pagina en el phpmyadmin!!!
 
 
----------------------------
-agregar propiedades a una entidad: 
+--------------------------- *****agregar propiedades a una entidad: 
+
 
 
 PS C:\xampp\htdocs\symfony prueba> php bin/console make:entity   
