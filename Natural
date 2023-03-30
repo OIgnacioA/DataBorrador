@@ -16,7 +16,9 @@ FIND -Archivo- WITH -criterio/palabra- EQ - nombrede  valor que se está buscand
   WITH es una palabra clave que indica que se va a especificar una condición para la búsqueda.
   EQ es una abreviatura de "equals" y se utiliza para indicar que se está buscando un registro donde el valor del campo  es igual a otro valor.
   
-  
+  RESET 
+
+  se usa para restablecer los valores de los campos en el registro actual de OBJETOS a cero o en blanco antes de realizar la actualización.
   
   Array: 
 
