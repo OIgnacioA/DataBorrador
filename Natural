@@ -1,0 +1,53 @@
+Mode : se utiliza para asignar un valor a una variable.
+STORE: se usa para guardar los datos de la variable en la ubicación de almacenamiento permanente definida en la base de datos.
+
+READ WORK FILE: 
+                se utiliza para leer registros de un archivo de trabajo en la memoria del programa y procesarlos en la lógica de programación.
+Primero se define una estructura de datos que corresponde a los campos del archivo, y luego se utiliza la sentencia READ WORK para leer los registros de ese archivo
+y acceder a los datos de los campos en la lógica del programa.Es similar a la lectura de un archivo en otros lenguajes de programación, pero con la particularidad de 
+que los archivos de trabajo en Natural se cargan en la memoria y no se accede directamente a un archivo en el disco.
+
+
+
+FIND: es el comando que se utiliza para buscar un registro en un archivo en Natural.
+
+FIND -Archivo- WITH -criterio/palabra- EQ - nombrede  valor que se está buscando-
+
+  WITH es una palabra clave que indica que se va a especificar una condición para la búsqueda.
+  EQ es una abreviatura de "equals" y se utiliza para indicar que se está buscando un registro donde el valor del campo  es igual a otro valor.
+  
+  
+  
+  Array: 
+
+1 Mes (A3 / 1:12) INIT <'ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'>
+
+
+
+REDEFINE : 
+
+1 REDEFINE FECHA-INGRESO
+ 2FECHA-N (D)
+
+Es común que en sistemas antiguos o legados, las fechas se almacenen en formato numérico, generalmente como un número entero con la estructura YYYYMMDD.
+Esto puede deberse a limitaciones de hardware o software de la época en que se desarrolló el sistema.
+
+En este caso, es posible que la fecha de ingreso se haya almacenado originalmente como un número en formato AAAAMMDD, 
+y posteriormente se haya redefinido como un campo de tipo D (fecha) para facilitar su uso en el programa. En resumen, la redefinición de un campo numérico
+como un campo de fecha puede ser una técnica utilizada para trabajar con datos heredados almacenados en formatos numéricos, y simplificar su uso en el programa.
+
+LABEL: 
+
+Una etiqueta en Natural es una marca que se coloca en un punto específico del programa, con el objetivo de poder referirse a ese punto en otro lugar del programa,
+por ejemplo, en una instrucción de salto. En Natural, las etiquetas se identifican por la palabra "LABEL" seguida de un nombre, que puede ser elegido por
+el programador y debe cumplir ciertas reglas de sintaxis. Una vez definida la etiqueta, se puede usar en instrucciones como FIND o UPDATE para especificar 
+el punto donde se debe realizar una acción determinada.
+
+
+
+
+
+No funcionan: 
+DECIDE ON EVERY CONDITION: structura de control de flujo que permite evaluar varias condiciones y ejecutar una acción dependiendo de cuál sea verdadera.
+    utiliza:  WHEN- WHEN ANY- WHEN NONE - END-DECIDE. 
+
