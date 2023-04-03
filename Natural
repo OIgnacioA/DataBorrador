@@ -45,8 +45,16 @@ por ejemplo, en una instrucción de salto. En Natural, las etiquetas se identifi
 el programador y debe cumplir ciertas reglas de sintaxis. Una vez definida la etiqueta, se puede usar en instrucciones como FIND o UPDATE para especificar 
 el punto donde se debe realizar una acción determinada.
 
+"DISPLAY" es una instrucción para mostrar el valor de una variable en la pantalla
+
+"ESCAPE BOTTOM" significa salir del bucle actual y continuar con la siguiente instrucción después del bucle
+
+El GET TRANSACTION DATA es una instrucción en el lenguaje Natural que se utiliza para obtener los datos de una transacción en ejecución. Esto significa 
+que puede recuperar información de los campos de entrada de la transacción actual, como también de los campos que se hayan modificado a lo largo de la
+transacción. Esta información puede ser utilizada por el programa para realizar diversas operaciones, como validaciones, cálculos, entre otros.
 
 
+PERFORM se utiliza para llamar a un módulo o subprograma que se encuentra en otro lugar del programa o en otro programa. Es similar a una función o subrutina en otros lenguajes de programación.
 
 
 No funcionan: 
