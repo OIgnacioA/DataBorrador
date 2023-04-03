@@ -57,6 +57,18 @@ transacción. Esta información puede ser utilizada por el programa para realiza
 PERFORM se utiliza para llamar a un módulo o subprograma que se encuentra en otro lugar del programa o en otro programa. Es similar a una función o subrutina en otros lenguajes de programación.
 
 
+
+ READ WORK FILE 1 ONCE ENTRADA hace referencia al archivo lógico 1 que fue previamente definido en el programa, y "ENTRADA" es la variable donde se almacenará el
+ registro leído.
+
+El archivo lógico es definido con la sentencia DEFINE WORK FILE 1 'nombre_del_archivo', donde "1" es el número del archivo lógico y "nombre_del_archivo" es el
+nombre del archivo físico o el nombre de la variable donde se almacenará la información.
+
+Es importante que se defina el archivo lógico antes de utilizarlo en el programa, ya que de lo contrario el programa no sabrá dónde buscar la información del
+archivo físico.
+
+
+
 No funcionan: 
 DECIDE ON EVERY CONDITION: structura de control de flujo que permite evaluar varias condiciones y ejecutar una acción dependiendo de cuál sea verdadera.
     utiliza:  WHEN- WHEN ANY- WHEN NONE - END-DECIDE. 
