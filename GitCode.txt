@@ -93,3 +93,22 @@ try this commend in your git bash, then you can solve your problem.
 
 
 ------------------------------------------------------------
+
+Para borrar los últimos 3 commits que ya has enviado a GitHub, puedes seguir estos pasos:
+
+Abre la consola o terminal y navega hasta el directorio raíz de tu repositorio local.
+
+Asegúrate de estar en la rama correcta donde se encuentran los commits que deseas borrar.
+
+Utiliza el comando git log para obtener una lista de los últimos commits en el historial. Toma nota de los identificadores de los 3 commits más recientes que deseas borrar.
+
+Utiliza el comando git reset seguido de los identificadores de los 3 commits que deseas borrar para retroceder en el historial de commits. Por ejemplo, si los identificadores de los 3 commits que deseas borrar son "abc123", "def456" y "ghi789", utiliza el siguiente comando:
+
+git reset --hard HEAD~3
+
+Una vez que hayas utilizado este comando, los últimos 3 commits se habrán eliminado del historial de commits y los cambios realizados en ellos también se eliminarán del área de trabajo y del directorio de trabajo.
+
+Finalmente, utiliza el comando git push --force para actualizar el repositorio remoto y eliminar los commits eliminados del historial de commits remoto. Ten en cuenta que este comando fuerza la actualización del historial de commits remoto, por lo que otros colaboradores del repositorio podrían tener problemas de integración si ya han descargado los commits eliminados. Si estás trabajando solo en el proyecto, esto no debería ser un problema.
+
+Es importante tener en cuenta que el uso de git reset --hard elimina los cambios realizados en los commits que se eliminan, por lo que deberás asegurarte de haber guardado cualquier cambio importante antes de utilizar este comando.
+
