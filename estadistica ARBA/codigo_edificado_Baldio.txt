@@ -1,0 +1,839 @@
+package Edificado;
+
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+
+
+public class Edificado {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        ProcesoPrincipal proc = new ProcesoPrincipal() ;  
+		
+		proc.LeerBase();
+
+	}
+
+}
+
+/*
+ * 
+ * Acomodar el numero de filas y columnas acorde a lo requerido. 
+ * Acomodar el numero de rangos pedidos de ese mismo modo. 
+ * Elegir Rangos!!
+ * 
+
+ * 
+ * */
+
+
+
+class ProcesoPrincipal{
+	
+	   //######################################Comandos: *********************************************	
+	
+	
+	//DIRECCIONES: 
+
+
+    //public String PathOrigen = "C:\\Users\\oscar.avendano\\Desktop\\baldio\\PRODU.BALDIO.MO04.C12.A23.txt"; //baldio
+
+     public String PathOrigen = "C:\\Users\\oscar.avendano\\Desktop\\edificado\\PRODU.EDI.MO04.C2.A23.txt";  //Edificado
+    
+    // public String PathOrigen = "C:\\Users\\oscar.avendano\\Desktop\\baldio\\resultado\\corregido.txt";// prueba del archivo corregido
+     		
+    /* @"\\Arba.gov.ar\de\GGTI\Gerencia de Produccion\Mantenimiento\Departamento de Emisiones\ESTADISTICAS-MORAS\Nueva carpeta\EDIF.MO04.C12.txt";*/
+
+    public String PathDestino = "C:\\Users\\oscar.avendano\\Desktop\\baldio\\resultado";
+    /*"C:\\Users\\oscar.avendano\\Desktop\\morac12.txt";*/
+
+    
+  //----------FILAS Y COLUMNAS:
+ 
+    int Filas= 6; 
+    int Columnas= 6;
+    
+    
+  //-------------------RANGOS: 
+
+    /* baldio: 
+     
+    
+    long Uno = 944102;
+    long Dos = 1774750;
+    long Tres = 4224967;
+    long Cuatro = 8087826;
+    long mas = 0; */
+	
+    
+  //-Edificado:
+    
+    long Uno = 1998231;
+    long Dos = 2760980;
+    long Tres = 5709375;
+    long Cuatro = 12180000;
+    long Cinco = 38062500;
+    long mas = 0;
+     
+    
+//---------DESIGNACION DE RANGO:
+    
+public void decideRango(long ValuacionN, int t_envio)
+    {
+       
+ 
+        if (ValuacionN <= Uno) { Rango = 0; }
+        else if ((ValuacionN > Uno) && (ValuacionN <= Dos)) { Rango = 1; }
+        else if ((ValuacionN > Dos) && (ValuacionN <= Tres)) { Rango = 2; }
+        else if ((ValuacionN > Tres) && (ValuacionN <= Cuatro)) { Rango = 3; }
+        else if ((ValuacionN > Cuatro) && (ValuacionN <= Cinco)) { Rango = 4; } //&& (ValuacionN <= Cinco))  cambiar en caso d emenor cantidad d efilas en el excel. 
+        else if (ValuacionN > Cinco) { Rango = 5; }
+       
+            
+            
+        calculoTE(Rango, t_envio);
+    }
+
+  
+   //#####################################################**********************************************************************************************************
+    
+
+
+
+
+
+    public void LeerBase()
+    {
+        BufferedReader file = null; 
+       
+        
+        try{          
+            file = new BufferedReader (new FileReader(PathOrigen));
+            line = file.readLine();
+        }catch(Exception e) {System.out.println("Error de lectura del fichero");}
+
+
+
+                while (line != null)
+                {
+                    if (line != "")
+                    {
+
+
+                        Calificador   = line.substring(0, 12).toLowerCase().replaceAll(" ","");
+                        Objeto        = line.substring(12, 23).toLowerCase().replaceAll(" ","");  
+                        Planta        = line.substring(23, 24).toLowerCase().replaceAll(" ","");
+                        TipoEnvio     = line.substring(25, 26).toLowerCase().replaceAll(" ","");
+                        Importe       = line.substring(31, 42).toLowerCase().replaceAll(" ","");
+                        ImporteCntv   = line.substring(31, 44).toLowerCase().replaceAll(" ","");
+                        Valuacion     = line.substring(44, 57).toLowerCase().replaceAll(" ",""); 
+                        ValuacionCntv = line.substring(44, 59).toLowerCase().replaceAll(" ",""); //solo P Lineanueva
+                       
+                        ValuacionNum  = Integer.valueOf(Valuacion);// (es el que da RANGO)
+                        MontoCntv     = Integer.valueOf(ImporteCntv);//Valor completo.(13) (es el que se GUARDA y SUMA)
+                        TipoINT         = Integer.valueOf(TipoEnvio);
+                        
+                        
+/*------------     comprueba x consola si estan bn los datos     ---------*/
+                        
+                        lineanueva = "Calificador: " + Calificador + ",Objeto: " +
+                            Objeto + ",Planta: " + Planta + ",TipoEnvio: " + TipoEnvio +
+                            ",Importe: " + ImporteCntv + ",  Valuacion: " + ValuacionCntv;
+
+                        					//System.out.println(lineanueva);
+
+                                          /*-----------------------------*/
+                        
+                        
+                        
+                        //lectura(TipoEnvio);  // cantidad total de cada tipo de Envio 
+                        					
+                        					
+
+/* -----------------checkear envios diferentes en cuotas conjuntas.  
+                        
+                        contador += 1;
+                        if (contador == 2)
+                        {
+                            Comparador(TipoEnvio, EnvioAux);
+
+                            contador = 0;
+                            EnvioAux = "";
+
+                        }
+                        else { EnvioAux = TipoEnvio; }
+
+                        LineAUX = line;//*/
+                        
+                                     
+                        
+/*-------------------------------  Comienzo de Procesos: ----------------------------------*/
+                        
+                        
+                      
+                         
+                        /*--------------- cuotas simples------------------*/
+                          
+                        
+                        
+                            decideRango(ValuacionNum, TipoINT); 
+                        
+                        
+                        
+                        
+                        /*--------------- *cuota conjunta------------------ Suma las valuaciones
+                        
+                                    
+                        contador += 1;
+                        if (contador == 2)
+                        {
+                        	MontoCntvAux += MontoCntv;
+                        	
+                        	MontoCntv = MontoCntvAux; 
+                        	
+                            contador = 0;
+                            decideRango(ValuacionNum, TipoINT);
+                        }
+                        else{MontoCntvAux = MontoCntv;}
+
+                     
+                
+                    */  
+                        
+                        
+                        /* //EXTRA: COMPRUEBA VALOR: 
+                        ///
+                        if (((TipoINT == 1) || (TipoINT == 4) || (TipoINT == 5) || (TipoINT == 7)) && (TipoINT == 0)) //
+                        {
+                            montos1 += MontoCntv;
+                            cantidadd += 1;
+                        } */
+
+                    }
+                    try {
+                        line = file.readLine();
+                    } catch (Exception e) {
+                        System.out.println("Error de lectura del fichero");
+                    }
+
+                }
+
+                
+
+
+
+                //--------------------------------SALIDAS----------------------------------//:
+
+
+              //  System.out.println("monto domicilio Rango primero = :  " + montos1 + ", y cantidad: " + (cantidadd));
+               ResultadoPantallaExcel();
+                //ResultadoPantalla();
+
+                
+                //Comprobacion();
+                //ImpresionCantidadTiposEnvios();
+                // diferentesEnviosCantidad();
+                // unaDeCadaUna();
+                // System.out.println("total " + cont * 2);
+                // System.out.println("Otras formas : " + contameOtras);
+               // System.out.println("De Diferentes envios en C1 y C2: " + cont_Dif);
+                
+
+              //-------------------------------------------
+
+    }
+
+    // -----------------------------    IMPRESIONES POR CONSOLA.   ------------------------------------- //
+
+
+    public void ResultadoPantallaExcel()
+    {
+    	//System.out.println("contador de iguales: " + cont + " x2 = " + cont * 2);
+
+        for (int i = 0; i < Filas; i++)
+        {
+
+        	System.out.print(arrayRango[i][0]);
+        	System.out.print(",");
+        	System.out.print(arrayRango[i][1]);
+        	System.out.print(",");
+        	System.out.print(arrayRango[i][2]);
+        	System.out.print(",");
+        	System.out.print(arrayRango[i][3]);
+        	System.out.print(",");
+        	System.out.print(arrayRango[i][4]);
+        	System.out.print(",");
+        	System.out.print(arrayRango[i][5]);
+        	System.out.println("");
+        }
+
+       // System.out.println( "---cont2; " + cont2);
+        System.out.println("------------------------------------------ ");
+        System.out.println(" ");
+
+    }//IMPRIME: CON FORMATO PARA EXCEL. 
+
+    
+    public void ResultadoPantalla()
+    {
+        long[] rangs = { Uno, Dos, Tres, Cuatro, Cinco};
+
+        System.out.println("contador de iguales: " + cont + " x2 = " + cont * 2);
+
+        for (int i = 0; i < Filas; i++)
+        {
+
+
+        	System.out.println("Rango Maximo ------------ " + rangs[i] + ", ---------: ");
+
+        	System.out.println(" ");
+        	System.out.println("Con Domicilio:");
+        	System.out.print("Cantidad: ");
+        	System.out.println(arrayRango[i][0]);
+        	System.out.print("Monto: ");
+        	System.out.println(arrayRango[i][1]);
+
+        	System.out.println(" ");
+        	System.out.println("Con DFE:");
+        	System.out.print("Cantidad: ");
+        	System.out.println(arrayRango[i][2]);
+        	System.out.print("Monto: ");
+        	System.out.println(arrayRango[i][3]);
+
+        	System.out.println(" ");
+        	System.out.println("Con boleta (Mail):");
+        	System.out.print("Cantidad: ");
+        	System.out.println(arrayRango[i][4]);
+        	System.out.print("Monto: ");
+        	System.out.println(arrayRango[i][5]);
+
+
+        	System.out.println("  ");
+        	System.out.println("  ");
+
+
+
+        }
+
+    }//IMPRIME: resultado principal
+
+    public void ImpresionCantidadTiposEnvios()
+    {
+
+    	System.out.println("Contador tipo 1 :" + cont7);
+    	System.out.println("Contador tipo 2 :" + cont8);
+    	System.out.println("Contador tipo 3 :" + cont9);
+    	System.out.println("Contador tipo 4 :" + cont10);
+    	System.out.println("Contador tipo 5 :" + cont11);
+    	System.out.println("Contador tipo 6 :" + cont12);
+    	System.out.println("Contador tipo 7 :" + cont13);
+    	System.out.println("Contador tipo 8 :" + cont14);
+    	System.out.println("Contador tipo 9 :" + cont15);
+    	System.out.println("   ");
+    	System.out.println("Contador total :" + cont16);
+
+        long zuma = cont7 + cont10 + cont11 + cont13;
+
+        System.out.println("zuma :" + zuma);
+
+    } // IMPRIME: la cantidad de cada envio
+
+    
+    
+    
+    ////---base de trabajo: 
+    
+
+
+
+
+    public void calculoTE(int Rango, int tEnvio)
+    {
+    	
+    	
+   
+    	
+    	/*System.out.println ("vuelta: = " + cont2);
+    	System.out.println ("Objeto: " + Objeto);
+    	System.out.println ("envio: " + tEnvio);
+    	System.out.println ("------------------" );
+    	System.out.println (" " );
+    	cont2= cont2 + 1;*/
+    	
+    	
+        switch (tEnvio)
+        {
+            case 1:  // Domicilio
+                {
+
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][0] += 1;
+                    }
+                    else { cont += 1; }
+
+
+                    arrayRango[Rango][1] += MontoCntv;
+                    break;
+
+                }
+            case 2: // DFE
+                {
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][2] += 1;
+                    }
+                    else { cont += 1; }
+
+                    arrayRango[Rango][3] += MontoCntv;
+                    break;
+
+                }
+            case 3: //Boleta
+                {
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][4] += 1;
+                    }
+                    else { cont += 1; }
+
+                    arrayRango[Rango][5] += MontoCntv;
+
+                    break;
+
+                }
+            case 4: //Domicilio y DFE
+                {
+
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][0] += 1;
+                        arrayRango[Rango][2] += 1;
+                    }
+                    else { cont += 1; }
+
+                    arrayRango[Rango][1] += MontoCntv;
+                    arrayRango[Rango][3] += MontoCntv;
+                    break;
+                }
+            case 5://Domicilio y Boleta
+                {
+
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][0] += 1;
+                        arrayRango[Rango][4] += 1;
+                    }
+                    else { cont += 1; }
+
+                    arrayRango[Rango][1] += MontoCntv;
+                    arrayRango[Rango][5] += MontoCntv;
+                    break;
+
+                }
+            case 6: //DFE y Boleta
+                {
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][2] += 1;
+                        arrayRango[Rango][4] += 1;
+                    }
+                    else { cont += 1; }
+
+                    arrayRango[Rango][3] += MontoCntv;
+                    arrayRango[Rango][5] += MontoCntv;
+                    break;
+
+                }
+            case 7: // Domicilio - DFE - Boleta
+                {
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                        arrayRango[Rango][0] += 1;
+                        arrayRango[Rango][2] += 1;
+                        arrayRango[Rango][4] += 1;
+                    }
+                    else { cont += 1; }
+
+
+                    arrayRango[Rango][1] += MontoCntv;
+                    arrayRango[Rango][3] += MontoCntv;
+                    arrayRango[Rango][5] += MontoCntv;
+                    break;
+
+                }
+            case 8:
+                {
+
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                    }
+                    else { cont += 1; }
+                    break;
+
+                }
+            case 9:
+                {
+
+                    if (!ObjetoAUX.equals(Objeto))
+                    {
+                    }
+                    else { cont += 1; }
+                    break;
+
+                }
+            default:
+                {
+                    break;
+                }
+
+
+        }
+
+        ObjetoAUX = Objeto;
+
+      /*  if (Flag == false)
+        {
+            ObjetoAUXcero = Objeto;
+            Flag = true;
+        }
+        else
+        {
+            ObjetoAUX1 = Objeto;
+            
+        }*/
+        
+        
+        
+        
+        
+    }//Principal
+
+
+///------ fin base de trabajo: 
+
+
+    
+    
+    public void Comparador(String TipoEnvio, String ContAux) //Busca Diferentes
+    {
+
+        //System.out.println("Objeto: -----+++++++> " + TipoEnvio);
+        // System.out.println("Objeto: -----+++++++> " + ContAux);
+        /*System.out.println("Objeto: -----> " + Objeto);*/
+
+        if (!TipoEnvio.equals(EnvioAux))  //prmero comapra iguales/diferentes.
+        {
+        	System.out.println("Objeto: -----> " + Objeto);
+
+            cont_Dif += 1;
+
+        }
+        else
+        {
+            /*
+            EscribirBase(LineAUX);
+            EscribirBase(line);
+            */
+
+        }
+
+
+    }
+
+    public void lectura(String TipoEnvio)// cantidad por tipo de envio
+    {
+
+
+
+        cont16 += 1;
+
+        if (TipoEnvio == "1")
+        { //|| (TipoEnvio == "4") || (TipoEnvio == "5") || (TipoEnvio == "7"))
+
+            cont7 += 1;
+            //Console.WriteLine("Objeto-->"+Objeto);
+        }
+
+        if (TipoEnvio == "2")
+        {
+
+            cont8 += 1;
+
+        }
+        if (TipoEnvio == "3")
+        {
+
+            cont9 += 1;
+
+        }
+        if (TipoEnvio == "4")
+        {
+
+            cont10 += 1;
+
+        }
+        if (TipoEnvio == "5")
+        {
+
+            cont11 += 1;
+
+        }
+        if (TipoEnvio == "6")
+        {
+
+            cont12 += 1;
+
+        }
+        if (TipoEnvio == "7")
+        {
+            cont13 += 1;
+
+        }
+        if (TipoEnvio == "8")
+        {
+
+            cont14 += 1;
+
+        }
+
+        if (TipoEnvio == "9")
+        {
+
+            cont15 += 1;
+
+        }
+
+    }
+
+    public void Comprobacion() // suma de valor de columnas. 
+    {
+
+        long Total = 0;
+
+        for (int i = 0; i < 6; i += 2) //columnas:  (i= 0 = cantidd // i = 1 = monto) 
+        {
+
+            for (int j = 0; j < 4; j++)
+            { //años
+
+
+                Total += arrayRango[j][i];
+                //System.out.println("---->"+ array201[j, i]);
+
+            }
+            System.out.println("Suma de Columna nº : " + i + " = " + Total);
+
+            Total = 0;
+        }
+
+    }
+
+
+
+  
+    public void unaDeCadaUna()
+    {
+
+
+    	System.out.println(EjObjeto[1] + ": cuota 1 : DFE y Boleta ,y cuota 2 : DFE ");
+    	System.out.println(EjObjeto[2] + ": cuota 1 : ninguno ,y cuota 2 : Boleta ");
+    	System.out.println(EjObjeto[3] + ": cuota 1 : Boleta ,y cuota 2 : Boleta ");
+    	System.out.println(EjObjeto[4] + ": cuota 1 : Domicilio y DFE ,y cuota 2 : Domicilio - DFE - Boleta ");
+    	System.out.println(EjObjeto[5] + ": cuota 1 : Domicilio ,y cuota 2 : Domicilio y Boleta  ");
+    	System.out.println(EjObjeto[6] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : Domicilio  ");
+    	System.out.println(EjObjeto[7] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : Domicilio y DFE  ");
+    	System.out.println(EjObjeto[8] + ": cuota 1 : DFE ,y cuota 2 : DFE y Boleta  ");
+    	System.out.println(EjObjeto[9] + ": cuota 1 : Domicilio y DFE ,y cuota 2 : DFE  ");
+    	System.out.println(EjObjeto[10] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : Domicilio - DFE - Boleta");
+    	System.out.println(EjObjeto[11] + ": cuota 1 : Domicilio ,y cuota 2 : ninguno  = ");
+    	System.out.println(EjObjeto[12] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : TEL  ");
+    	System.out.println(EjObjeto[13] + ": cuota 1 : Domicilio ,y cuota 2 : Domicilio y DFE  ");
+    	System.out.println(EjObjeto[14] + ": cuota 1 : Domicilio y DFE ,y cuota 2 : Domicilio  ");
+    	System.out.println(EjObjeto[15] + ": cuota 1 : Domicilio ,y cuota 2 : Domicilio - DFE - Boleta ");
+    	System.out.println(EjObjeto[16] + ": cuota 1 : Boleta ,y cuota 2 : DFE y Boleta  ");
+    	System.out.println(EjObjeto[17] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : DFE  ");
+    	System.out.println(EjObjeto[18] + ": cuota 1 : TEL ,y cuota 2 : Domicilio  ");
+    	System.out.println(EjObjeto[19] + ": cuota 1 : TEL ,y cuota 2 : DFE y Boleta ");
+    	System.out.println(EjObjeto[20] + ": cuota 1 : ninguno ,y cuota 2 : DFE  ");
+    	System.out.println(EjObjeto[21] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : Domicilio y DFE ");
+    	System.out.println(EjObjeto[22] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : ninguno ");
+    	System.out.println(EjObjeto[23] + ": cuota 1 : Boleta ,y cuota 2 : DFE  ");
+    	System.out.println(EjObjeto[24] + ": cuota 1 : TEL ,y cuota 2 : DFE  ");
+    	System.out.println(EjObjeto[25] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : ninguno ");
+    	System.out.println(EjObjeto[26] + ": cuota 1 : ninguno ,y cuota 2 : Domicilio ");
+    	System.out.println(EjObjeto[27] + ": cuota 1 : DFE y Boleta ,y cuota 2 : Domicilio y DFE ");
+    	System.out.println(EjObjeto[28] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : TEL  ");
+    	System.out.println(EjObjeto[29] + ": cuota 1 : DFE y Boleta ,y cuota 2 : Domicilio - DFE - Boleta ");
+    	System.out.println(EjObjeto[30] + ": cuota 1 : Boleta ,y cuota 2 : Domicilio y DFE  ");
+    	System.out.println(EjObjeto[31] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : Domicilio");
+    	System.out.println(EjObjeto[32] + ": cuota 1 : TEL ,y cuota 2 : Boleta  ");
+    	System.out.println(EjObjeto[33] + ": cuota 1 : Boleta ,y cuota 2 : ninguno ");
+
+
+
+
+
+    }// IMPRIME: un objto de cada uno de los diferentes
+
+    public void diferentesEnviosCantidad()
+    {
+
+
+    	System.out.println(co[1] + ": cuota 1 : DFE y Boleta ,y cuota 2 : DFE ");
+    	System.out.println(co[2] + ": cuota 1 : ninguno ,y cuota 2 : Boleta ");
+    	System.out.println(co[3] + ": cuota 1 : Boleta ,y cuota 2 : Boleta ");
+    	System.out.println(co[4] + ": cuota 1 : Domicilio y DFE ,y cuota 2 : Domicilio - DFE - Boleta ");
+    	System.out.println(co[5] + ": cuota 1 : Domicilio ,y cuota 2 : Domicilio y Boleta  ");
+    	System.out.println(co[6] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : Domicilio  ");
+    	System.out.println(co[7] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : Domicilio y DFE  ");
+    	System.out.println(co[8] + ": cuota 1 : DFE ,y cuota 2 : DFE y Boleta  ");
+    	System.out.println(co[9] + ": cuota 1 : Domicilio y DFE ,y cuota 2 : DFE  ");
+    	System.out.println(co[10] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : Domicilio - DFE - Boleta");
+    	System.out.println(co[11] + ": cuota 1 : Domicilio ,y cuota 2 : ninguno  = ");
+    	System.out.println(co[12] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : TEL  ");
+    	System.out.println(co[13] + ": cuota 1 : Domicilio ,y cuota 2 : Domicilio y DFE  ");
+    	System.out.println(co[14] + ": cuota 1 : Domicilio y DFE ,y cuota 2 : Domicilio  ");
+    	System.out.println(co[15] + ": cuota 1 : Domicilio ,y cuota 2 : Domicilio - DFE - Boleta ");
+    	System.out.println(co[16] + ": cuota 1 : Boleta ,y cuota 2 : DFE y Boleta  ");
+    	System.out.println(co[17] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : DFE  ");
+    	System.out.println(co[18] + ": cuota 1 : TEL ,y cuota 2 : Domicilio  ");
+    	System.out.println(co[19] + ": cuota 1 : TEL ,y cuota 2 : DFE y Boleta ");
+    	System.out.println(co[20] + ": cuota 1 : ninguno ,y cuota 2 : DFE  ");
+    	System.out.println(co[21] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : Domicilio y DFE ");
+    	System.out.println(co[22] + ": cuota 1 : Domicilio - DFE - Boleta ,y cuota 2 : ninguno ");
+    	System.out.println(co[23] + ": cuota 1 : Boleta ,y cuota 2 : DFE  ");
+    	System.out.println(co[24] + ": cuota 1 : TEL ,y cuota 2 : DFE  ");
+    	System.out.println(co[25] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : ninguno ");
+    	System.out.println(co[26] + ": cuota 1 : ninguno ,y cuota 2 : Domicilio ");
+    	System.out.println(co[27] + ": cuota 1 : DFE y Boleta ,y cuota 2 : Domicilio y DFE ");
+    	System.out.println(co[28] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : TEL  ");
+    	System.out.println(co[29] + ": cuota 1 : DFE y Boleta ,y cuota 2 : Domicilio - DFE - Boleta ");
+    	System.out.println(co[30] + ": cuota 1 : Boleta ,y cuota 2 : Domicilio y DFE  ");
+    	System.out.println(co[31] + ": cuota 1 : Domicilio y Boleta ,y cuota 2 : Domicilio");
+    	System.out.println(co[32] + ": cuota 1 : TEL ,y cuota 2 : Boleta  ");
+    	System.out.println(co[33] + ": cuota 1 : Boleta ,y cuota 2 : ninguno ");
+
+        int res = 0;
+
+        for (int i = 1; i < 34; i++)
+        {
+
+            res += co[i];
+        }
+
+        System.out.println("total = " + res);
+
+    }//IMPRIME: cantidad y tipo de diferentes por pantalla
+
+
+    /////////////////////////////////////////////////////Escribir base de salida.
+
+
+    public void EscribirBase(String Linea)
+    {
+
+    	BufferedWriter  br = null;  
+   	 
+ 	   
+        try{
+       	 FileWriter swResultados = new FileWriter(PathDestino,true); 
+       	 br = new BufferedWriter(swResultados);
+            br.newLine();
+
+        } catch (Exception e){}
+   	 
+   	 
+
+           String finl = ""; 
+
+           finl = Linea;
+
+     
+
+
+               try
+               {
+                   br.write(finl);
+                   br.newLine();           
+               }
+               catch (Exception e)
+               {
+               	System.out.println("Exception" +  e);
+               }
+              
+
+     }
+
+
+
+  //VARIABLES: *********************************************
+    
+    long[][] arrayRango = new long[Filas][Columnas];
+
+    long Monto;
+    long MontoCntv;
+    long MontoCntvAux; 
+    long ValuacionNum;
+    long ValuacionNumAux;
+    int cont2 = 0 ; 
+    long montos1;
+    int anio2;
+    int TipoINT;
+    int cont = 0;
+    int contt3 = 0;
+    int distinto = 0;
+    int cont7 = 0;
+    int cont8 = 0;
+    int cont9 = 0;
+    int cont10 = 0;
+    int cont11 = 0;
+    int cont12 = 0;
+    int cont13 = 0;
+    int cont14 = 0;
+    int cont15 = 0;
+    int cont16 = 0;
+    int contador = 0;
+    int contTipo3 = 0;
+    int contameOtras = 0;
+    int cont_Dif = 0;
+    int ContEnvioDiferente = 0;
+    int noHay = 0;
+    int Hay = 0;
+    int cantidadd = 0;
+    String EnvioAux = "";
+    String LineAUX = "";
+    String line;
+    String Objeto = "";
+    String ObjetoAUX = "";
+    String ObjetoAUXcero = "";
+    String ObjetoAUX1 = "";
+    String Importe = "";
+    String ImporteCntv = "";
+    String Valuacion = ""; //INMOBILIARIO
+    String ValuacionCntv = ""; //INMOBILIARIO
+    String lineanueva = "";
+    String Calificador = "";
+    String Planta = "";
+    String TipoEnvio = "";
+    boolean Flag = false;
+
+
+
+
+    ///////////////shitie counters
+
+    int[] co = new int[34];
+    String[] EjObjeto = new String[34];
+    int Rango = 0;
+    
+
+
+
+
+}
