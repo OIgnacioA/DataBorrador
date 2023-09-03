@@ -1,0 +1,132 @@
+                            Vim:
+
+Entrar a Vim: vim en la terminal.
+
+Salir de Vi: :q (abajo de todo).
+
+Crear o Abrir un Archivo: vim <nombre de archivo> (si ya existe, lo abre; si no, lo crea y lo abre).
+
+Salir del Modo de Inserción: Presionar Esc.
+
+Poder Escribir Texto en un Archivo: Presionar i.
+
+Fijar el Texto en el Archivo: En modo normal, escribir :w y presionar Enter.
+
+Ver el Contenido de un Archivo: cat <nombre del archivo>.
+
+Fijar el Texto y Salir: En modo normal, escribir :wq o X para guardar y salir.
+
+Navegación Básica:
+
+Saber en qué carpeta estamos: pwd.
+Numeración de líneas: :set number o :set nu.
+Ir al principio de línea: 0.
+Ir al final de línea: $.
+Ir palabra por palabra hacia la derecha: w.
+Ir palabra por palabra hacia la izquierda: b.
+Ir palabra por palabra al final: e.
+Arriba/Abajo: j y k.
+Saltos grandes: <numero de saltos> j o k (para arriba o abajo).
+Buscar letra: f + letra.
+Buscar palabra: Colocar el cursor sobre una palabra y presionar *.
+Ir a línea específica: G (mayúscula) y número de línea.
+Insertar línea: Shift + o.
+Eliminar un Carácter: x.
+Eliminar un Carácter (minúscula): x.
+Eliminar un Carácter donde está el puntero (minúscula): x.
+Eliminar un Carácter a la izquierda del puntero (mayúscula): x.
+Reemplazar caracter en puntero por otro: R, y agregar nuevo carácter.
+Eliminar palabra: Ubicar al principio de la palabra y -dw-.
+Pegar: p.
+Copiar: yy.
+Deshacer un Paso: u.
+Cortar: dd.
+Ir a la primera línea del documento: gg.
+Ir a la última línea: Shift + gg.
+Buscar en el texto: / + <palabra>.
+Navegar de palabra en palabra buscada: n.
+Salir del editor sin cambios: q!.
+Actualizar Sistema:
+
+Actualizar: sudo apt update
+
+
+
+-----------------------------------------------------------BASH
+
+
+Bash Básico:
+
+Crear directorio: mkdir <nombre de directorio>
+Saber dónde estamos: pwd
+Crear archivo: touch <nombre de archivo>
+Abrir y editar archivo: vim <nombre de archivo>
+Ver detalles del archivo: ls -al <nombre de archivo>
+Dar permisos de ejecución: chmod +x <nombre de archivo>
+Borrar archivo: rm <nombre de archivo>
+Borrar directorio y su contenido: rm -r <nombre de directorio>
+Variables: Declarar variable nombre=<valor>
+Llamada a variable: $<nombre>
+Comentarios en scripts: # o : '<texto>'
+Edición y Gestión de Archivos:
+
+Agregar contenido a archivo: echo "contenido" > <nombre de archivo>
+Edición interactiva con cat: cat > <nombre de archivo>
+Continuar edición con cat: cat >> <nombre de archivo>
+Terminar edición interactiva: Ctrl + D
+Comandos de la Consola:
+
+Limpiar la consola: clear o Ctrl + L
+
+
+Copiar archivos: cp <origen> <destino>
+Mover o renombrar archivos: mv <origen> <destino>
+Listar contenido de un directorio: ls <directorio>
+Cambiar de directorio: cd <directorio>
+Crear directorios recursivamente: mkdir -p <ruta/del/nuevo/directorio>
+Ver contenido de un archivo: cat <nombre de archivo>
+Visualizar contenido paginado: less <nombre de archivo>
+Comparar contenido de archivos: diff <archivo1> <archivo2>
+Variables y Operaciones:
+
+Asignar valor a variable: variable=<valor>
+Concatenar texto en variables: variable="$variable texto"
+Operaciones aritméticas: $(($variable + 1))
+Operaciones lógicas: if [ condición ]; then ... fi
+Ejecución de Comandos:
+
+Ejecución condicional: comando && otro_comando
+Ejecución en segundo plano: comando &
+Manejo de Flujos y Control:
+
+if [ condición ]; then
+    # comandos si la condición es verdadera
+else
+    # comandos si la condición es falsa
+fi
+
+
+
+while [ condición ]; do
+    # comandos a repetir mientras la condición sea verdadera
+done
+
+
+
+-----------------------------------------------Docker
+
+DOCKER:
+
+Desde el cmd, con el cliente corriendo: 
+
+- Descargar una imagen de docker : docker pull <imagen> - ver en la pagina de Docker - 
+- Descargar una imagen pero una version en especifico: docker pull  <imagen>: version <numero>  ej: docker pull node:18
+- Ver las imagees descargadas : docker images
+- Borrar imagen docker image rm -f  <nombre de imagen>
+- Ver contenedores docker ps
+- Crear contenedor docker create <nombre de imagen>
+- Iniciar contenedor docker start (mas el mega numro que te devuelve el create)
+- Crear un contenedor con nombre particular docker create --name <nombre> <imagen>
+- *Descargar y crear un contenedor e iniciar con * "docker run..." ej: 
+docker run -d mongo ( "-d" sin mostrar los logs)
+- Forma Total ( el primer numero es el pueto de la maquina, el segundo es el puerto del contenedor)  docker run --name nomguito -p27017:27017 -d mongo

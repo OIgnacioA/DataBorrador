@@ -2,7 +2,7 @@ Algunas ideas:
 
 - Para poder trabajar normalmente , con posibilidad de crear publicaciones por ejemplo, se tiene que abrir el proyecto, y NO la carpeta desde el entorno de VS. 
 
-- Hay dos tipos d eproyecto que s epueden iniciar con estilo "App de escritorio" son: 
+- Hay dos tipos de proyecto que se pueden iniciar con estilo "App de escritorio" son: 
 
 	-Aplicaicon de windows Forms
 		Planilla de proyecto para crear una aplicacion de windows Forms(winforms) de .NET.
@@ -10,4 +10,31 @@ Algunas ideas:
 
 	- Aplicaicon de Windows Forms (.NET framework) // ESTE ES EL QUE SE USÓ EN LA CAMPAÑA DE ARBA.
 		Proyectopara crear una aplicacion con una interfaz de usuario de windows Forms(Winforms)
+
+
+****************************
+iniciar un proyecto por consola: 
+
+cmd: 
+
+mkdir proyectosDotNet  (mkdir : make directory) 
+
+cd proyectoDotNet
+
+dotnet new console -o teoria1  ("-o teoria1" se lo agrega para agrega runa carpeta, puede no estar)(console es una de las que se puede crear, hay otras, si nos fijamos en  dotnet new --list)
+
+cd teoria1 
+
+dir  ( se ve el contenido)
+
+dotnet run (sobre carpeta raiz del proyecto)
+
+deberia verse un "hola mundo"
+
+****abrir con VSC:  
+
+code .    en la carpeta del proyecto. 
+
+
+
               

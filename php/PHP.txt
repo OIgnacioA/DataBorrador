@@ -281,6 +281,18 @@ variables de servidor:
 echo $_SERVER ['SERVER_ADDR'];    //_ server es una array btw, y addr es para sacar la direcion ip del servidor. 
 
 
+$_SERVER es un array que contiene información, tales como cabeceras, rutas y ubicaciones de script. Las entradas de este array son creadas por el servidor web. No hay garantía que cada servidor web proporcione alguna de estas entradas, existen servidores que pueden omitir algunas o proporcionar otras no recogidas aquí. Un gran número de estas variables se encuentran recogidas en » especificación CGI 1.1, así que al menos debe esperar encontrar estas entradas.
+
+
+Server se utiliza como una variable global que hace pedidos específicos de los datos de la web o navegador en la que se esté trabajando
+
+$servidor = [
+		"Host servidor "  => $_SERVER["SERVER_NAME"],
+		"eNCABEZADO Host  "  => $_SERVER["HTTP_HOST"],
+		"Software servidor "  => $_SERVER["DOCUMENT_ROOT"],
+		"Pagina Actual  "  => $_SERVER["PHP_SELF"],
+		"Ruta absoluta "  => $_SERVER["SCRIPT_FILENAME"],
+	]
 
 
 --------------var_dump(); 
