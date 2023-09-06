@@ -140,3 +140,5 @@ usando el Dockerfile en el directorio actual. Para hacerlo, debes ejecutar el co
 Por lo tanto, puedes usar el siguiente comando:
 
  docker build -t sehent. El punto (.) al final indica que el contexto es el directorio actual. Esto asume que tu Dockerfile está en el mismo directorio desde el que ejecutas el comando.
+
+investigar una imajen en json docker inspect mi-imagen
