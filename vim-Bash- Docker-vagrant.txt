@@ -129,8 +129,8 @@ Desde el cmd, con el cliente corriendo:
 - Crear un contenedor con nombre particular docker create --name <nombre> <imagen>
 - *Descargar y crear un contenedor e iniciar con * "docker run..." ej: 
 docker run -d mongo ( "-d" sin mostrar los logs)
-- Forma Total ( <PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
-<PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.)  docker run --name nomguito -p27017:27017 -d mongo
+- Forma Total   docker run --name nomguito -p27017:27017 ( <PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
+<PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.) -d mongo
 
 crear imagen
 Debes proporcionar la ruta de contexto y el nombre de la imagen de esta manera: docker build -t nombre_de_la_imagen:etiqueta ruta_de_contexto.   
@@ -144,3 +144,26 @@ Por lo tanto, puedes usar el siguiente comando:
  docker build -t sehent. El punto (.) al final indica que el contexto es el directorio actual. Esto asume que tu Dockerfile está en el mismo directorio desde el que ejecutas el comando.
 
 investigar una imajen en json docker inspect mi-imagen
+
+
+
+
+
+----------------------------------------------------------VAGRANT
+
+
+vagrant init: Inicializa un nuevo Vagrantfile en el directorio actual.
+vagrant up: Crea y configura una máquina virtual según las especificaciones del Vagrantfile y la inicia.
+vagrant halt: Apaga la máquina virtual de manera segura.
+vagrant reload: Reinicia la máquina virtual, aplicando configuraciones modificadas en el Vagrantfile.vagrant suspend:  Pausa la máquina virtual, conservando su estado actual.
+vagrant resume: Reanuda una máquina virtual previamente suspendida.
+vagrant destroy: Detiene y elimina la máquina virtual.
+vagrant status: Muestra el estado actual de todas las máquinas virtuales en el directorio.
+vagrant ssh: Inicia una conexión SSH con la máquina virtual.
+vagrant ssh-config: Muestra la configuración SSH de la máquina virtual.
+vagrant provision: Ejecuta las provisiones definidas en el Vagrantfile en una máquina virtual en ejecución.
+vagrant global-status: Muestra el estado de todas las máquinas virtuales Vagrant en el sistema.
+vagrant package: Empaqueta una máquina virtual en una caja (box) reutilizable.
+vagrant box add: Agrega una caja (box) al sistema local desde una URL o archivo.
+vagrant box remove: Elimina una caja (box) del sistema local.
+vagrant box list: Lista las cajas (boxes) disponibles en el sistema local.
