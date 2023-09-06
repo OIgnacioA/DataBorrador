@@ -130,3 +130,13 @@ Desde el cmd, con el cliente corriendo:
 - *Descargar y crear un contenedor e iniciar con * "docker run..." ej: 
 docker run -d mongo ( "-d" sin mostrar los logs)
 - Forma Total ( el primer numero es el pueto de la maquina, el segundo es el puerto del contenedor)  docker run --name nomguito -p27017:27017 -d mongo
+crear imagen
+Debes proporcionar la ruta de contexto y el nombre de la imagen de esta manera: docker build -t nombre_de_la_imagen:etiqueta ruta_de_contexto.   
+El comando que estás usando para construir la imagen Docker tiene un problema en la especificación de la ruta de contexto y el nombre de la imagen. Debes proporcionar la ruta de contexto y el nombre de la imagen de esta manera:
+
+docker build -t nombre_de_la_imagen:etiqueta ruta_de_contexto
+
+usando el Dockerfile en el directorio actual. Para hacerlo, debes ejecutar el comando docker build desde el directorio que contiene tu Dockerfile.
+Por lo tanto, puedes usar el siguiente comando:
+
+ docker build -t sehent. El punto (.) al final indica que el contexto es el directorio actual. Esto asume que tu Dockerfile está en el mismo directorio desde el que ejecutas el comando.
