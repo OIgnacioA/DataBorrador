@@ -1,0 +1,394 @@
+Cuando seas DevOps a pleno, mirate el concepto de service mesh y de microservicios
+docker Daemon ?    "forwardear un puerto"  "-p 20202:20202 "
+gestor de contraseñas: lapmpas vinware ?
+Apis: 
+arquitectura de microservicios (vs monolíticos(contenedores de docker??)
+
+
+como codigo----comoprotocolo. 
+
+soap
+rest
+graphQL
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Ejercicios
+
+
+DOCKER, crear imagen- utilizarla  (un hola mundo en lo que sea)junto a la imagen del lenguaje necesario. dockerfile.  hace un conteiner. hacerlo correr en un puerto, cambiar mensaje del holamundo,  (hacer lo que haga falta), y arir otro conenedor en otr úerto y asi. 
+
+
+VAgrant: iniciar maqunas virtuales multiples,  con diferentes vagrant provision en archivos .sh. que den diferentes "hola mundo" en diferentes navegadores.
+
+ansible :  aprobicionar alguna de las oracle VM box hechas por vagrant. 
+https://www.youtube.com/watch?v=slNIwBPeQvE&list=PLTd5ehIj0goP2RSCvTiz3-Cko8U6SQV1P
+
+sudo add-apt-repository ppa:ansible/ansible
+sudo apt install apt ansible
+
+se puede ingresar en el citenedor, aunque no sería comun hacerlo, siempre es preferible levantaro de vuelta si salió mal, pero :
+
+
+docker exec -ti <nombre> bash   (con vim instalado)
+ls -la
+
+y pueden verse todos losdocumentos internos y sus prmisos. 
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+DOCKER -- -"lomicroervicios suelen ser contendores de docker o tecnologias de ese estilo"   competencia : podman
+
+
+Cuando ejecutas un contenedor Docker y quieres acceder a una aplicación que se está ejecutando dentro de ese contenedor desde tu máquina local, necesitas especificar cómo se va a mapear el puerto entre tu máquina local y el contenedor.
+
+El formato general para especificar esto es: -p <PUERTO_LOCAL>:<PUERTO_CONTENEDOR>
+
+<PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
+<PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.
+Por ejemplo, si ejecutas un contenedor con -p 8080:80, esto significa que el puerto 80 del contenedor se mapeará al puerto 8080 de tu máquina local. Entonces, para acceder a la aplicación dentro del contenedor, puedes abrir un navegador y visitar http://localhost:8080.
+
+Entonces, en tu caso específico, -p79797:8080 significa que el puerto 8080 del contenedor se mapea al puerto 79797 de tu máquina local. Para acceder a la aplicación dentro del contenedor, puedes usar http://localhost:79797 en tu navegador.
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Vagrant: 
+
+
+Sí, en Vagrant manejarías todo desde la línea de comandos y podrías acceder a las máquinas virtuales a través de SSH. Aunque las máquinas virtuales creadas con Vagrant generalmente no tienen una interfaz gráfica de usuario, puedes realizar muchas tareas desde la línea de comandos dentro de las máquinas virtuales.
+
+Aquí hay un resumen de cómo sería el flujo de trabajo:
+
+Creación y Configuración de Máquinas Virtuales: En tu archivo Vagrantfile, especificarías la configuración de las máquinas virtuales que deseas crear, incluyendo el sistema operativo, recursos (como memoria y CPU), red, y provisionamiento (instalación de software y configuración). Al ejecutar vagrant up, Vagrant creará y configurará las máquinas virtuales según la configuración que has proporcionado.
+
+Acceso a Máquinas Virtuales: Una vez que las máquinas virtuales están creadas, puedes acceder a ellas mediante SSH utilizando el comando vagrant ssh. Esto te permitirá ingresar a la máquina virtual y trabajar desde la línea de comandos.
+
+Creación de Archivos y Carpetas: Sí, puedes crear archivos y carpetas dentro de las máquinas virtuales desde la línea de comandos. Puedes usar comandos como mkdir para crear carpetas y touch para crear archivos.
+
+Provisionamiento: Puedes usar scripts de shell o herramientas de configuración como Ansible, Chef o Puppet para automatizar la instalación y configuración de software en las máquinas virtuales. Estos scripts se ejecutan automáticamente durante el proceso de aprovisionamiento, lo que te permite configurar el entorno según tus necesidades.
+
+Uso de SSH: Puedes utilizar SSH para conectarte a las máquinas virtuales y realizar tareas como administración del sistema, instalación de software y desarrollo. Vagrant simplifica la conexión SSH con el comando vagrant ssh.
+
+Compartir Carpetas: Vagrant te permite compartir carpetas entre tu máquina host y las máquinas virtuales. Esto facilita la transferencia de archivos y la colaboración entre el entorno de desarrollo local y las máquinas virtuales.
+
+Recuerda que el enfoque principal de Vagrant es brindar un entorno de desarrollo reproducible y automatizado. Si necesitas una experiencia más cercana a una computadora de escritorio con GUI, podrías considerar el uso de herramientas de virtualización como VirtualBox o VMware, que te permiten crear máquinas virtuales con sistemas operativos de escritorio completos y interfaces gráficas.
+
+ejericico con chatgpt: 
+
+
+
+
+bien he hecho todo lo que me pediste, ahora quiero verresultados, tengo esto hasta ahora:
+
+Bringing machine 'poc' up with 'virtualbox' provider...
+==> poc: Checking if box 'ubuntu/focal64' version '20230823.0.0' is up to date...
+==> poc: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> poc: flag to force provisioning. Provisioners marked to run always will still run.
+PS C:\Users\sehent\Desktop\vagrant> 
+
+
+use el init, , dentro del vagrant puse esto: 
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+  config.vm.define "poc"
+
+  # Determina la interfaz de red predeterminada en Windows
+  $default_network_interface = `ipconfig | findstr /i "Ethernet" | findstr /i "conexión" | findstr /i "predeterminado" | findstr /r "[0-9]*\\.[0-9]*\\.[0-9]*\\.[0-9]*" /c:" 192."`
+  
+ # config.vm.provision "shell", path: "bootstrap.sh"
+  config.vm.network "public_network", type: "dhcp", bridge: $default_network_interface
+  
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    v.cpus = 3
+  end
+  
+  config.vm.hostname = "poc"
+end
+
+hice vagrant up.
+
+lugo cree un archivo bootstrap.sh con este contenido:
+
+#!/bin/bash
+# Instala Apache y muestra una página web de prueba
+apt-get update
+apt-get install -y apache2
+echo "Hello from Vagrant" > /var/www/html/index.html
+
+uego descomenté esta linea: 
+
+ # config.vm.provision "shell", path: "bootstrap.sh"
+
+e hice vagrant up de nuevo. 
+
+
+dime que como pruebo ahora que esto funciona o lo que sea...
+
+por cierto la amquina virtual aparece en mi oracle vm virtul box, asi que s epuede decir que todo salió bien. que hago? laabro desde ahi y.... quepuedo hacer para probar que funciona todo bien dentro de esta maquina virtual?
+
+cgpt: Para acceder a la máquina virtual mediante SSH utilizando Vagrant, puedes utilizar el siguiente comando desde la línea de comandos en la carpeta donde se encuentra tu archivo Vagrantfile:
+
+mi resultado fue este: 
+
+PS C:\Users\sehent\Desktop\vagrant> vagrant ssh
+FINDSTR: No se puede abrir /c: 192.
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-156-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Sep  7 17:05:09 UTC 2023
+
+  System load:             0.0
+  Usage of /:              3.7% of 38.70GB
+  Memory usage:            5%
+  Swap usage:              0%
+  Processes:               134
+  Users logged in:         0
+  IPv4 address for enp0s3: 10.0.2.15
+  IPv4 address for enp0s8: 192.168.0.149-------------------------------------------"aqui está!"
+  IPv6 address for enp0s8: 2800:810:5c2:148:c06e:7c6b:7dd7:fcf2
+  IPv6 address for enp0s8: 2800:810:5c2:148:a00:27ff:fed4:4bec
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '22.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+vagrant@poc:~$       ( :)  )
+
+
+El momento en que se ejecuta el script bootstrap.sh en la máquina virtual es cuando descomentas la siguiente línea en tu archivo de configuración Vagrant (el Vagrantfile):
+
+ruby
+
+config.vm.provision "shell", path: "bootstrap.sh"
+
+Esto le dice a Vagrant que, durante el proceso de aprovisionamiento, ejecute el script bootstrap.sh en la máquina virtual. El aprovisionamiento es una etapa en la que Vagrant puede ejecutar comandos o scripts en la máquina virtual para configurarla según tus especificaciones.
+
+Las máquinas virtuales, en este caso, están configuradas para usar una interfaz de red en modo "puente" (public_network) que les permite obtener una dirección IP en la misma red que tu sistema host (Windows). Esto significa que las máquinas virtuales tienen su propia dirección IP dentro de la red local. Cuando ejecutas Apache en la máquina virtual y accedes a esa dirección IP desde tu navegador en el sistema host, estás accediendo al servidor web que se está ejecutando dentro de la máquina virtual. Esta configuración se establece en el archivo Vagrantfile con estas líneas:
+
+ruby
+
+config.vm.network "public_network", type: "dhcp", bridge: $default_network_interface
+
+Esto permite que la máquina virtual obtenga una dirección IP de tu red local y se comunique con ella.
+
+La dirección IP que mencioné, 192.168.0.149, se obtiene de la salida de comandos que muestran información de red dentro de la máquina virtual. En particular, esta línea de la salida del comando vagrant ssh:
+
+css
+
+IPv4 address for enp0s8: 192.168.0.149
+Indica la dirección IP asignada a la interfaz de red enp0s8 de la máquina virtual. Esta es la dirección IP que necesitas para acceder a la máquina virtual desde tu sistema host (Windows) a través de un navegador web.
+
+
+
+usuario y contraseña comun en maquinas vagrant: vagrant vagrant
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+
+Bash es el intérprete de comandos que te permite interactuar con el sistema operativo mediante la ejecución de comandos y también escribir scripts.
+Vim es un editor de texto avanzado que se utiliza para editar y manipular archivos de texto. Aunque puede funcionar en línea de comandos, su enfoque es principalmente la edición de texto.
+------------------------------------------------------------------------------------------
+
+
+servicio de ssh ---(se instala) ---y luego un cliente ( PUTTY x ejemplo ) 
+
+------------------------------------------------------------------------------------------
+
+hipervisor: 
+
+Un hipervisor es un software o una capa de virtualización que permite ejecutar múltiples sistemas operativos en una sola máquina física. Actúa como una interfaz entre el hardware del sistema y los sistemas operativos invitados, gestionando y asignando recursos de hardware, como CPU, memoria, almacenamiento y dispositivos periféricos, de manera eficiente y aislada.Hipervisor de Tipo 2 (o alojado): Se ejecuta como una aplicación en un sistema operativo anfitrión. Los sistemas operativos invitados se ejecutan como procesos dentro del sistema operativo anfitrión. Este tipo de hipervisor es menos eficiente en términos de rendimiento y aislamiento que el Tipo 1, pero es más fácil de configurar y utilizar. Ejemplos de hipervisores de Tipo 2 incluyen VMware Workstation, Oracle VirtualBox y Parallels Desktop.
+
+Los hipervisores son fundamentales para la virtualización, ya que permiten consolidar múltiples sistemas operativos en un solo hardware, lo que ahorra recursos y simplifica la administración de infraestructuras. Además, los hipervisores facilitan la creación de entornos de pruebas, desarrollo y despliegue de aplicaciones, y son ampliamente utilizados en entornos de centros de datos y nubes privadas y públicas.
+Hipervisor de Tipo 2 (o alojado): Se ejecuta como una aplicación en un sistema operativo anfitrión. Los sistemas operativos invitados se ejecutan como procesos dentro del sistema operativo anfitrión. Este tipo de hipervisor es menos eficiente en términos de rendimiento y aislamiento que el Tipo 1, pero es más fácil de configurar y utilizar. Ejemplos de hipervisores de Tipo 2 incluyen VMware Workstation, Oracle VirtualBox y Parallels Desktop.
+
+Los hipervisores son fundamentales para la virtualización, ya que permiten consolidar múltiples sistemas operativos en un solo hardware, lo que ahorra recursos y simplifica la administración de infraestructuras. Además, los hipervisores facilitan la creación de entornos de pruebas, desarrollo y despliegue de aplicaciones, y son ampliamente utilizados en entornos de centros de datos y nubes privadas y públicas.
+
+
+----------------------------------------
+
+
+
+
+
+terraform:
+
+eniendo perfectamente lo que dices, pero como el ejerciciome lo dieron asi, debo entenderloasi, explicame, porque em piden que contruya ...algo de docker con terraform, no estoy entendiendo a que viene el ejercicio en si, porque, docker es algo que uno descarga por un lado, y hatsa ddonde sabi terraform servia para aprovicinar o crear instancias en nubes. 
+ChatGPT
+Entiendo tu confusión y es normal tener preguntas cuando se presenta un ejercicio que parece combinar herramientas de manera poco convencional. Permíteme aclararte la situación:
+
+El ejercicio te está presentando una forma de utilizar Terraform para administrar contenedores Docker localmente. Aunque Terraform es más conocido por aprovisionar recursos en la nube, también puede utilizarse para gestionar recursos en sistemas locales, como contenedores Docker en tu caso.
+
+La razón detrás de esto puede ser didáctica. A veces, se proporcionan ejercicios que salen un poco de lo común para enseñar principios o habilidades específicas, incluso si no son casos de uso típicos en la industria. En este caso, el ejercicio está destinado a mostrarte cómo puedes utilizar Terraform para definir y administrar contenedores Docker en tu propio sistema, a pesar de que normalmente Docker se maneja directamente a través de su CLI.
+
+Dicho esto, si ya tienes experiencia con Docker y comprendes cómo funciona, el ejercicio puede parecer un tanto inusual. Sin embargo, la idea es mostrarte que Terraform tiene cierta flexibilidad y puede utilizarse para automatizar tareas más allá de la nube, incluso en entornos locales.
+
+Si te sientes incómodo con la idea de usar Terraform para administrar contenedores Docker en tu sistema local, siempre puedes comunicarte con tus instructores o tutores para obtener aclaraciones o posiblemente opciones alternativas para completar el ejercicio. En última instancia, el objetivo es aprender y comprender cómo funcionan estas herramientas en diferentes contextos.
+
+---> no se sube al git. !!!
+------------------------------------------------------------------------------------------
+
+
+roadmap.sh/devops
+cubernetes
+https://www.youtube.com/watch?v=lYHnv_-H6UY&ab_channel=PeladoNerd
+w3?
+Go
+linu- ubuntu
+micro  servicios 
+ gitflow?
+api gateaway aws ???
+elastic search- kibana
+
+
+elastic beanstalk???
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+ec2  ---lamda:
+
+AWS Lambda es un servicio de cómputo sin servidor que te permite ejecutar pequeñas piezas de código (funciones) en respuesta a eventos, como solicitudes HTTP, cambios en la base de datos, cargas de archivos, entre otros.
+
+En un modelo FaaS como Lambda, solo te enfocas en escribir el código de la función y definir cuándo debe ejecutarse. La plataforma de servidor se encarga de todo lo demás, incluida la escalabilidad automática, la administración de recursos y la ejecución de la función en un entorno aislado.
+
+Entonces, en resumen, AWS Lambda es un servicio FaaS que te permite ejecutar funciones de código sin preocuparte por la infraestructura ni la administración de servidores.
+
+
+
+En resumen, EC2 te brinda el control total sobre máquinas virtuales completas para ejecutar aplicaciones personalizadas, mientras que Lambda te permite ejecutar funciones de código pequeñas y específicas en respuesta a eventos, sin preocuparte por la infraestructura. La elección entre ellos depende de tus necesidades y de si prefieres gestionar la infraestructura o enfocarte solo en el código y la lógica de la aplicación.
+
+FaaS: Serverlesss:
+
+Un servicio serverless, también conocido como "computación sin servidor" o "Function as a Service" (FaaS), es un enfoque de desarrollo de aplicaciones en la nube en el que los desarrolladores se centran en escribir y desplegar código (funciones) sin preocuparse por la infraestructura subyacente. En lugar de administrar servidores o máquinas virtuales, los desarrolladores simplemente definen las funciones que deben ejecutarse en respuesta a eventos y la plataforma de serverless se encarga de todo lo demás, desde la escalabilidad hasta la administración de recursos.
+
+Servicios Serverless:
+
+Imagina que tienes una aplicación web y deseas redimensionar automáticamente las imágenes que los usuarios suben. En un enfoque serverless:
+
+Evento: Cuando un usuario sube una imagen.
+Acción Serverless: Una función serverless redimensiona automáticamente la imagen y la guarda en un almacenamiento en la nube.
+Este es un ejemplo de cómo una función serverless se ejecuta en respuesta a un evento específico (carga de imagen) sin preocuparse por la infraestructura.
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+cluster: 
+
+Un clúster es un grupo de computadoras o servidores que trabajan juntos como un solo sistema. Imagina un equipo de trabajo en el que cada miembro tiene una tarea específica pero todos colaboran para lograr un objetivo común. En un clúster, las computadoras se combinan para mejorar el rendimiento, la capacidad y la confiabilidad de las aplicaciones y servicios que se ejecutan en ellas.
+
+--------------------------------------------------------------------------------------------------
+
+Para desempeñarte como un DevOps de nivel intermedio, es importante que tengas un conocimiento sólido en diversas áreas relacionadas con el desarrollo de software y la administración de sistemas. Aquí tienes una lista básica de elementos que deberías conocer:
+
+Control de versiones: Dominar herramientas como Git para el seguimiento de cambios en el código y colaboración en equipos de desarrollo.
+
+Automatización: Ser capaz de automatizar tareas repetitivas y despliegues utilizando herramientas como Jenkins, Travis CI, CircleCI, GitLab CI/CD, etc.
+
+Infraestructura como código (IaC): Conocer cómo gestionar la infraestructura de manera programática, usando herramientas como Terraform o Ansible.
+
+Administración de sistemas: Familiarizarte con la administración de sistemas operativos Linux y Windows, incluyendo la gestión de paquetes, configuraciones y seguridad.
+
+Contenedores: Entender los conceptos y prácticas de contenerización con Docker y la orquestación de contenedores con Kubernetes.
+
+Monitoreo y registro: Conocer herramientas para monitorear aplicaciones y sistemas en tiempo real, como Prometheus, Grafana y ELK (Elasticsearch, Logstash, Kibana).
+
+Seguridad: Tener conocimientos sobre buenas prácticas de seguridad en el desarrollo y despliegue de aplicaciones, así como en el mantenimiento de la infraestructura.
+
+Pruebas y QA: Familiarizarte con metodologías de pruebas, como pruebas unitarias, de integración, funcionales y de rendimiento, así como herramientas de automatización de pruebas.
+
+Arquitectura de microservicios: Comprender los conceptos básicos de arquitectura de microservicios y cómo desplegar y gestionar aplicaciones basadas en esta arquitectura.
+
+Colaboración y comunicación: Ser capaz de trabajar de manera efectiva en equipos multidisciplinarios y tener habilidades de comunicación para facilitar la colaboración entre desarrolladores, operadores y otros miembros del equipo.
+
+DevOps culture: Entender los principios y valores de la cultura DevOps, que incluyen la colaboración, la automatización y la mejora continua.
+
+Cloud computing: Conocer plataformas de nube como AWS, Azure o Google Cloud Platform, y cómo desplegar y gestionar aplicaciones en estos entornos.
+
+Recuerda que el aprendizaje y la práctica constantes son fundamentales para avanzar en tu carrera como DevOps. Esta lista básica te proporciona un buen punto de partida, pero siempre es recomendable seguir formándote y manteniéndote actualizado en un campo en constante evolución como DevOps.
+
+---------------------------------------------------
+
+
+var express = require('expres');
+var morgan = require('morgan');
+var app = expres();
+var pjason = require('./package.json');
+
+
+//setuplogging
+app.use(morgan('dev'));
+
+
+// constants
+const PORT = 300;
+const HOST = '0.0.0.0' || 'localhost';
+const by = 'https://roxs.295devops.com'
+var msg='';
+
+if(parts[2]){
+  var variable=parts[2]
+msg='\nEVIROMENT ${variable}\` +process.env[variable];
+} else {
+msg='\nENVIROMENT VALUES\N'+JSON.stringify(process.env,null,4);
+}
+
+res.send(req.url+msg);
+console.log(msg);
+
+});
+
+app.listen(PORT, HOST)
+
+console.log (`Example app listening on http://${HOST}:$[{PORT} or http://localhost:${PORT} ! `);
+
+
+
+-----------------------------------------------------
+https://github.com/midudev/pokedex-for-ci
+
+
+------------------------------------------------------
+Terraform
+
+
+resourse "aws_instance" "reto1_culturadevops_ec2_docker" {
+  ami                     = data.aws_ami.ami_id.id
+  instance_type           = var.instance_type
+  vpc_security_group_ids  = [aws_security_group.reto1_culturadevops.id]
+  key_name                = var.key_pair
+  tags = {
+ Name = var.instance_name
+ }
+ user_data = var.ec2_user_data
+}
+
+
+
+
