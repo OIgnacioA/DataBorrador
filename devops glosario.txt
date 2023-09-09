@@ -10,14 +10,19 @@ como codigo----comoprotocolo.
 soap
 rest
 graphQL
+orm (DB) ??
+
+"haceme una api, dockerizalo mandalo por terrform a tal lugar" por eso eljercicio de flux. es de tipo entrevista laboral
 ----------------------------------------------------------------------------------------------------------------------------
 
 
 Ejercicios
 
 
-DOCKER, crear imagen- utilizarla  (un hola mundo en lo que sea)junto a la imagen del lenguaje necesario. dockerfile.  hace un conteiner. hacerlo correr en un puerto, cambiar mensaje del holamundo,  (hacer lo que haga falta), y arir otro conenedor en otr úerto y asi. 
-
+DOCKER,
+ ----crear imagen- utilizarla  (un hola mundo en lo que sea)junto a la imagen del lenguaje necesario. dockerfile.  hace un conteiner. hacerlo correr en un puerto, 
+---cambiar mensaje del holamundo,  (hacer lo que haga falta), y arir otro conenedor en otr úerto y asi. 
+---crear contenedor cn volumen en mongo, y verlo a travez de la iterfaz -compas- de mongo, y crear daos, borrar el contenedor, y gnerar otro que tenga acceso  ese volumen y datos. 
 
 VAgrant: iniciar maqunas virtuales multiples,  con diferentes vagrant provision en archivos .sh. que den diferentes "hola mundo" en diferentes navegadores.
 
@@ -53,10 +58,17 @@ Por ejemplo, si ejecutas un contenedor con -p 8080:80, esto significa que el pue
 Entonces, en tu caso específico, -p79797:8080 significa que el puerto 8080 del contenedor se mapea al puerto 79797 de tu máquina local. Para acceder a la aplicación dentro del contenedor, puedes usar http://localhost:79797 en tu navegador.
 
 
+"Lo ideal es ver si la aplicacion funciona per se incluo antes de dockerizarla" consejo. 
 
 
+networking !!!!: (?)brigde - host- null subredes...ruteo...bridges
 
+cadacontenedor tiene su propia IP. 
+hacer trace rutes---pinngs. !!!
 
+storage:volumes ( unidad delamcenaminto) para que informacion sea persistente y no se borre al borrar un contenedor.
+
+conceptos: mascota-ganado. Recurso querido , recurso desartable
 ----------------------------------------------------------------------------------------------------------------------------
 
 Vagrant: 
@@ -388,6 +400,9 @@ resourse "aws_instance" "reto1_culturadevops_ec2_docker" {
  }
  user_data = var.ec2_user_data
 }
+
+
+
 
 
 
