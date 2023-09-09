@@ -404,3 +404,6 @@ resourse "aws_instance" "reto1_culturadevops_ec2_docker" {
 
 
 
+
+
+
