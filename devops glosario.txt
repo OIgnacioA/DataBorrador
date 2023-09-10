@@ -14,7 +14,7 @@ orm (DB) ??
 
 "haceme una api, dockerizalo mandalo por terrform a tal lugar" por eso eljercicio de flux. es de tipo entrevista laboral
 ----------------------------------------------------------------------------------------------------------------------------
-
+video 9 hasta 17:33 (host bridges) 
 
 Ejercicios
 

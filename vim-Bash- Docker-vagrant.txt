@@ -116,6 +116,7 @@ done
 -----------------------------------------------Docker
 
 DOCKER:
+El-d y el levantar en segundo plano un container o entrar directamente en él. 
 
 Desde el cmd, con el cliente corriendo: 
 
@@ -149,6 +150,30 @@ Docker inspect <nombre del contenedor> da los datos de este contendor en json.
 
 Docker create volume <nombre>
 Dcker volume ls  (ver los volumennes) (crear volumenes)
+
+
+-a, --all: Esta opción eliminará todos los recursos, incluyendo imágenes no utilizadas, contenedores detenidos y volúmenes no utilizados. Es la opción más completa para liberar espacio.
+
+css
+Copy code
+docker system prune -a
+--filter: Puedes utilizar esta opción para filtrar recursos específicos a eliminar. Por ejemplo, si solo deseas eliminar imágenes no utilizadas, puedes usar:
+
+perl
+Copy code
+docker system prune --filter "dangling=true"
+Puedes utilizar varios filtros separados por comas para ser más específico.
+
+--force, -f: Esta opción evita que Docker te pregunte para confirmar la eliminación. Puedes agregarla si deseas ejecutar la limpieza sin confirmaciones.
+
+perl
+Copy code
+docker system prune -af
+--volumes: Agregar esta opción eliminará también los volúmenes no utilizados junto con las imágenes y los contenedores.
+
+sql
+Copy code
+docker system prune --volumes
 
 ----------------------------------------------------------VAGRANT
 
