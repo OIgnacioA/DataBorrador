@@ -154,8 +154,7 @@ Dcker volume ls  (ver los volumennes) (crear volumenes)
 
 -a, --all: Esta opción eliminará todos los recursos, incluyendo imágenes no utilizadas, contenedores detenidos y volúmenes no utilizados. Es la opción más completa para liberar espacio.
 
-css
-Copy code
+
 docker system prune -a
 --filter: Puedes utilizar esta opción para filtrar recursos específicos a eliminar. Por ejemplo, si solo deseas eliminar imágenes no utilizadas, puedes usar:
 
@@ -166,14 +165,25 @@ Puedes utilizar varios filtros separados por comas para ser más específico.
 
 --force, -f: Esta opción evita que Docker te pregunte para confirmar la eliminación. Puedes agregarla si deseas ejecutar la limpieza sin confirmaciones.
 
-perl
-Copy code
+
 docker system prune -af
 --volumes: Agregar esta opción eliminará también los volúmenes no utilizados junto con las imágenes y los contenedores.
 
-sql
-Copy code
 docker system prune --volumes
+
+Borrar todo: 
+
+docker exec -it ubunt2 /bin/bash
+
+
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
+docker rmi $(docker images -q)
+
+
+docker system prune all-- se utiliza para limpiar recursos no utilizados en Docker, lo que incluye contenedores detenidos, redes no utilizadas, volúmenes y más.
 
 ----------------------------------------------------------VAGRANT
 
