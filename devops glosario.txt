@@ -402,7 +402,44 @@ resourse "aws_instance" "reto1_culturadevops_ec2_docker" {
 }
 
 
+----------------------------------------------------------------------------------------------------------noviembre 2023: 
 
+find ~ -type f -name "config"
+vagrant ssh babidi -c "hostname -I"
+desempaquetar: 
+sudo dpkg -i zoom_amd64.deb
+
+
+"dpkg -s $PKG 2>/dev/null | sudo apt-get install $PKG
+
+
+Nginx   (servidor web)
+
+PostgreSQL
+balanceador de carga
+thanos
+NAT
+volumennes o nfs ( docker) 
+
+
+Mis disculpas por la confusión. La salida del comando vagrant ssh bibidi -c "hostname -I" te muestra dos direcciones IP separadas por un espacio. La primera dirección IP, 10.0.2.15, es la dirección IP asignada por Vagrant para la red NAT que se utiliza para la comunicación entre tu máquina anfitrión y la máquina virtual. La segunda dirección IP, 192.168.56.12, es la dirección IP asignada a la máquina virtual en la red host-only.
+----------------
+pull request. 
+
+En el contexto de la informática y DevOps, un "pull request" (también conocido como "pull" o "merge request" en algunos sistemas) es una solicitud que se hace para fusionar un conjunto de cambios (commits) de una rama o bifurcación de un repositorio a otra rama. Los pull requests son una parte fundamental del flujo de trabajo de desarrollo colaborativo y son comunes en sistemas de control de versiones como Git y plataformas de desarrollo colaborativo como GitHub, GitLab, y Bitbucket. Aquí está lo que significa un pull request:
+
+
+
+
+---------------
+1) crear una imagen de docker don ubuntu y un archivo .sh que deje el contenedorcorriendo. 
+(recordar el ssh dentro del contenedor para que ansible haga el ping luego)
+
+    -- porquè hay que hacer un grupo de docker???....que molesto a que coo viene? 
+	 utilizando SSH, pero los contenedores no tienen un servidor SSH habilitado. Como los contenedores que estás utilizando se basan en la imagen Alpine Linux, no tienen SSH instalado por defecto.....
+los ssh....dios. 
+
+-------------
 
 
 
