@@ -1,7 +1,7 @@
 
 visa : psswrd:  1444Linternaverde  -----  usuario: Sehent85
 
-pcoficina- host: linternaverde33
+pcoficina- host: ludobica33
 
 bip Linternaverde555
 
