@@ -1,0 +1,34 @@
+
+aprender:-----------------------------------------------------------------------------------------------------------
+
+-kubernetes. 
+Ejercicios simples de ansible en la nube. (azure)
+githubActions.
+hipervisor: 
+ansible:
+
+
+saber: ---------------------------------------------------------------------------------------------------------------
+
+
+
+
+IaaS (Infraestructura como Servicio) y PaaS (Plataforma como Servicio).saas( software as a service)
+
+
+Nginx es otro servidor web muy conocido y ampliamente utilizado, además de Apache. Estos dos servidores web son dos de los más populares en la industria y se utilizan para servir páginas web y aplicaciones en la World Wide Web. Nginx es conocido por su eficiencia y rendimiento, especialmente en situaciones de alto tráfico. Ambos, Apache y Nginx, tienen sus propias fortalezas y se eligen según las necesidades específicas del proyecto.
+
+
+
+
+
+Investigar: ----------------------------------------------------------------------------------------------------------
+
+
+soap
+rest
+graphQL
+orm (DB) 
+
+
+En resumen, el ejercicio abarca desde el desarrollo de la API hasta su implementación en la nube utilizando herramientas como Docker, Terraform y Flux para facilitar el proceso de desarrollo, despliegue y gestión de la infraestructura.
