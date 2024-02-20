@@ -1,0 +1,215 @@
+Vim:
+
+Entrar a Vim: vim en la terminal.
+
+Salir de Vi: :q (abajo de todo).
+
+Crear o Abrir un Archivo: vim <nombre de archivo> (si ya existe, lo abre; si no, lo crea y lo abre).
+
+Salir del Modo de Inserción: Presionar Esc.
+
+Poder Escribir Texto en un Archivo: Presionar i.
+
+Fijar el Texto en el Archivo: En modo normal, escribir :w y presionar Enter.
+
+Ver el Contenido de un Archivo: cat <nombre del archivo>.
+
+Fijar el Texto y Salir: En modo normal, escribir :wq o X para guardar y salir.
+
+Navegación Básica:
+
+Saber en qué carpeta estamos: pwd.
+Numeración de líneas: :set number o :set nu.
+Ir al principio de línea: 0.
+Ir al final de línea: $.
+Ir palabra por palabra hacia la derecha: w.
+Ir palabra por palabra hacia la izquierda: b.
+Ir palabra por palabra al final: e.
+Arriba/Abajo: j y k.
+Saltos grandes: <numero de saltos> j o k (para arriba o abajo).
+Buscar letra: f + letra.
+Buscar palabra: Colocar el cursor sobre una palabra y presionar *.
+Ir a línea específica: G (mayúscula) y número de línea.
+Insertar línea: Shift + o.
+Eliminar un Carácter: x.
+Eliminar un Carácter (minúscula): x.
+Eliminar un Carácter donde está el puntero (minúscula): x.
+Eliminar un Carácter a la izquierda del puntero (mayúscula): x.
+Reemplazar caracter en puntero por otro: R, y agregar nuevo carácter.
+Eliminar palabra: Ubicar al principio de la palabra y -dw-.
+Pegar: p.
+Copiar: yy.
+Deshacer un Paso: u.
+Cortar: dd.
+Ir a la primera línea del documento: gg.
+Ir a la última línea: Shift + gg.
+Buscar en el texto: / + <palabra>.
+Navegar de palabra en palabra buscada: n.
+Salir del editor sin cambios: q!.
+Actualizar Sistema:
+
+Actualizar: sudo apt update
+
+
+-----------------------------------------------------------------------------
+
+
+Bash Básico:
+
+Crear directorio: mkdir <nombre de directorio>
+Saber dónde estamos: pwd
+Crear archivo: touch <nombre de archivo>
+Abrir y editar archivo: vim <nombre de archivo>
+Ver detalles del archivo: ls -al <nombre de archivo>
+Dar permisos de ejecución: chmod +x <nombre de archivo>
+Borrar archivo: rm <nombre de archivo>
+Borrar directorio y su contenido: rm -r <nombre de directorio>
+Variables: Declarar variable nombre=<valor>
+Llamada a variable: $<nombre>
+Comentarios en scripts: # o : '<texto>'
+Edición y Gestión de Archivos:
+
+Agregar contenido a archivo: echo "contenido" > <nombre de archivo>
+Edición interactiva con cat: cat > <nombre de archivo>
+Continuar edición con cat: cat >> <nombre de archivo>
+Terminar edición interactiva: Ctrl + D
+Comandos de la Consola:
+
+Limpiar la consola: clear o Ctrl + L
+
+
+Copiar archivos: cp <origen> <destino>
+Mover o renombrar archivos: mv <origen> <destino>
+Listar contenido de un directorio: ls <directorio>
+Cambiar de directorio: cd <directorio>
+Crear directorios recursivamente: mkdir -p <ruta/del/nuevo/directorio>
+Ver contenido de un archivo: cat <nombre de archivo>
+Visualizar contenido paginado: less <nombre de archivo>
+Comparar contenido de archivos: diff <archivo1> <archivo2>
+Variables y Operaciones:
+
+Asignar valor a variable: variable=<valor>
+Concatenar texto en variables: variable="$variable texto"
+Operaciones aritméticas: $(($variable + 1))
+Operaciones lógicas: if [ condición ]; then ... fi
+Ejecución de Comandos:
+
+Ejecución condicional: comando && otro_comando
+Ejecución en segundo plano: comando &
+Manejo de Flujos y Control:
+
+if [ condición ]; then
+    # comandos si la condición es verdadera
+else
+    # comandos si la condición es falsa
+fi
+
+
+
+while [ condición ]; do
+    # comandos a repetir mientras la condición sea verdadera
+done
+
+
+-----------------------------------------------------------
+
+DOCKER:
+
+Desde el cmd, con el cliente corriendo: 
+
+- Descargar una imagen de docker : docker pull <imagen> - ver en la pagina de Docker - 
+- Descargar una imagen pero una version en especifico: docker pull  <imagen>: version <numero>  ej: docker pull node:18
+- Ver las imagees descargadas : docker images
+- Borrar imagen docker image rm -f  <nombre de imagen>
+- Ver contenedores docker ps
+- Crear contenedor docker create <nombre de imagen>
+- Iniciar contenedor docker start (mas el mega numro que te devuelve el create)
+- Crear un contenedor con nombre particular docker create --name <nombre> <imagen>
+- *Descargar y crear un contenedor e iniciar con * "docker run..." ej: 
+docker run -d mongo ( "-d" sin mostrar los logs)
+- Forma Total ( <PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
+<PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.)  docker run --name nomguito -p27017:27017 -d mongo
+
+si se quiere ver los logs actualizarse de manera constate: 
+
+docker logs --follow <nombredecontenedor>
+
+
+crear imagen
+Debes proporcionar la ruta de contexto y el nombre de la imagen de esta manera: docker build -t nombre_de_la_imagen:etiqueta ruta_de_contexto.   
+El comando que estás usando para construir la imagen Docker tiene un problema en la especificación de la ruta de contexto y el nombre de la imagen. Debes proporcionar la ruta de contexto y el nombre de la imagen de esta manera:
+
+docker build -t nombre_de_la_imagen:etiqueta ruta_de_contexto
+
+usando el Dockerfile en el directorio actual. Para hacerlo, debes ejecutar el comando docker build desde el directorio que contiene tu Dockerfile.
+Por lo tanto, puedes usar el siguiente comando:
+
+ docker build -t sehent. El punto (.) al final indica que el contexto es el directorio actual. Esto asume que tu Dockerfile está en el mismo directorio desde el que ejecutas el comando.
+
+investigar una imajen en json docker inspect mi-imagen
+
+
+- Forma Total   docker run --name nomguito -p27017:27017 ( <PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
+<PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.) -d mongo
+
+docker build -t sehent_ETIQUETA . El punto (.) al final indica que el contexto es el directorio actual. Esto asume que tu Dockerfile está en el mismo directorio desde el que ejecutas el comando.
+
+docker build -t nombre_de_la_imagen:etiqueta .
+
+
+
+Docker PS -q  traer solo ids
+
+Paras todos los contenedores: 
+
+Docker stop $(docker PS -q)
+
+--------------------------------------------------------------
+
+
+Linux: 
+
+Aspectos Teóricos:
+
+Estructura de directorios: Comprender la estructura de directorios en Linux, incluyendo /, /bin, /home, /etc, y otros directorios clave.
+Usuarios y permisos: Saber cómo funcionan los usuarios y grupos en Linux, así como cómo administrar permisos con comandos como chmod y chown.
+Comandos básicos: Familiarizarse con comandos básicos de Linux como ls, cd, pwd, mkdir, rmdir, y rm.
+Gestión de procesos: Conocer comandos como ps, top, kill, y killall para administrar procesos.
+Edición de archivos: Aprender a editar archivos de texto desde la línea de comandos con editores como nano o vi.
+Sistema de archivos: Entender los diferentes sistemas de archivos en Linux, como ext4 y xfs.
+Uso de dispositivos y montaje: Saber cómo trabajar con dispositivos y montar sistemas de archivos con comandos como mount y umount.
+Redes: Conocer los conceptos básicos de configuración de red y comandos como ping e ifconfig.
+Actualizaciones y paquetes: Aprender a usar herramientas de gestión de paquetes como apt o yum para actualizar el sistema y administrar software.
+Aspectos Prácticos:
+
+Uso del terminal: Ser capaz de navegar, crear, copiar y eliminar archivos y directorios desde la línea de comandos.
+Gestión de usuarios y permisos: Crear y administrar usuarios, grupos y permisos en el sistema.
+Instalación de software: Saber cómo instalar, actualizar y eliminar software utilizando el sistema de gestión de paquetes de la distribución.
+Seguridad básica: Implementar prácticas de seguridad, como la actualización regular del sistema, uso de contraseñas seguras y configuración de cortafuegos.
+Automatización de tareas: Utilizar scripts y programación básica para automatizar tareas repetitivas.
+Trabajo en red: Configurar interfaces de red, asignar direcciones IP y diagnosticar problemas de red.
+Con este conocimiento teórico y práctico, una persona puede considerarse con un conocimiento básico pero eficiente de Linux, lo que le permitirá realizar tareas comunes de administración y uso de sistemas Linux.
+
+
+
+
+-----------------------------------------------------------------
+
+
+vagrant
+
+vagrant init: Inicializa un nuevo Vagrantfile en el directorio actual.
+vagrant up: Crea y configura una máquina virtual según las especificaciones del Vagrantfile y la inicia.
+vagrant halt: Apaga la máquina virtual de manera segura.
+vagrant reload: Reinicia la máquina virtual, aplicando configuraciones modificadas en el Vagrantfile.vagrant suspend:  Pausa la máquina virtual, conservando su estado actual.
+vagrant resume: Reanuda una máquina virtual previamente suspendida.
+vagrant destroy: Detiene y elimina la máquina virtual.
+vagrant status: Muestra el estado actual de todas las máquinas virtuales en el directorio.
+vagrant ssh: Inicia una conexión SSH con la máquina virtual.
+vagrant ssh-config: Muestra la configuración SSH de la máquina virtual.
+vagrant provision: Ejecuta las provisiones definidas en el Vagrantfile en una máquina virtual en ejecución.
+vagrant global-status: Muestra el estado de todas las máquinas virtuales Vagrant en el sistema.
+vagrant package: Empaqueta una máquina virtual en una caja (box) reutilizable.
+vagrant box add: Agrega una caja (box) al sistema local desde una URL o archivo.
+vagrant box remove: Elimina una caja (box) del sistema local.
+vagrant box list: Lista las cajas (boxes) disponibles en el sistema local.
