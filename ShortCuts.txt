@@ -125,14 +125,24 @@ Desde el cmd, con el cliente corriendo:
 - Crear contenedor docker create <nombre de imagen>
 - Iniciar contenedor docker start (mas el mega numro que te devuelve el create)
 - Crear un contenedor con nombre particular docker create --name <nombre> <imagen>
-- *Descargar y crear un contenedor e iniciar con * "docker run..." ej: 
-docker run -d mongo ( "-d" sin mostrar los logs)
-- Forma Total ( <PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
-<PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.)  docker run --name nomguito -p27017:27017 -d mongo
-
 si se quiere ver los logs actualizarse de manera constate: 
 
 docker logs --follow <nombredecontenedor>
+
+
+
+RUN: (descarga -creacion-y arranque: todo en uno en uno)
+
+- *Descargar y crear un contenedor e iniciar con * "docker run..." ej: 
+docker run -d mongo ( "-d" sin mostrar los logs)
+
+- Forma Total
+
+ (El primer puerto es: <PUERTO_LOCAL> es el puerto de tu máquina local que se utilizará para acceder al servicio en el contenedor.
+ El segundo es: <PUERTO_CONTENEDOR> es el puerto en el que el servicio dentro del contenedor está escuchando.)
+
+  docker run --name nomguito -p27017:27017 -d mongo
+
 
 
 crear imagen
