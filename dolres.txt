@@ -1,0 +1,10 @@
+plazo ---4000
+banco ---2380
+pedal ---100
+manu  ---100
+accidente ---700
+sobraron de EEUU---70
+
+
+7280 (enero 2024)
+7350 (marzo 2024)
